@@ -16,9 +16,6 @@ build_script:
   - mvn clean package -DskipTests
 test_script:
   - mvn install verify
-cache:
-  - C:\maven\
-  - C:\Users\appveyor\.m2
 on_finish:
   - sh: |
       find "$APPVEYOR_BUILD_FOLDER" -type f -name 'TEST*.xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
@@ -26,6 +23,6 @@ artifacts:
   - path: "**/target/*.?ar"
     name: "SpriteCaster"
 on_success:
-  - ps: if ($env:APPVEYOR_REPO_BRANCH -eq "main") {C:\projects\alphabot\build_scripts\discord-webhook.ps1 success $env:DISCORD_WEBHOOK_URL}
+  - ps: if ($env:APPVEYOR_REPO_BRANCH -eq "main") {.\build_scripts\discord-webhook.ps1 success $env:DISCORD_WEBHOOK_URL}
 on_failure:
-  - ps: if ($env:APPVEYOR_REPO_BRANCH -eq "main") {C:\projects\alphabot\build_scripts\discord-webhook.ps1 failure $env:DISCORD_WEBHOOK_URL}
+  - ps: if ($env:APPVEYOR_REPO_BRANCH -eq "main") {.\build_scripts\discord-webhook.ps1 failure $env:DISCORD_WEBHOOK_URL}
