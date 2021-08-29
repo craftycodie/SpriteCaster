@@ -1,0 +1,25 @@
+package gg.codie.spritecaster.resources.textures;
+
+public enum Mob implements ITexture {
+    STEVE,
+    CHICKEN,
+    COW,
+    CREEPER,
+    CREEPER_CHARGE,
+    GHAST_FIRE,
+    GHAST,
+    PIG,
+    PIGZOMBIE,
+    PIG_SADDLE,
+    SHEEP_FUR,
+    SHEEP,
+    SKELETON,
+    SLIME,
+    SPIDER_EYES,
+    SPIDER,
+    SQUID,
+    WOLF_ANGRY,
+    DOGGY,
+    WOLF,
+    ZOMBIE,
+}
