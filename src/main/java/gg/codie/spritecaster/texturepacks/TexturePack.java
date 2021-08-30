@@ -14,10 +14,12 @@ import java.util.zip.ZipOutputStream;
 public class TexturePack {
     private final HashMap<TexturePackTexture, BufferedImage> textures;
     public final String name;
+    private final String info;
 
-    public TexturePack(String name, HashMap<TexturePackTexture, BufferedImage> textures) {
+    public TexturePack(String name, String info, HashMap<TexturePackTexture, BufferedImage> textures) {
         this.textures = textures;
         this.name = name;
+        this.info = info;
     }
 
     public void save() {

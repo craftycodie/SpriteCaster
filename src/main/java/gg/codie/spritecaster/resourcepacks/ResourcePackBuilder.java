@@ -1,13 +1,11 @@
 package gg.codie.spritecaster.resourcepacks;
 
-import gg.codie.spritecaster.resources.textures.ITexture;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.zip.ZipFile;
 
 public class ResourcePackBuilder {
@@ -35,7 +33,6 @@ public class ResourcePackBuilder {
             textures.put(texture, getSprite(relativePath));
         } catch (Exception ex) {
 //            ex.printStackTrace();
-            System.err.println("Couldn't load texture for " + texture.name());
         }
 
         return this;
