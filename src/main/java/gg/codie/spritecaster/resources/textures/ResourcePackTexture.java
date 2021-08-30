@@ -201,7 +201,14 @@ public enum ResourcePackTexture {
         BREAKING_6,
         BREAKING_7,
         BREAKING_8,
-        BREAKING_9;
+        BREAKING_9,
+
+        WATER_STILL,
+        WATER_FLOWING,
+        LAVA_FLOWING,
+        LAVA_STILL,
+        FIRE,
+        PORTAL;
     }
 
     public enum Painting {
@@ -402,7 +409,7 @@ public enum ResourcePackTexture {
         CONTAINER,
         CRAFTING,
         FURNACE,
-        CONTROLS,
+        WIDGETS,
         ICONS,
         INVENTORY,
         LOGO,

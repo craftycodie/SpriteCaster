@@ -2,8 +2,7 @@ package gg.codie.spritecaster.texturepacks;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,12 +24,23 @@ public class TexturePack {
     public void save() {
         File tempFolder = new File(name + File.separator);
         tempFolder.mkdir();
+
+        if(info != null) {
+            try (PrintStream out = new PrintStream(new FileOutputStream(new File(tempFolder, "pack.txt")))) {
+                out.print(info);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
         textures.forEach((texture, image) -> {
             File textureFile = new File(tempFolder, texture.getPath());
             try {
+                textureFile.mkdirs();
                 textureFile.createNewFile();
                 ImageIO.write(image, "png", textureFile);
             } catch (IOException e) {
+                System.err.println(texture.getPath());
                 e.printStackTrace();
             }
         });

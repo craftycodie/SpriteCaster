@@ -6,7 +6,7 @@
 
   <groupId>gg.codie.spritecaster</groupId>
   <artifactId>SpriteCaster</artifactId>
-  <version>0.1.2</version>
+  <version>0.2.0</version>
 
   <name>SpriteCaster</name>
   <url>https://codie.gg/</url>
@@ -23,6 +23,18 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20200518</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20200518</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 

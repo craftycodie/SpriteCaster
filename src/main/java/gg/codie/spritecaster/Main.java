@@ -2,7 +2,6 @@ package gg.codie.spritecaster;
 
 import gg.codie.spritecaster.resourcepacks.ResourcePack;
 import gg.codie.spritecaster.resourcepacks.ResourcePackBuilder;
-import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 import gg.codie.spritecaster.texturepacks.Beta17TexturePackBuilder;
 import gg.codie.spritecaster.texturepacks.TexturePack;
 

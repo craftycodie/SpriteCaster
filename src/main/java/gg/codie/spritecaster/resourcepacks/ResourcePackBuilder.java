@@ -1,10 +1,14 @@
 package gg.codie.spritecaster.resourcepacks;
 
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
+import org.json.JSONObject;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.zip.ZipFile;
 
@@ -38,8 +42,8 @@ public class ResourcePackBuilder {
         return this;
     }
 
-    public ResourcePack build() {
-            this.withTexture(ResourcePackTexture.Block.GRASS_TOP, "assets/minecraft/textures/block/grass_block_top.png")
+    private ResourcePackBuilder withBlocks() {
+        return this.withTexture(ResourcePackTexture.Block.GRASS_TOP, "assets/minecraft/textures/block/grass_block_top.png")
                 .withTexture(ResourcePackTexture.Block.STONE, "assets/minecraft/textures/block/stone.png")
                 .withTexture(ResourcePackTexture.Block.DIRT, "assets/minecraft/textures/block/dirt.png")
                 .withTexture(ResourcePackTexture.Block.GRASS_SIDE, "assets/minecraft/textures/block/grass_block_side.png")
@@ -106,7 +110,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.CACTUS_TOP, "assets/minecraft/textures/block/cactus_top.png")
                 .withTexture(ResourcePackTexture.Block.CACTUS_SIDE, "assets/minecraft/textures/block/cactus_side.png")
                 .withTexture(ResourcePackTexture.Block.CACTUS_BOTTOM, "assets/minecraft/textures/block/cactus_bottom.png")
-                .withTexture(ResourcePackTexture.Block.CLAY, "assets/minecraft/textures/block/clay.png")
+                .withTexture(ResourcePackTexture.Block.CLAY, "assets/minecraft/textures/block/clay_ball.png")
                 .withTexture(ResourcePackTexture.Block.SUGAR_CANE, "assets/minecraft/textures/block/sugar_cane.png")
                 .withTexture(ResourcePackTexture.Block.NOTEBLOCK, "assets/minecraft/textures/block/note_block.png")
                 .withTexture(ResourcePackTexture.Block.JUKEBOX_TOP, "assets/minecraft/textures/block/jukebox_top.png")
@@ -196,6 +200,168 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.BREAKING_7, "assets/minecraft/textures/block/destroy_stage_7.png")
                 .withTexture(ResourcePackTexture.Block.BREAKING_8, "assets/minecraft/textures/block/destroy_stage_8.png")
                 .withTexture(ResourcePackTexture.Block.BREAKING_9, "assets/minecraft/textures/block/destroy_stage_8.png");
+    }
+
+    private ResourcePackBuilder withItems() {
+        return this
+                .withTexture(ResourcePackTexture.Item.HELMET_CLOTH, "assets/minecraft/textures/item/leather_helmet_overlay.png")
+                .withTexture(ResourcePackTexture.Item.HELMET_CHAIN, "assets/minecraft/textures/item/chainmail_helmet.png")
+                .withTexture(ResourcePackTexture.Item.HELMET_IRON, "assets/minecraft/textures/item/iron_helmet.png")
+                .withTexture(ResourcePackTexture.Item.HELMET_DIAMOND, "assets/minecraft/textures/item/diamond_helmet.png")
+                .withTexture(ResourcePackTexture.Item.HELMET_GOLD, "assets/minecraft/textures/item/golden_helmet.png")
+                .withTexture(ResourcePackTexture.Item.FLINT_AND_STEEL, "assets/minecraft/textures/item/flint_and_steel.png")
+                .withTexture(ResourcePackTexture.Item.FLINT, "assets/minecraft/textures/item/flint.png")
+                .withTexture(ResourcePackTexture.Item.COAL, "assets/minecraft/textures/item/coal.png")
+                .withTexture(ResourcePackTexture.Item.STRING, "assets/minecraft/textures/item/string.png")
+                .withTexture(ResourcePackTexture.Item.WHEAT_SEEDS, "assets/minecraft/textures/item/wheat_seeds.png")
+                .withTexture(ResourcePackTexture.Item.APPLE, "assets/minecraft/textures/item/apple.png")
+                .withTexture(ResourcePackTexture.Item.GAPPLE, "assets/minecraft/textures/item/golden_apple.png")
+                .withTexture(ResourcePackTexture.Item.EGG, "assets/minecraft/textures/item/egg.png")
+                .withTexture(ResourcePackTexture.Item.SUGAR, "assets/minecraft/textures/item/sugar.png")
+                .withTexture(ResourcePackTexture.Item.SNOWBALL, "assets/minecraft/textures/item/snowball.png")
+                .withTexture(ResourcePackTexture.Item.HELMET_INVENTORY, "assets/minecraft/textures/item/empty_armor_slot_helmet.png")
+                .withTexture(ResourcePackTexture.Item.CHEST_CLOTH, "assets/minecraft/textures/item/leather_chestplate_overlay.png")
+                .withTexture(ResourcePackTexture.Item.CHEST_CHAIN, "assets/minecraft/textures/item/chainmail_chestplate.png")
+                .withTexture(ResourcePackTexture.Item.CHEST_IRON, "assets/minecraft/textures/item/iron_chestplate.png")
+                .withTexture(ResourcePackTexture.Item.CHEST_DIAMOND, "assets/minecraft/textures/item/diamond_chestplate.png")
+                .withTexture(ResourcePackTexture.Item.CHEST_GOLD, "assets/minecraft/textures/item/golden_chestplate.png")
+                .withTexture(ResourcePackTexture.Item.BOW, "assets/minecraft/textures/item/bow/bow.png")
+                .withTexture(ResourcePackTexture.Item.BRICK, "assets/minecraft/textures/item/brick.png")
+                .withTexture(ResourcePackTexture.Item.INGOT_IRON, "assets/minecraft/textures/item/iron_ingot.png")
+                .withTexture(ResourcePackTexture.Item.FEATHER, "assets/minecraft/textures/item/feather.png")
+                .withTexture(ResourcePackTexture.Item.WHEAT, "assets/minecraft/textures/item/wheat.png")
+                .withTexture(ResourcePackTexture.Item.PAINTING, "assets/minecraft/textures/item/painting.png")
+                .withTexture(ResourcePackTexture.Item.SUGAR_CANE, "assets/minecraft/textures/item/sugar_cane.png")
+                .withTexture(ResourcePackTexture.Item.BONE, "assets/minecraft/textures/item/bone.png")
+                .withTexture(ResourcePackTexture.Item.CAKE, "assets/minecraft/textures/item/cake.png")
+                .withTexture(ResourcePackTexture.Item.SLIMEBALL, "assets/minecraft/textures/item/slime_ball.png")
+                .withTexture(ResourcePackTexture.Item.CHEST_INVENTORY, "assets/minecraft/textures/item/empty_armor_slot_chestplate.png")
+                .withTexture(ResourcePackTexture.Item.LEGS_CLOTH, "assets/minecraft/textures/item/leather_leggings_overlay.png")
+                .withTexture(ResourcePackTexture.Item.LEGS_CHAIN, "assets/minecraft/textures/item/chainmail_leggings.png")
+                .withTexture(ResourcePackTexture.Item.LEGS_IRON, "assets/minecraft/textures/item/iron_leggings.png")
+                .withTexture(ResourcePackTexture.Item.LEGS_DIAMOND, "assets/minecraft/textures/item/diamond_leggings.png")
+                .withTexture(ResourcePackTexture.Item.LEGS_GOLD, "assets/minecraft/textures/item/golden_leggings.png")
+                .withTexture(ResourcePackTexture.Item.ARROW, "assets/minecraft/textures/item/arrow.png")
+                .withTexture(ResourcePackTexture.Item.INGOT_GOLD, "assets/minecraft/textures/item/gold_ingot.png")
+                .withTexture(ResourcePackTexture.Item.GUNPOWDER, "assets/minecraft/textures/item/gunpowder.png")
+                .withTexture(ResourcePackTexture.Item.BREAD, "assets/minecraft/textures/item/bread.png")
+                .withTexture(ResourcePackTexture.Item.SIGN, "assets/minecraft/textures/item/oak_sign.png")
+                .withTexture(ResourcePackTexture.Item.DOOR_WOODEN, "assets/minecraft/textures/item/oak_door.png")
+                .withTexture(ResourcePackTexture.Item.DOOR_IRON, "assets/minecraft/textures/item/iron_door.png")
+                .withTexture(ResourcePackTexture.Item.BED, "assets/minecraft/textures/item/red_bed.png")
+                .withTexture(ResourcePackTexture.Item.LEGS_INVENTORY, "assets/minecraft/textures/item/empty_armor_slot_leggings.png")
+                .withTexture(ResourcePackTexture.Item.BOOTS_CLOTH, "assets/minecraft/textures/item/leather_boots_overlay.png")
+                .withTexture(ResourcePackTexture.Item.BOOTS_CHAIN, "assets/minecraft/textures/item/chainmail_boots.png")
+                .withTexture(ResourcePackTexture.Item.BOOTS_IRON, "assets/minecraft/textures/item/iron_boots.png")
+                .withTexture(ResourcePackTexture.Item.BOOTS_DIAMOND, "assets/minecraft/textures/item/diamond_boots.png")
+                .withTexture(ResourcePackTexture.Item.BOOTS_GOLD, "assets/minecraft/textures/item/golden_boots.png")
+                .withTexture(ResourcePackTexture.Item.STICK, "assets/minecraft/textures/item/stick.png")
+                .withTexture(ResourcePackTexture.Item.COMPASS_BASE, "assets/minecraft/textures/item/compass.png")
+                .withTexture(ResourcePackTexture.Item.DIAMOND, "assets/minecraft/textures/item/diamond.png")
+                .withTexture(ResourcePackTexture.Item.REDSTONE, "assets/minecraft/textures/item/redstone.png")
+                .withTexture(ResourcePackTexture.Item.CLAY, "assets/minecraft/textures/item/clay.png")
+                .withTexture(ResourcePackTexture.Item.PAPER, "assets/minecraft/textures/item/paper.png")
+                .withTexture(ResourcePackTexture.Item.BOOK, "assets/minecraft/textures/item/book.png")
+                .withTexture(ResourcePackTexture.Item.MAP, "assets/minecraft/textures/item/map.png")
+                .withTexture(ResourcePackTexture.Item.BOOTS_INVENTORY, "assets/minecraft/textures/item/empty_armor_slot_boots.png")
+                .withTexture(ResourcePackTexture.Item.SWORD_WOOD, "assets/minecraft/textures/item/wooden_sword.png")
+                .withTexture(ResourcePackTexture.Item.SWORD_STONE, "assets/minecraft/textures/item/stone_sword.png")
+                .withTexture(ResourcePackTexture.Item.SWORD_IRON, "assets/minecraft/textures/item/iron_sword.png")
+                .withTexture(ResourcePackTexture.Item.SWORD_DIAMOND, "assets/minecraft/textures/item/diamond_sword.png")
+                .withTexture(ResourcePackTexture.Item.SWORD_GOLD, "assets/minecraft/textures/item/golden_sword.png")
+                .withTexture(ResourcePackTexture.Item.FISHING_ROD, "assets/minecraft/textures/item/fishing_rod.png")
+                .withTexture(ResourcePackTexture.Item.CLOCK_BASE, "assets/minecraft/textures/item/clock.png")
+                .withTexture(ResourcePackTexture.Item.BOWL, "assets/minecraft/textures/item/bowl.png")
+                .withTexture(ResourcePackTexture.Item.MUSHROOM_SOUP, "assets/minecraft/textures/item/mushroom_stew.png")
+                .withTexture(ResourcePackTexture.Item.GLOWSTONE_DUST, "assets/minecraft/textures/item/glowstone_dust.png")
+                .withTexture(ResourcePackTexture.Item.BUCKET, "assets/minecraft/textures/item/bucket.png")
+                .withTexture(ResourcePackTexture.Item.BUCKET_WATER, "assets/minecraft/textures/item/water_bucket.png")
+                .withTexture(ResourcePackTexture.Item.BUCKET_LAVA, "assets/minecraft/textures/item/lava_bucket.png")
+                .withTexture(ResourcePackTexture.Item.BUCKET_MILK, "assets/minecraft/textures/item/milk_bucket.png")
+                .withTexture(ResourcePackTexture.Item.INK_SAC, "assets/minecraft/textures/item/ink_sac.png")
+                .withTexture(ResourcePackTexture.Item.DYE_GREY, "assets/minecraft/textures/item/gray_dye.png")
+                .withTexture(ResourcePackTexture.Item.SHOVEL_WOOD, "assets/minecraft/textures/item/wooden_shovel.png")
+                .withTexture(ResourcePackTexture.Item.SHOVEL_STONE, "assets/minecraft/textures/item/stone_shovel.png")
+                .withTexture(ResourcePackTexture.Item.SHOVEL_IRON, "assets/minecraft/textures/item/iron_shovel.png")
+                .withTexture(ResourcePackTexture.Item.SHOVEL_DIAMOND, "assets/minecraft/textures/item/diamond_shovel.png")
+                .withTexture(ResourcePackTexture.Item.SHOVEL_GOLD, "assets/minecraft/textures/item/golden_shovel.png")
+                .withTexture(ResourcePackTexture.Item.FISHING_ROD_THROWN, "assets/minecraft/textures/item/fishing_rod_cast.png")
+                .withTexture(ResourcePackTexture.Item.REDSTONE_REPEATER, "assets/minecraft/textures/item/redstone_repeater.png")
+                .withTexture(ResourcePackTexture.Item.PORKCHOP, "assets/minecraft/textures/item/porkchop.png")
+                .withTexture(ResourcePackTexture.Item.COOKED_PORKCHOP, "assets/minecraft/textures/item/cooked_porkchop.png")
+                .withTexture(ResourcePackTexture.Item.FISH, "assets/minecraft/textures/item/cod.png")
+                .withTexture(ResourcePackTexture.Item.COOKED_FISH, "assets/minecraft/textures/item/cooked_cod.png")
+                .withTexture(ResourcePackTexture.Item.COOKIE, "assets/minecraft/textures/item/cookie.png")
+                .withTexture(ResourcePackTexture.Item.SHEARS, "assets/minecraft/textures/item/shears.png")
+                .withTexture(ResourcePackTexture.Item.DYE_RED, "assets/minecraft/textures/item/red_dye.png")
+                .withTexture(ResourcePackTexture.Item.DYE_PINK, "assets/minecraft/textures/item/pink_dye.png")
+                .withTexture(ResourcePackTexture.Item.PICKAXE_WOOD, "assets/minecraft/textures/item/wooden_pickaxe.png")
+                .withTexture(ResourcePackTexture.Item.PICKAXE_STONE, "assets/minecraft/textures/item/stone_pickaxe.png")
+                .withTexture(ResourcePackTexture.Item.PICKAXE_IRON, "assets/minecraft/textures/item/iron_pickaxe.png")
+                .withTexture(ResourcePackTexture.Item.PICKAXE_DIAMOND, "assets/minecraft/textures/item/diamond_pickaxe.png")
+                .withTexture(ResourcePackTexture.Item.PICKAXE_GOLD, "assets/minecraft/textures/item/golden_pickaxe.png")
+                .withTexture(ResourcePackTexture.Item.LEATHER, "assets/minecraft/textures/item/leather.png")
+                .withTexture(ResourcePackTexture.Item.SADDLE, "assets/minecraft/textures/item/saddle.png")
+                .withTexture(ResourcePackTexture.Item.DYE_DARK_GREEN, "assets/minecraft/textures/item/green_dye.png")
+                .withTexture(ResourcePackTexture.Item.DYE_LIME, "assets/minecraft/textures/item/lime_dye.png")
+                .withTexture(ResourcePackTexture.Item.AXE_WOODEN, "assets/minecraft/textures/item/wooden_axe.png")
+                .withTexture(ResourcePackTexture.Item.AXE_STONE, "assets/minecraft/textures/item/stone_axe.png")
+                .withTexture(ResourcePackTexture.Item.AXE_IRON, "assets/minecraft/textures/item/iron_axe.png")
+                .withTexture(ResourcePackTexture.Item.AXE_DIAMOND, "assets/minecraft/textures/item/diamond_axe.png")
+                .withTexture(ResourcePackTexture.Item.AXE_GOLD, "assets/minecraft/textures/item/golden_axe.png")
+                .withTexture(ResourcePackTexture.Item.DYE_BROWN, "assets/minecraft/textures/item/brown_dye.png")
+                .withTexture(ResourcePackTexture.Item.DYE_YELLOW, "assets/minecraft/textures/item/yellow_dye.png")
+                .withTexture(ResourcePackTexture.Item.HOE_WOODEN, "assets/minecraft/textures/item/wooden_hoe.png")
+                .withTexture(ResourcePackTexture.Item.HOE_STONE, "assets/minecraft/textures/item/stone_hoe.png")
+                .withTexture(ResourcePackTexture.Item.HOE_IRON, "assets/minecraft/textures/item/iron_hoe.png")
+                .withTexture(ResourcePackTexture.Item.HOE_DIAMOND, "assets/minecraft/textures/item/diamond_hoe.png")
+                .withTexture(ResourcePackTexture.Item.HOE_GOLD, "assets/minecraft/textures/item/golden_hoe.png")
+                .withTexture(ResourcePackTexture.Item.MINECART, "assets/minecraft/textures/item/minecart.png")
+                .withTexture(ResourcePackTexture.Item.BOAT, "assets/minecraft/textures/item/oak_boat.png")
+                .withTexture(ResourcePackTexture.Item.DYE_DARK_BLUE, "assets/minecraft/textures/item/blue_dye.png")
+                .withTexture(ResourcePackTexture.Item.DYE_LIGHT_BLUE, "assets/minecraft/textures/item/light_blue_dye.png")
+                .withTexture(ResourcePackTexture.Item.MINECART_CHEST, "assets/minecraft/textures/item/chest_minecart.png")
+                .withTexture(ResourcePackTexture.Item.DYE_PURPLE, "assets/minecraft/textures/item/purple_dye.png")
+                .withTexture(ResourcePackTexture.Item.DYE_MAGENTA, "assets/minecraft/textures/item/magenta_dye.png")
+                .withTexture(ResourcePackTexture.Item.MINECART_FURNACE, "assets/minecraft/textures/item/furnace_minecart.png")
+                .withTexture(ResourcePackTexture.Item.DYE_TEAL, "assets/minecraft/textures/item/cyan_dye.png")
+                .withTexture(ResourcePackTexture.Item.DYE_ORANGE, "assets/minecraft/textures/item/orange_dye.png")
+                .withTexture(ResourcePackTexture.Item.DYE_LIGHT_GREY, "assets/minecraft/textures/item/light_gray_dye.png")
+                .withTexture(ResourcePackTexture.Item.BONE_MEAL, "assets/minecraft/textures/item/bone_meal.png")
+                .withTexture(ResourcePackTexture.Item.RECORD_13, "assets/minecraft/textures/item/music_disc_13.png")
+                .withTexture(ResourcePackTexture.Item.RECORD_CAT, "assets/minecraft/textures/item/music_disc_cat.png");
+    }
+
+    private String readTextFile(String path) {
+        try {
+            InputStream input = resourcePackZip.getInputStream(resourcePackZip.getEntry(path));
+            BufferedReader br = new BufferedReader(new InputStreamReader(input, "UTF-8"));
+            StringBuilder file = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                file.append("\n").append(line);
+            }
+            return file.toString();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public ResourcePack build() {
+        this
+                .withInfo(new JSONObject(readTextFile("pack.mcmeta")).getJSONObject("pack").getString("description"))
+                .withBlocks()
+                .withItems()
+                .withTexture(ResourcePackTexture.Gui.WIDGETS, "assets/minecraft/textures/gui/widgets.png")
+                .withTexture(ResourcePackTexture.Gui.INVENTORY, "assets/minecraft/textures/gui/container/inventory.png")
+                .withTexture(ResourcePackTexture.PACK, "pack.png")
+                .withTexture(ResourcePackTexture.Block.WATER_STILL, "assets/minecraft/textures/block/water_still.png")
+                .withTexture(ResourcePackTexture.FONT, "assets/minecraft/textures/font/ascii.png")
+                ;
+
+
 
         return new ResourcePack(name, info, textures);
     }

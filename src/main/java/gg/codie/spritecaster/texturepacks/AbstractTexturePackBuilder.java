@@ -1,6 +1,7 @@
 package gg.codie.spritecaster.texturepacks;
 
 import gg.codie.spritecaster.resourcepacks.ResourcePack;
+import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public abstract class AbstractTexturePackBuilder {
     }
 
     public TexturePack build() {
+        addTexture(TexturePackTexture.PACK, resourcePack.getTexture(ResourcePackTexture.PACK));
         return new TexturePack(resourcePack.name + "-" + getMinecraftVersion(), resourcePack.info, textures);
     }
 
