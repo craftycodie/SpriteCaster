@@ -15,7 +15,7 @@ public abstract class AbstractTexturePackBuilder {
     }
 
     public TexturePack build() {
-        return new TexturePack(resourcePack.name + "-" + getMinecraftVersion(), textures);
+        return new TexturePack(resourcePack.name + "-" + getMinecraftVersion(), resourcePack.info, textures);
     }
 
     abstract String getMinecraftVersion();
