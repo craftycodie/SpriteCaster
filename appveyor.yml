@@ -2,14 +2,7 @@ version: '{build}'
 image: ubuntu
 
 install:
-  - sh: sudo add-apt-repository --yes ppa:rpardini/adoptopenjdk
-  - sh: sudo apt-get update
-  - sh: sudo apt-get install -y adoptopenjdk-11-jdk-hotspot-installer
-  - sh: sudo apt install adoptopenjdk-11-jdk-hotspot-set-default
-  #/usr/lib/jvm/adoptopenjdk-11-jdk-hotspot
-  - sh: export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-11-jdk-hotspot
-  - sh: echo $JAVA_HOME
-  - sh: export PATH=${PATH}
+  - ps: .\build_scripts\UpdateBuildVersion.ps1
 before_build:
   - mvn -v
 build_script:
