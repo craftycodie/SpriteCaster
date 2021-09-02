@@ -16,14 +16,11 @@ public enum ResourcePackTexture {
     WATER_BLUR,
     WATER_COLOR,
 
-    ACHIEVEMENT_BG,
-    ACHIEVEMENT_ICONS,
-
-    PAINTINGS,
-
     ENVIRONMENT_CLOUDS,
     ENVIRONMENT_RAIN,
     ENVIRONMENT_SNOW,
+    ENVIRONMENT_MOON_PHASES,
+    ENVIRONMENT_SUN,
 
     FONT,
 
@@ -263,6 +260,7 @@ public enum ResourcePackTexture {
 
     public enum Item {
         HELMET_CLOTH,
+        HELMET_CLOTH_OVERLAY,
         HELMET_CHAIN,
         HELMET_IRON,
         HELMET_DIAMOND,
@@ -280,6 +278,7 @@ public enum ResourcePackTexture {
         HELMET_INVENTORY,
 
         CHEST_CLOTH,
+        CHEST_CLOTH_OVERLAY,
         CHEST_CHAIN,
         CHEST_IRON,
         CHEST_DIAMOND,
@@ -297,6 +296,7 @@ public enum ResourcePackTexture {
         CHEST_INVENTORY,
 
         LEGS_CLOTH,
+        LEGS_CLOTH_OVERLAY,
         LEGS_CHAIN,
         LEGS_IRON,
         LEGS_DIAMOND,
@@ -313,6 +313,7 @@ public enum ResourcePackTexture {
         LEGS_INVENTORY,
 
         BOOTS_CLOTH,
+        BOOTS_CLOTH_OVERLAY,
         BOOTS_CHAIN,
         BOOTS_IRON,
         BOOTS_DIAMOND,
@@ -423,6 +424,8 @@ public enum ResourcePackTexture {
         CHAIN_LOWER,
         LEATHER_UPPER,
         LEATHER_LOWER,
+        LEATHER_UPPER_OVERLAY,
+        LEATHER_LOWER_OVERLAY,
         DIAMOND_UPPER,
         DIAMOND_LOWER,
         GOLD_UPPER,

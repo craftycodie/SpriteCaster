@@ -34,6 +34,10 @@ public class TexturePack {
         }
 
         textures.forEach((texture, image) -> {
+            if (image == null) {
+                System.out.println("MISSING TEXTURE " + texture);
+                return;
+            }
             File textureFile = new File(tempFolder, texture.getPath());
             try {
                 textureFile.mkdirs();

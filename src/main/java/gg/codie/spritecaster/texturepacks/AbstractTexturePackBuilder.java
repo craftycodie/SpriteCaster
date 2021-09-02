@@ -17,7 +17,12 @@ public abstract class AbstractTexturePackBuilder {
 
     public TexturePack build() {
         addTexture(TexturePackTexture.PACK, resourcePack.getTexture(ResourcePackTexture.PACK));
+
         return new TexturePack(resourcePack.name + "-" + getMinecraftVersion(), resourcePack.info, textures);
+    }
+
+    private void addMineOnlineTextures() {
+        //addTexture()
     }
 
     abstract String getMinecraftVersion();

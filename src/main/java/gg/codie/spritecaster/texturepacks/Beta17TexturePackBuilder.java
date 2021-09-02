@@ -336,8 +336,47 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.GUI_INVENTORY, resourcePack.getTexture(ResourcePackTexture.Gui.INVENTORY));
         addTexture(TexturePackTexture.GUI_BACKGROUND, resourcePack.getTexture(ResourcePackTexture.Block.DIRT));
         addTexture(TexturePackTexture.WATER_STILL, resourcePack.getTexture(ResourcePackTexture.Block.WATER_STILL));
-//        addTexture(TexturePackTexture.WATER_FLOWING, resourcePack.getTexture(ResourcePackTexture.Block.WATER_FLOWING));
+        addTexture(TexturePackTexture.WATER_FLOWING, resourcePack.getTexture(ResourcePackTexture.Block.WATER_FLOWING));
+        addTexture(TexturePackTexture.GRASS_COLOR, resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR));
         addTexture(TexturePackTexture.FONT, resourcePack.getTexture(ResourcePackTexture.FONT));
+        addTexture(TexturePackTexture.CHAINMAIL_ARMOUR_LOWER, resourcePack.getTexture(ResourcePackTexture.Armour.CHAIN_LOWER));
+        addTexture(TexturePackTexture.CHAINMAIL_ARMOUR_UPPER, resourcePack.getTexture(ResourcePackTexture.Armour.CHAIN_UPPER));
+        addTexture(TexturePackTexture.CLOTH_ARMOUR_LOWER, resourcePack.getTexture(ResourcePackTexture.Armour.LEATHER_LOWER));
+        addTexture(TexturePackTexture.CLOTH_ARMOUR_UPPER, resourcePack.getTexture(ResourcePackTexture.Armour.LEATHER_UPPER));
+        addTexture(TexturePackTexture.DIAMOND_ARMOUR_LOWER, resourcePack.getTexture(ResourcePackTexture.Armour.DIAMOND_LOWER));
+        addTexture(TexturePackTexture.DIAMOND_ARMOUR_UPPER, resourcePack.getTexture(ResourcePackTexture.Armour.DIAMOND_UPPER));
+        addTexture(TexturePackTexture.GOLDEN_ARMOUR_UPPER, resourcePack.getTexture(ResourcePackTexture.Armour.GOLD_UPPER));
+        addTexture(TexturePackTexture.GOLDEN_ARMOUR_LOWER, resourcePack.getTexture(ResourcePackTexture.Armour.GOLD_LOWER));
+        addTexture(TexturePackTexture.IRON_ARMOUR_UPPER, resourcePack.getTexture(ResourcePackTexture.Armour.IRON_UPPER));
+        addTexture(TexturePackTexture.IRON_ARMOUR_LOWER, resourcePack.getTexture(ResourcePackTexture.Armour.IRON_LOWER));
+        addTexture(TexturePackTexture.CLOUDS, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_CLOUDS));
+        addTexture(TexturePackTexture.RAIN, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_RAIN));
+        addTexture(TexturePackTexture.SNOW, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_SNOW));
+        addTexture(TexturePackTexture.GUI_CONTAINER, resourcePack.getTexture(ResourcePackTexture.Gui.CONTAINER));
+        addTexture(TexturePackTexture.GUI_CRAFTING, resourcePack.getTexture(ResourcePackTexture.Gui.CRAFTING));
+        addTexture(TexturePackTexture.GUI_LOGO, resourcePack.getTexture(ResourcePackTexture.Gui.LOGO));
+//        addTexture(TexturePackTexture.GUI_PARTICLES, resourcePack.getTexture(ResourcePackTexture))
+//        addTexture(TexturePackTexture.GUI_SLOT, resourcePack)
+//        addTexture(TexturePackTexture.GUI_DISPENSER, resourcePack.getTexture(ResourcePackTexture.Gui.D))
+        addTexture(TexturePackTexture.UNKNOWN_PACK, resourcePack.getTexture(ResourcePackTexture.Gui.UNKNOWN_PACK));
+        addTexture(TexturePackTexture.ITEM_ARROWS, resourcePack.getTexture(ResourcePackTexture.ITEM_ARROWS));
+        addTexture(TexturePackTexture.ITEM_BOAT, resourcePack.getTexture(ResourcePackTexture.ITEM_BOAT));
+        addTexture(TexturePackTexture.ITEM_CART, resourcePack.getTexture(ResourcePackTexture.ITEM_CART));
+        addTexture(TexturePackTexture.ITEM_SIGN, resourcePack.getTexture(ResourcePackTexture.ITEM_SIGN));
+        addTexture(TexturePackTexture.PUMPKIN_BLUR, resourcePack.getTexture(ResourcePackTexture.PUMPKIN_BLUR));
+        addTexture(TexturePackTexture.VIGNETTE, resourcePack.getTexture(ResourcePackTexture.VIGNETTE));
+//        addTexture(TexturePackTexture.WATER_BLUR, ResourcePackTexture.Block.WATER_BLUR)
+        addTexture(TexturePackTexture.SHEEP, resourcePack.getTexture(ResourcePackTexture.Mob.SHEEP));
+        addTexture(TexturePackTexture.SHEEP_FUR, resourcePack.getTexture(ResourcePackTexture.Mob.SHEEP_FUR));
+        addTexture(TexturePackTexture.MCLOGO, resourcePack.getTexture(ResourcePackTexture.Gui.LOGO));
+        addTexture(TexturePackTexture.MOON, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_MOON_PHASES));
+        addTexture(TexturePackTexture.SUN, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_SUN));
+
+
+
+
+
+
     }
 
     @Override
