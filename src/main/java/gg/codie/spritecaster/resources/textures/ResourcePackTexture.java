@@ -417,6 +417,12 @@ public enum ResourcePackTexture {
         SLOT,
         TRAP,
         UNKNOWN_PACK,
+        PANORAMA0,
+        PANORAMA1,
+        PANORAMA2,
+        PANORAMA3,
+        PANORAMA4,
+        PANORAMA5
     }
 
     public enum Armour {

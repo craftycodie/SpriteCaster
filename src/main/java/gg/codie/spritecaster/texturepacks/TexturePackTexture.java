@@ -75,7 +75,17 @@ public enum TexturePackTexture {
     WATER_FLOWING("custom_water_flowing.png"),
     WATER_STILL("custom_water_still.png"),
     LAVA_FLOWING("custom_lava_flowing.png"),
-    LAVA_STILL("custom_lava_still.png");
+    LAVA_STILL("custom_lava_still.png"),
+
+    PANORAMA0("/title/bg/panorama0.png"),
+    PANORAMA1("/title/bg/panorama1.png"),
+    PANORAMA2("/title/bg/panorama2.png"),
+    PANORAMA3("/title/bg/panorama3.png"),
+    PANORAMA4("/title/bg/panorama4.png"),
+    PANORAMA5("/title/bg/panorama5.png"),
+
+
+    MINEONLINE_GUI_ICONS("mineonline/gui/icons.png");
 
     private String path;
     TexturePackTexture(String path) {
