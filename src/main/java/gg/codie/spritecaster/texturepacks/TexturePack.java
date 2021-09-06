@@ -50,6 +50,7 @@ public class TexturePack {
         });
 
         try {
+            Files.deleteIfExists(Paths.get(name + ".zip"));
             Path p = Files.createFile(Paths.get(name + ".zip"));
             try (ZipOutputStream zs = new ZipOutputStream(Files.newOutputStream(p))) {
                 Path pp = Paths.get(name + File.separator);

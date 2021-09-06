@@ -1,11 +1,10 @@
 package gg.codie.spritecaster.texturepacks;
 
-import gg.codie.spritecaster.resourcepacks.ResourcePack;
+import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
-import java.util.zip.ZipFile;
 
 public abstract class AbstractTexturePackBuilder {
     private HashMap<TexturePackTexture, BufferedImage> textures = new HashMap<TexturePackTexture, BufferedImage>();
@@ -19,7 +18,7 @@ public abstract class AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.PACK, resourcePack.getTexture(ResourcePackTexture.PACK));
         addMineOnlineTextures();
 
-        return new TexturePack(resourcePack.name + "-" + getMinecraftVersion(), resourcePack.info, textures);
+        return new TexturePack(resourcePack.getName() + "-" + getMinecraftVersion(), resourcePack.getDescription(), textures);
     }
 
     private void addMineOnlineTextures() {
@@ -34,9 +33,9 @@ public abstract class AbstractTexturePackBuilder {
 
     abstract String getMinecraftVersion();
 
-    protected final ResourcePack resourcePack;
+    protected final ResourcePackStack resourcePack;
 
-    AbstractTexturePackBuilder(ResourcePack resourcePack) {
+    AbstractTexturePackBuilder(ResourcePackStack resourcePack) {
         this.resourcePack = resourcePack;
     }
 }

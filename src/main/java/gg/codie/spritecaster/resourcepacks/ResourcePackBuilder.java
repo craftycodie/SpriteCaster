@@ -4,6 +4,7 @@ import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 import org.json.JSONObject;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.HashMap;
@@ -31,10 +32,47 @@ public class ResourcePackBuilder {
 
     public ResourcePackBuilder withTexture(Enum texture, String relativePath) {
         try {
-            textures.put(texture, getSprite(relativePath));
+            BufferedImage sprite = getSprite(relativePath);
+            textures.put(texture, sprite);
+
+            if (texture == ResourcePackTexture.Block.LEAVES_FANCY) {
+                BufferedImage leaves = sprite;
+                BufferedImage black = new BufferedImage(leaves.getWidth(), leaves.getHeight(), BufferedImage.TYPE_INT_BGR);
+                BufferedImage fastLeaves = new BufferedImage(leaves.getWidth(), leaves.getHeight(), BufferedImage.TYPE_INT_ARGB);
+                Graphics2D graphics2D = fastLeaves.createGraphics();
+                graphics2D.drawImage(black, 0, 0, null);
+                graphics2D.drawImage(leaves, 0, 0, null);
+                textures.put(ResourcePackTexture.Block.LEAVES_FAST, fastLeaves);
+            }
+
+            if (texture == ResourcePackTexture.Block.LEAVES_FANCY_SPRUCE) {
+                BufferedImage leaves = sprite;
+                BufferedImage black = new BufferedImage(leaves.getWidth(), leaves.getHeight(), BufferedImage.TYPE_INT_BGR);
+                BufferedImage fastLeaves = new BufferedImage(leaves.getWidth(), leaves.getHeight(), BufferedImage.TYPE_INT_ARGB);
+                Graphics2D graphics2D = fastLeaves.createGraphics();
+                graphics2D.drawImage(black, 0, 0, null);
+                graphics2D.drawImage(leaves, 0, 0, null);
+                textures.put(ResourcePackTexture.Block.LEAVES_FAST_SPRUCE, fastLeaves);
+            }
+
+            if (texture == ResourcePackTexture.Block.REDSTONE_LINE) {
+                BufferedImage redstoneLine = new BufferedImage(sprite.getWidth(), sprite.getHeight(), sprite.getType());
+                Graphics2D graphics2D = redstoneLine.createGraphics();
+                graphics2D.rotate(Math.toRadians(90), redstoneLine.getWidth() / 2, redstoneLine.getHeight() / 2);
+                graphics2D.drawImage(sprite, 0, 0, null);
+                textures.put(texture, redstoneLine);
+                BufferedImage redstoneCross = new BufferedImage(redstoneLine.getWidth(), redstoneLine.getHeight(), redstoneLine.getType());
+                graphics2D = redstoneCross.createGraphics();
+                graphics2D.drawImage(redstoneLine, 0, 0, null);
+                graphics2D.rotate(Math.toRadians(90), redstoneCross.getWidth() / 2, redstoneCross.getHeight() / 2);
+                graphics2D.drawImage(redstoneLine, 0, 0, null);
+                textures.put(ResourcePackTexture.Block.REDSTONE_CROSS, redstoneCross);
+            }
         } catch (Exception ex) {
 //            ex.printStackTrace();
         }
+
+
 
         return this;
     }
@@ -75,9 +113,9 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.BOOKSHELF, "assets/minecraft/textures/block/bookshelf.png")
                 .withTexture(ResourcePackTexture.Block.MOSSY_COBBLESTONE, "assets/minecraft/textures/block/mossy_cobblestone.png")
                 .withTexture(ResourcePackTexture.Block.OBSIDIAN, "assets/minecraft/textures/block/obsidian.png")
-                .withTexture(ResourcePackTexture.Block.GRASS_SIDE_OVERLAY, "assets/minecraft/textures/block/grass_side_overlay.png")
-                .withTexture(ResourcePackTexture.Block.TALL_GRASS, "assets/minecraft/textures/block/tall_grass.png")
-                .withTexture(ResourcePackTexture.Block.GRASS_TOP_SNOWY, "assets/minecraft/textures/block/grass_top.png")
+                .withTexture(ResourcePackTexture.Block.GRASS_SIDE_OVERLAY, "assets/minecraft/textures/block/grass_block_side_overlay.png")
+                .withTexture(ResourcePackTexture.Block.TALL_GRASS, "assets/minecraft/textures/block/grass.png")
+                .withTexture(ResourcePackTexture.Block.GRASS_TOP_SNOWY, "assets/minecraft/textures/block/grass_block_top.png")
                 .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_LEFT, "assets/minecraft/textures/block/.png")
                 .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_RIGHT, "assets/minecraft/textures/block/.png")
                 .withTexture(ResourcePackTexture.Block.CRAFTING_TABLE_TOP, "assets/minecraft/textures/block/crafting_table_top.png")
@@ -89,7 +127,6 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.ORE_DIAMOND, "assets/minecraft/textures/block/diamond_ore.png")
                 .withTexture(ResourcePackTexture.Block.ORE_REDSTONE, "assets/minecraft/textures/block/redstone_ore.png")
                 .withTexture(ResourcePackTexture.Block.LEAVES_FANCY, "assets/minecraft/textures/block/oak_leaves.png")
-                .withTexture(ResourcePackTexture.Block.LEAVES_FAST, "assets/minecraft/textures/block/oak_leaves.png")
                 .withTexture(ResourcePackTexture.Block.DEADBUSH, "assets/minecraft/textures/block/dead_bush.png")
                 .withTexture(ResourcePackTexture.Block.FERN, "assets/minecraft/textures/block/fern.png")
                 .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_BACK_LEFT, "assets/minecraft/textures/block/.png")
@@ -100,14 +137,14 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.FURNACE_TOP, "assets/minecraft/textures/block/furnace_top.png")
                 .withTexture(ResourcePackTexture.Block.SPRUCE_SAPLING, "assets/minecraft/textures/block/spruce_sapling.png")
                 .withTexture(ResourcePackTexture.Block.WOOL_WHITE, "assets/minecraft/textures/block/white_wool.png")
-                .withTexture(ResourcePackTexture.Block.MOB_SPAWNER, "assets/minecraft/textures/block/monster_spawner.png")
+                .withTexture(ResourcePackTexture.Block.MOB_SPAWNER, "assets/minecraft/textures/block/spawner.png")
                 .withTexture(ResourcePackTexture.Block.SNOW, "assets/minecraft/textures/block/snow.png")
                 .withTexture(ResourcePackTexture.Block.ICE, "assets/minecraft/textures/block/ice.png")
                 .withTexture(ResourcePackTexture.Block.GRASS_SIDE_SNOWY, "assets/minecraft/textures/block/grass_block_snow.png")
                 .withTexture(ResourcePackTexture.Block.CACTUS_TOP, "assets/minecraft/textures/block/cactus_top.png")
                 .withTexture(ResourcePackTexture.Block.CACTUS_SIDE, "assets/minecraft/textures/block/cactus_side.png")
                 .withTexture(ResourcePackTexture.Block.CACTUS_BOTTOM, "assets/minecraft/textures/block/cactus_bottom.png")
-                .withTexture(ResourcePackTexture.Block.CLAY, "assets/minecraft/textures/block/clay_ball.png")
+                .withTexture(ResourcePackTexture.Block.CLAY, "assets/minecraft/textures/block/clay.png")
                 .withTexture(ResourcePackTexture.Block.SUGAR_CANE, "assets/minecraft/textures/block/sugar_cane.png")
                 .withTexture(ResourcePackTexture.Block.NOTEBLOCK, "assets/minecraft/textures/block/note_block.png")
                 .withTexture(ResourcePackTexture.Block.JUKEBOX_TOP, "assets/minecraft/textures/block/jukebox_top.png")
@@ -150,7 +187,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.PUMPKIN_FRONT, "assets/minecraft/textures/block/pumpkin_side.png")
                 .withTexture(ResourcePackTexture.Block.PUMPKIN_FRONT_LIT, "assets/minecraft/textures/block/jack_o_lantern.png")
                 .withTexture(ResourcePackTexture.Block.CAKE_TOP, "assets/minecraft/textures/block/cake_top.png")
-                .withTexture(ResourcePackTexture.Block.CACTUS_SIDE, "assets/minecraft/textures/block/cactus_side.png")
+                .withTexture(ResourcePackTexture.Block.CAKE_SIDE, "assets/minecraft/textures/block/cake_side.png")
                 .withTexture(ResourcePackTexture.Block.CAKE_SIDE_EATEN, "assets/minecraft/textures/block/cake_inner.png")
                 .withTexture(ResourcePackTexture.Block.CAKE_BOTTOM, "assets/minecraft/textures/block/cake_bottom.png")
                 .withTexture(ResourcePackTexture.Block.RAIL, "assets/minecraft/textures/block/rail.png")
@@ -158,7 +195,6 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.WOOL_PINK, "assets/minecraft/textures/block/pink_wool.png")
                 .withTexture(ResourcePackTexture.Block.REDSTONE_REPEATER_OFF, "assets/minecraft/textures/block/repeater.png")
                 .withTexture(ResourcePackTexture.Block.LEAVES_FANCY_SPRUCE, "assets/minecraft/textures/block/spruce_leaves.png")
-                .withTexture(ResourcePackTexture.Block.LEAVES_FAST_SPRUCE, "assets/minecraft/textures/block/spruce_leaves.png")
                 .withTexture(ResourcePackTexture.Block.BED_LOWER_TOP, "assets/minecraft/textures/block/.png")
                 .withTexture(ResourcePackTexture.Block.BED_UPPER_TOP, "assets/minecraft/textures/block/.png")
                 .withTexture(ResourcePackTexture.Block.BLOCK_OF_LAPIS, "assets/minecraft/textures/block/lapis_block.png")
@@ -222,7 +258,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Item.CHEST_IRON, "assets/minecraft/textures/item/iron_chestplate.png")
                 .withTexture(ResourcePackTexture.Item.CHEST_DIAMOND, "assets/minecraft/textures/item/diamond_chestplate.png")
                 .withTexture(ResourcePackTexture.Item.CHEST_GOLD, "assets/minecraft/textures/item/golden_chestplate.png")
-                .withTexture(ResourcePackTexture.Item.BOW, "assets/minecraft/textures/item/bow/bow.png")
+                .withTexture(ResourcePackTexture.Item.BOW, "assets/minecraft/textures/item/bow.png")
                 .withTexture(ResourcePackTexture.Item.BRICK, "assets/minecraft/textures/item/brick.png")
                 .withTexture(ResourcePackTexture.Item.INGOT_IRON, "assets/minecraft/textures/item/iron_ingot.png")
                 .withTexture(ResourcePackTexture.Item.FEATHER, "assets/minecraft/textures/item/feather.png")
@@ -283,7 +319,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Item.SHOVEL_DIAMOND, "assets/minecraft/textures/item/diamond_shovel.png")
                 .withTexture(ResourcePackTexture.Item.SHOVEL_GOLD, "assets/minecraft/textures/item/golden_shovel.png")
                 .withTexture(ResourcePackTexture.Item.FISHING_ROD_THROWN, "assets/minecraft/textures/item/fishing_rod_cast.png")
-                .withTexture(ResourcePackTexture.Item.REDSTONE_REPEATER, "assets/minecraft/textures/item/redstone_repeater.png")
+                .withTexture(ResourcePackTexture.Item.REDSTONE_REPEATER, "assets/minecraft/textures/item/repeater.png")
                 .withTexture(ResourcePackTexture.Item.PORKCHOP, "assets/minecraft/textures/item/porkchop.png")
                 .withTexture(ResourcePackTexture.Item.COOKED_PORKCHOP, "assets/minecraft/textures/item/cooked_porkchop.png")
                 .withTexture(ResourcePackTexture.Item.FISH, "assets/minecraft/textures/item/cod.png")
@@ -366,8 +402,8 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Armour.DIAMOND_LOWER, "assets/minecraft/textures/models/armor/diamond_layer_2.png")
                 .withTexture(ResourcePackTexture.Armour.GOLD_UPPER, "assets/minecraft/textures/models/armor/gold_layer_1.png")
                 .withTexture(ResourcePackTexture.Armour.GOLD_LOWER, "assets/minecraft/textures/models/armor/gold_layer_2.png")
-                .withTexture(ResourcePackTexture.Armour.IRON_UPPER, "assets/minecraft/textures/models/iron_layer_1.png")
-                .withTexture(ResourcePackTexture.Armour.IRON_LOWER, "assets/minecraft/textures/models/iron_layer_2.png")
+                .withTexture(ResourcePackTexture.Armour.IRON_UPPER, "assets/minecraft/textures/models/armor/iron_layer_1.png")
+                .withTexture(ResourcePackTexture.Armour.IRON_LOWER, "assets/minecraft/textures/models/armor/iron_layer_2.png")
                 .withTexture(ResourcePackTexture.Mob.CREEPER_CHARGE, "")
                 .withTexture(ResourcePackTexture.Painting.ALBAN, "assets/minecraft/textures/painting/alban.png")
                 .withTexture(ResourcePackTexture.Painting.AZTEC, "assets/minecraft/textures/painting/aztec.png")

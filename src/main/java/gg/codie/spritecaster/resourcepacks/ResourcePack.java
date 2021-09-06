@@ -1,23 +1,36 @@
 package gg.codie.spritecaster.resourcepacks;
 
+import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Map;
 
-public class ResourcePack {
+public class ResourcePack implements IResourcePack {
     private final Map<Enum, BufferedImage> textures;
-    public final String info;
-    public final String name;
+    final String info;
+    final String name;
 
     public BufferedImage getTexture(Enum texture) {
 //        if (texture == Block.GRASS_TOP_ALPHA) {
 //            return Block.GRASS_TOP.green()
 //        }
 
-        if(textures.get(texture) == null) {
-            System.err.println("No texture available for " + texture.name());
-        }
+//        if(textures.get(texture) == null) {
+//            System.err.println("No texture available for " + texture.name());
+//        }
 
         return textures.get(texture);
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return info;
     }
 
     public ResourcePack(String name, String info, Map<Enum, BufferedImage> textures) {

@@ -3,6 +3,7 @@ package gg.codie.spritecaster.texturepacks;
 import gg.codie.spritecaster.SpriteAtlas;
 import gg.codie.spritecaster.SpriteAtlasBuilder;
 import gg.codie.spritecaster.resourcepacks.ResourcePack;
+import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 
 import java.awt.image.BufferedImage;
@@ -146,9 +147,8 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_BROWN), 11, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_YELLOW), 11, 3)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.RAIL_POWERED_OFF), 11, 4)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.RAIL_POWERED_ON), 11, 5)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_CROSS), 11, 6)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_LINE), 11, 7)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_CROSS), 11, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_LINE), 11, 6)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SANDSTONE_TOP), 12, 1)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_DARK_BLUE), 12, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_LIGHT_BLUE), 12, 3)
@@ -320,7 +320,7 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
 
     }
 
-    public Beta17TexturePackBuilder(ResourcePack resourcePack) {
+    public Beta17TexturePackBuilder(ResourcePackStack resourcePack) {
         super(resourcePack);
 
         terrainAtlas = createTerrain();
