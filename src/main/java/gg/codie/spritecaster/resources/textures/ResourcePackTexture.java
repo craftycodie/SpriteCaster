@@ -214,6 +214,7 @@ public enum ResourcePackTexture {
         AZTEC2,
         BACK,
         BOMB,
+        PLANT,
         BURNING_SKULL,
         BUST,
         COURBET,
@@ -231,7 +232,9 @@ public enum ResourcePackTexture {
         SUNSET,
         VOID,
         WANDERER,
-        WASTELAND
+        WASTELAND,
+        STAGE,
+        POINTER
     }
 
     public enum Mob {

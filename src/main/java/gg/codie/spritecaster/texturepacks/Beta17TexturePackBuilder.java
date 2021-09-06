@@ -12,9 +12,11 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
     SpriteAtlas terrainAtlas;
     SpriteAtlas itemAtlas;
     SpriteAtlas particleAtlas;
+    SpriteAtlas paintingsAtlas;
 
     private SpriteAtlas createTerrain() {
         return new SpriteAtlasBuilder()
+                .setSpriteSize(resourcePack.getTexture(ResourcePackTexture.Block.STONE).getWidth())
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_TOP), 1, 1)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.STONE), 1, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.DIRT), 1, 3)
@@ -177,6 +179,7 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
 
     private SpriteAtlas createItems() {
         return new SpriteAtlasBuilder()
+                .setSpriteSize(resourcePack.getTexture(ResourcePackTexture.Item.PICKAXE_DIAMOND).getWidth())
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.HELMET_CLOTH), 1, 1)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.HELMET_CHAIN), 1, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.HELMET_IRON), 1, 3)
@@ -323,6 +326,7 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
 
     private SpriteAtlas createParticles() {
         return new SpriteAtlasBuilder()
+                .setSpriteSize(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_0).getWidth())
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_0), 1, 1)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_1), 1, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_2), 1, 3)
@@ -344,16 +348,66 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
                 .build();
     }
 
+    private SpriteAtlas createPaintings() {
+        return new SpriteAtlasBuilder()
+                .setCellConstraint(false)
+                .setSpriteSize(resourcePack.getTexture(ResourcePackTexture.Painting.BACK).getWidth())
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.KEBAB), 1, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.AZTEC), 1, 2)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.ALBAN), 1, 3)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.AZTEC2), 1, 4)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BOMB), 1, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.PLANT), 1, 6)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.WASTELAND), 1, 7)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 1, 13)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 1, 14)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 1, 15)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 1, 16)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 2, 13)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 2, 14)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 2, 15)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 2, 16)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.POOL), 3, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.COURBET), 3, 3)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.SEA), 3, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.SUNSET), 3, 7)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.CREEBET), 3, 9)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 3, 13)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 3, 14)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 3, 15)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 3, 16)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 4, 13)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 4, 14)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 4, 15)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BACK), 4, 16)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.WANDERER), 5, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.GRAHAM), 5, 2)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.SKELETON), 5, 13)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.FIGHTERS), 7, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.DONKEY_KONG), 8, 13)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.MATCH), 9, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BUST), 9, 3)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.STAGE), 9, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.VOID), 9, 7)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.SKULL_AND_ROSES), 9, 9)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.POINTER), 13, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.PIGSCENE), 13, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Painting.BURNING_SKULL), 13, 9)
+                .build();
+    }
+
     public Beta17TexturePackBuilder(ResourcePackStack resourcePack) {
         super(resourcePack);
 
         terrainAtlas = createTerrain();
         itemAtlas = createItems();
         particleAtlas = createParticles();
+        paintingsAtlas = createPaintings();
 
         BufferedImage terrain = terrainAtlas.getImage();
         BufferedImage items = itemAtlas.getImage();
         BufferedImage particles = particleAtlas.getImage();
+        BufferedImage paintings = paintingsAtlas.getImage();
 
         addTexture(TexturePackTexture.TERRAIN, terrain);
         addTexture(TexturePackTexture.ITEMS, items);
@@ -400,12 +454,7 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.SUN, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_SUN));
         addTexture(TexturePackTexture.PARTICLES, particles);
         addTexture(TexturePackTexture.GUI_PARTICLES, particles);
-
-
-
-
-
-
+        addTexture(TexturePackTexture.PAINTINGS, paintings);
     }
 
     @Override
