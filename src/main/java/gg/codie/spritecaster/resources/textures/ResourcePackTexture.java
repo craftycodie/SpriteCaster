@@ -440,6 +440,30 @@ public enum ResourcePackTexture {
         IRON_LOWER,
     }
 
+    public enum Particle {
+        GENERIC_0,
+        GENERIC_1,
+        GENERIC_2,
+        GENERIC_3,
+        GENERIC_4,
+        GENERIC_5,
+        GENERIC_6,
+        GENERIC_7,
 
+        BUBBLE,
+        FISHING_HOOK,
+
+        FLAME,
+        LAVA,
+
+        NOTE,
+
+        HEART,
+
+        SPLASH_0,
+        SPLASH_1,
+        SPLASH_2,
+        SPLASH_3,
+    }
 
 }

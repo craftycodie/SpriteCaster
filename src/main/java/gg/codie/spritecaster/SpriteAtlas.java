@@ -5,11 +5,14 @@ import java.awt.image.BufferedImage;
 
 public class SpriteAtlas {
     private final BufferedImage[][] sprites;
-    private final int rowCount = 16;
-    private final int colCount = 16;
-    private final int spriteSize = 16;
-    public SpriteAtlas(BufferedImage[][] sprites) {
+    private final int rowCount;
+    private final int colCount;
+    private final int spriteSize;
+    public SpriteAtlas(BufferedImage[][] sprites, int rowCount, int colCount, int spriteSize) {
         this.sprites = sprites;
+        this.rowCount = rowCount;
+        this.colCount = colCount;
+        this.spriteSize = spriteSize;
     }
 
     public BufferedImage getImage() {

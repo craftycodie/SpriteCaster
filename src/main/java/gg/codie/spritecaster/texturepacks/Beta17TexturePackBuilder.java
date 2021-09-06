@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
     SpriteAtlas terrainAtlas;
     SpriteAtlas itemAtlas;
+    SpriteAtlas particleAtlas;
 
     private SpriteAtlas createTerrain() {
         return new SpriteAtlasBuilder()
@@ -320,14 +321,39 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
 
     }
 
+    private SpriteAtlas createParticles() {
+        return new SpriteAtlasBuilder()
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_0), 1, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_1), 1, 2)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_2), 1, 3)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_3), 1, 4)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_4), 1, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_5), 1, 6)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_6), 1, 7)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_7), 1, 8)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.SPLASH_0), 2, 4)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.SPLASH_1), 2, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.SPLASH_2), 2, 6)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.SPLASH_3), 2, 7)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.BUBBLE), 3, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.FISHING_HOOK), 3, 2)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.FLAME), 4, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.LAVA), 4, 2)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.NOTE), 5, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.HEART), 6, 1)
+                .build();
+    }
+
     public Beta17TexturePackBuilder(ResourcePackStack resourcePack) {
         super(resourcePack);
 
         terrainAtlas = createTerrain();
         itemAtlas = createItems();
+        particleAtlas = createParticles();
 
         BufferedImage terrain = terrainAtlas.getImage();
         BufferedImage items = itemAtlas.getImage();
+        BufferedImage particles = particleAtlas.getImage();
 
         addTexture(TexturePackTexture.TERRAIN, terrain);
         addTexture(TexturePackTexture.ITEMS, items);
@@ -358,6 +384,7 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
 //        addTexture(TexturePackTexture.GUI_PARTICLES, resourcePack.getTexture(ResourcePackTexture))
 //        addTexture(TexturePackTexture.GUI_SLOT, resourcePack)
 //        addTexture(TexturePackTexture.GUI_DISPENSER, resourcePack.getTexture(ResourcePackTexture.Gui.D))
+        addTexture(TexturePackTexture.GUI_ICONS, resourcePack.getTexture(ResourcePackTexture.Gui.ICONS));
         addTexture(TexturePackTexture.UNKNOWN_PACK, resourcePack.getTexture(ResourcePackTexture.Gui.UNKNOWN_PACK));
         addTexture(TexturePackTexture.ITEM_ARROWS, resourcePack.getTexture(ResourcePackTexture.ITEM_ARROWS));
         addTexture(TexturePackTexture.ITEM_BOAT, resourcePack.getTexture(ResourcePackTexture.ITEM_BOAT));
@@ -371,6 +398,8 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.MCLOGO, resourcePack.getTexture(ResourcePackTexture.Gui.LOGO));
         addTexture(TexturePackTexture.MOON, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_MOON_PHASES));
         addTexture(TexturePackTexture.SUN, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_SUN));
+        addTexture(TexturePackTexture.PARTICLES, particles);
+        addTexture(TexturePackTexture.GUI_PARTICLES, particles);
 
 
 
