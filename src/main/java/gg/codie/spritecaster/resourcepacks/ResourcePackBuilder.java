@@ -292,7 +292,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Item.COMPASS_BASE, "assets/minecraft/textures/item/compass.png")
                 .withTexture(ResourcePackTexture.Item.DIAMOND, "assets/minecraft/textures/item/diamond.png")
                 .withTexture(ResourcePackTexture.Item.REDSTONE, "assets/minecraft/textures/item/redstone.png")
-                .withTexture(ResourcePackTexture.Item.CLAY, "assets/minecraft/textures/item/clay.png")
+                .withTexture(ResourcePackTexture.Item.CLAY, "assets/minecraft/textures/item/clay_ball.png")
                 .withTexture(ResourcePackTexture.Item.PAPER, "assets/minecraft/textures/item/paper.png")
                 .withTexture(ResourcePackTexture.Item.BOOK, "assets/minecraft/textures/item/book.png")
                 .withTexture(ResourcePackTexture.Item.MAP, "assets/minecraft/textures/item/map.png")
