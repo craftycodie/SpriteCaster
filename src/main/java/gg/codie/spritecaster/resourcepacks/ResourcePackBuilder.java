@@ -45,6 +45,103 @@ public class ResourcePackBuilder {
                 textures.put(ResourcePackTexture.Block.LEAVES_FAST, fastLeaves);
             }
 
+            if (texture == ResourcePackTexture.Block.BED_UPPER_TOP) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage bedUpperTop = sprite.getSubimage(6 * scale, 6 * scale, 16 * scale, 16 * scale);
+                BufferedImage rotatedBedUpperTop = new BufferedImage(bedUpperTop.getWidth(), bedUpperTop.getHeight(), bedUpperTop.getType());
+                Graphics2D graphics2D = rotatedBedUpperTop.createGraphics();
+                graphics2D.rotate(Math.toRadians(90), rotatedBedUpperTop.getWidth() / 2, rotatedBedUpperTop.getHeight() / 2);
+                graphics2D.drawImage(bedUpperTop, 0, 0, null);
+                textures.put(texture, rotatedBedUpperTop);
+            }
+
+            if (texture == ResourcePackTexture.Block.BED_LOWER_TOP) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage bedUpperTop = sprite.getSubimage(6 * scale, 28  * scale, 16 * scale, 16 * scale);
+                BufferedImage rotatedBedUpperTop = new BufferedImage(bedUpperTop.getWidth(), bedUpperTop.getHeight(), bedUpperTop.getType());
+                Graphics2D graphics2D = rotatedBedUpperTop.createGraphics();
+                graphics2D.rotate(Math.toRadians(90), rotatedBedUpperTop.getWidth() / 2, rotatedBedUpperTop.getHeight() / 2);
+                graphics2D.drawImage(bedUpperTop, 0, 0, null);
+                textures.put(texture, rotatedBedUpperTop);
+            }
+
+            if (texture == ResourcePackTexture.Block.BED_FRONT) {
+                int scale = sprite.getWidth() / 64;
+//                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
+                BufferedImage bedFront = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedFrontTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = bedFrontTop.createGraphics();
+                graphics2D.rotate(Math.toRadians(180), bedFrontTop.getWidth() / 2, bedFrontTop.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(22 * scale, 22 * scale, 16 * scale, 5 * scale), 0, 3 * scale, null);
+                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                graphics2D = bedLeg.createGraphics();
+                graphics2D.rotate(Math.toRadians(270), bedFrontTop.getWidth() / 2, bedFrontTop.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 0, null);
+                graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 13 * scale, null);
+                graphics2D = bedFront.createGraphics();
+                graphics2D.drawImage(bedFrontTop, 0, 0, null);
+                graphics2D.drawImage(bedLeg, 0, 0, null);
+                textures.put(texture, bedFront);
+            }
+
+            if (texture == ResourcePackTexture.Block.BED_BACK) {
+                int scale = sprite.getWidth() / 64;
+//                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
+                BufferedImage bedBack = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedBackTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = bedBackTop.createGraphics();
+                graphics2D.rotate(Math.toRadians(180), bedBackTop.getWidth() / 2, bedBackTop.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(6 * scale, 0 * scale, 16 * scale, 5 * scale), 0, 3 * scale, null);
+                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                graphics2D = bedLeg.createGraphics();
+                graphics2D.rotate(Math.toRadians(270), bedBackTop.getWidth() / 2, bedBackTop.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 0, null);
+                graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 13 * scale, null);
+                graphics2D = bedBack.createGraphics();
+                graphics2D.drawImage(bedBackTop, 0, 0, null);
+                graphics2D.drawImage(bedLeg, 0, 0, null);
+                textures.put(texture, bedBack);
+            }
+
+            if (texture == ResourcePackTexture.Block.BED_UPPER_SIDE) {
+                int scale = sprite.getWidth() / 64;
+//                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
+                BufferedImage bedUpperSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedUpperSideTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = bedUpperSideTop.createGraphics();
+                graphics2D.rotate(Math.toRadians(90), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(23 * scale, 6 * scale, 5 * scale, 16 * scale), 8 * scale, 0, null);
+                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                graphics2D = bedLeg.createGraphics();
+                graphics2D.rotate(Math.toRadians(270), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
+//                graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 0, null);
+                graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 13 * scale, null);
+                graphics2D = bedUpperSide.createGraphics();
+                graphics2D.drawImage(bedUpperSideTop, 0, 0, null);
+                graphics2D.drawImage(bedLeg, 0, 0, null);
+                textures.put(texture, bedUpperSide);
+            }
+
+            if (texture == ResourcePackTexture.Block.BED_LOWER_SIDE) {
+                int scale = sprite.getWidth() / 64;
+//                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
+                BufferedImage bedUpperSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedUpperSideTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = bedUpperSideTop.createGraphics();
+                graphics2D.rotate(Math.toRadians(90), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(23 * scale, 28 * scale, 5 * scale, 16 * scale), 8 * scale, 0, null);
+                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                graphics2D = bedLeg.createGraphics();
+                graphics2D.rotate(Math.toRadians(270), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 0, null);
+//                graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 13 * scale, null);
+                graphics2D = bedUpperSide.createGraphics();
+                graphics2D.drawImage(bedUpperSideTop, 0, 0, null);
+                graphics2D.drawImage(bedLeg, 0, 0, null);
+                textures.put(texture, bedUpperSide);            }
+
+
+
             if (texture == ResourcePackTexture.Block.LEAVES_FANCY_SPRUCE) {
                 BufferedImage leaves = sprite;
                 BufferedImage black = new BufferedImage(leaves.getWidth(), leaves.getHeight(), BufferedImage.TYPE_INT_BGR);
@@ -195,16 +292,16 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.WOOL_PINK, "assets/minecraft/textures/block/pink_wool.png")
                 .withTexture(ResourcePackTexture.Block.REDSTONE_REPEATER_OFF, "assets/minecraft/textures/block/repeater.png")
                 .withTexture(ResourcePackTexture.Block.LEAVES_FANCY_SPRUCE, "assets/minecraft/textures/block/spruce_leaves.png")
-                .withTexture(ResourcePackTexture.Block.BED_LOWER_TOP, "assets/minecraft/textures/block/.png")
-                .withTexture(ResourcePackTexture.Block.BED_UPPER_TOP, "assets/minecraft/textures/block/.png")
+                .withTexture(ResourcePackTexture.Block.BED_LOWER_TOP, "assets/minecraft/textures/entity/bed/red.png")
+                .withTexture(ResourcePackTexture.Block.BED_UPPER_TOP, "assets/minecraft/textures/entity/bed/red.png")
                 .withTexture(ResourcePackTexture.Block.BLOCK_OF_LAPIS, "assets/minecraft/textures/block/lapis_block.png")
                 .withTexture(ResourcePackTexture.Block.WOOL_DARK_GREEN, "assets/minecraft/textures/block/green_wool.png")
                 .withTexture(ResourcePackTexture.Block.WOOL_LIME, "assets/minecraft/textures/block/lime_wool.png")
                 .withTexture(ResourcePackTexture.Block.REDSTONE_REPEATER_ON, "assets/minecraft/textures/block/repeater_on.png")
-                .withTexture(ResourcePackTexture.Block.BED_FRONT, "assets/minecraft/textures/block/.png")
-                .withTexture(ResourcePackTexture.Block.BED_LOWER_SIDE, "assets/minecraft/textures/block/.png")
-                .withTexture(ResourcePackTexture.Block.BED_UPPER_SIDE, "assets/minecraft/textures/block/.png")
-                .withTexture(ResourcePackTexture.Block.BED_BACK, "assets/minecraft/textures/block/.png")
+                .withTexture(ResourcePackTexture.Block.BED_FRONT, "assets/minecraft/textures/entity/bed/red.png")
+                .withTexture(ResourcePackTexture.Block.BED_LOWER_SIDE, "assets/minecraft/textures/entity/bed/red.png")
+                .withTexture(ResourcePackTexture.Block.BED_UPPER_SIDE, "assets/minecraft/textures/entity/bed/red.png")
+                .withTexture(ResourcePackTexture.Block.BED_BACK, "assets/minecraft/textures/entity/bed/red.png")
                 .withTexture(ResourcePackTexture.Block.ORE_LAPIS, "assets/minecraft/textures/block/lapis_ore.png")
                 .withTexture(ResourcePackTexture.Block.WOOL_BROWN, "assets/minecraft/textures/block/brown_wool.png")
                 .withTexture(ResourcePackTexture.Block.WOOL_YELLOW, "assets/minecraft/textures/block/yellow_wool.png")

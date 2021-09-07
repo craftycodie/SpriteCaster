@@ -16,6 +16,9 @@ public class Main {
 
         System.out.println("Converting resource pack...");
         ZipFile resourcePackZip = new ZipFile(new File("/Volumes/Internal Storage/Projects/GitHub/SpriteCaster/src/main/resources/test/Faithless16x.zip"));
+//        ZipFile resourcePackZip = new ZipFile(new File("/Volumes/Internal Storage/Projects/GitHub/SpriteCaster/src/main/resources/test/Archive.zip"));
+//        ZipFile resourcePackZip = new ZipFile(new File("/Volumes/Internal Storage/Projects/GitHub/SpriteCaster/src/main/resources/test/PaperCutOut_je-1.17.X.zip"));
+
         ResourcePack resourcePack = new ResourcePackBuilder(resourcePackZip).build();
         ResourcePackStack resourcePackStack = new ResourcePackStack();
         resourcePackStack.add(resourcePack);

@@ -144,7 +144,7 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_REPEATER_ON), 10, 4)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BED_FRONT), 10, 6)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BED_LOWER_SIDE), 10, 7)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BED_UPPER_TOP), 10, 8)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BED_UPPER_SIDE), 10, 8)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BED_BACK), 10, 9)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.ORE_LAPIS), 11, 1)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_BROWN), 11, 2)
