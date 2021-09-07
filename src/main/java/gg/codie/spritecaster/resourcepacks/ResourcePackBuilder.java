@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.HashMap;
@@ -138,9 +140,88 @@ public class ResourcePackBuilder {
                 graphics2D = bedUpperSide.createGraphics();
                 graphics2D.drawImage(bedUpperSideTop, 0, 0, null);
                 graphics2D.drawImage(bedLeg, 0, 0, null);
-                textures.put(texture, bedUpperSide);            }
+                textures.put(texture, bedUpperSide);
+            }
 
+            if (texture == ResourcePackTexture.Block.CHEST_FRONT) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage chestFront = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = chestFront.createGraphics();
+                graphics2D.rotate(Math.toRadians(180), chestFront.getWidth() / 2, chestFront.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(42 * scale, 14 * scale,  14 * scale, 5 * scale), scale, 10 * scale, null);
+                graphics2D.drawImage(sprite.getSubimage(42 * scale, 33 * scale,  14 * scale, 10 * scale), scale, scale, null);
+                graphics2D.drawImage(sprite.getSubimage(0, scale,  2 * scale, 4 * scale), 7 * scale, 8 * scale, null);
+                chestFront = upscaleChest(chestFront);
+                textures.put(texture, chestFront);
+            }
 
+            if (texture == ResourcePackTexture.Block.CHEST_SIDE) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = chestSide.createGraphics();
+                graphics2D.rotate(Math.toRadians(180), chestSide.getWidth() / 2, chestSide.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(28 * scale, 14 * scale,  14 * scale, 5 * scale), scale, 10 * scale, null);
+                graphics2D.drawImage(sprite.getSubimage(28 * scale, 33 * scale,  14 * scale, 10 * scale), scale, scale, null);
+                chestSide = upscaleChest(chestSide);
+                textures.put(texture, chestSide);
+            }
+
+            if (texture == ResourcePackTexture.Block.CHEST_TOP) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage chestTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = chestTop.createGraphics();
+                graphics2D.rotate(Math.toRadians(180), chestTop.getWidth() / 2, chestTop.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(28 * scale, 0 * scale,  14 * scale, 14 * scale), scale, scale, null);
+                chestTop = upscaleChest(chestTop);
+                textures.put(texture, chestTop);
+            }
+
+            if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_BACK_RIGHT) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = chestSide.createGraphics();
+                graphics2D.drawImage(flipVertical(sprite.getSubimage(14 * scale, 14 * scale,  15 * scale, 5 * scale)), scale, scale, null);
+                graphics2D.drawImage(flipVertical(sprite.getSubimage(14 * scale, 33 * scale,  15 * scale, 10 * scale)), scale, 5 * scale, null);
+                chestSide = flipHorizontal(chestSide);
+                chestSide = upscaleChest(chestSide);
+                textures.put(texture, chestSide);
+            }
+
+            if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_BACK_LEFT) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = chestSide.createGraphics();
+                graphics2D.drawImage(flipVertical(sprite.getSubimage(14 * scale, 14 * scale,  15 * scale, 5 * scale)), 0, scale, null);
+                graphics2D.drawImage(flipVertical(sprite.getSubimage(14 * scale, 33 * scale,  15 * scale, 10 * scale)), 0, 5 * scale, null);
+                chestSide = flipHorizontal(chestSide);
+                chestSide = upscaleChest(chestSide);
+                textures.put(texture, chestSide);
+            }
+
+            if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_RIGHT) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = chestSide.createGraphics();
+                graphics2D.drawImage(flipVertical(sprite.getSubimage(43 * scale, 14 * scale,  15 * scale, 5 * scale)), 0, scale, null);
+                graphics2D.drawImage(flipVertical(sprite.getSubimage(43 * scale, 33 * scale,  15 * scale, 10 * scale)), 0, 5 * scale, null);
+                graphics2D.rotate(Math.toRadians(180), chestSide.getWidth() / 2, chestSide.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(3 * scale, scale,  scale, 4 * scale),  15 * scale, 8 * scale, null);
+                BufferedImage chestLeft = chestSide.getSubimage(0, scale, scale, 14 * scale);
+                chestSide = upscaleChest(chestSide);
+                textures.put(texture, chestSide);
+            }
+
+            if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_LEFT) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                Graphics2D graphics2D = chestSide.createGraphics();
+                graphics2D.drawImage(flipVertical(sprite.getSubimage(43 * scale, 14 * scale,  15 * scale, 5 * scale)), scale, scale, null);
+                graphics2D.drawImage(flipVertical(sprite.getSubimage(43 * scale, 33 * scale,  15 * scale, 10 * scale)), scale, 5 * scale, null);
+                graphics2D.rotate(Math.toRadians(180), chestSide.getWidth() / 2, chestSide.getHeight() / 2);
+                graphics2D.drawImage(sprite.getSubimage(scale, scale,  scale, 4 * scale),  0, 8 * scale, null);
+                chestSide = upscaleChest(chestSide);
+                textures.put(texture, chestSide);
+            }
 
             if (texture == ResourcePackTexture.Block.LEAVES_FANCY_SPRUCE) {
                 BufferedImage leaves = sprite;
@@ -174,6 +255,38 @@ public class ResourcePackBuilder {
         return this;
     }
 
+    private BufferedImage flipVertical(BufferedImage in) {
+        AffineTransform tx = AffineTransform.getScaleInstance(1, -1);
+        tx.translate(0, -in.getHeight(null));
+        AffineTransformOp op = new AffineTransformOp(tx,
+                AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+        return op.filter(in, null);
+    }
+
+    private BufferedImage upscaleChest(BufferedImage in) {
+        int scale = in.getWidth() / 16;
+        BufferedImage chest = new BufferedImage(in.getWidth(), in.getHeight(), in.getType());
+        Graphics2D graphics2D = chest.createGraphics();
+        graphics2D.drawImage(in.getSubimage(scale, scale, scale, 14 * scale), 0, scale, null);
+        graphics2D.drawImage(in.getSubimage(scale, scale, scale, scale), 0, 0, null);
+        graphics2D.drawImage(in.getSubimage(14 * scale, scale, scale, scale), 15 * scale, 0, null);
+        graphics2D.drawImage(in.getSubimage(14 * scale, 14 * scale, scale, scale), 15 * scale, 15 * scale, null);
+        graphics2D.drawImage(in.getSubimage(scale, 14 * scale, scale, scale), 0, 15 * scale, null);
+        graphics2D.drawImage(in.getSubimage(scale, scale, 14 * scale, scale), scale, 0, null);
+        graphics2D.drawImage(in.getSubimage(14 * scale, scale, scale, 14 * scale), 15 * scale, scale, null);
+        graphics2D.drawImage(in.getSubimage(scale, 14 * scale, 14 * scale, scale), scale, 15 * scale, null);
+        graphics2D.drawImage(in.getSubimage(0, 0, 16 * scale, 16 * scale), 0, 0, null);
+        return chest;
+    }
+
+    private BufferedImage flipHorizontal(BufferedImage in) {
+        AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+        tx.translate(-in.getWidth(null), 0);
+        AffineTransformOp op = new AffineTransformOp(tx,
+                AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+        return op.filter(in, null);
+    }
+
     private ResourcePackBuilder withBlocks() {
         return this.withTexture(ResourcePackTexture.Block.GRASS_TOP, "assets/minecraft/textures/block/grass_block_top.png")
                 .withTexture(ResourcePackTexture.Block.STONE, "assets/minecraft/textures/block/stone.png")
@@ -199,9 +312,9 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.BLOCK_OF_IRON, "assets/minecraft/textures/block/iron_block.png")
                 .withTexture(ResourcePackTexture.Block.BLOCK_OF_GOLD, "assets/minecraft/textures/block/gold_block.png")
                 .withTexture(ResourcePackTexture.Block.BLOCK_OF_DIAMOND, "assets/minecraft/textures/block/diamond_block.png")
-                .withTexture(ResourcePackTexture.Block.CHEST_TOP, "assets/minecraft/textures/block/.png")
-                .withTexture(ResourcePackTexture.Block.CHEST_SIDE, "assets/minecraft/textures/block/.png")
-                .withTexture(ResourcePackTexture.Block.CHEST_FRONT, "assets/minecraft/textures/block/.png")
+                .withTexture(ResourcePackTexture.Block.CHEST_TOP, "assets/minecraft/textures/entity/chest/normal.png")
+                .withTexture(ResourcePackTexture.Block.CHEST_SIDE, "assets/minecraft/textures/entity/chest/normal.png")
+                .withTexture(ResourcePackTexture.Block.CHEST_FRONT, "assets/minecraft/textures/entity/chest/normal.png")
                 .withTexture(ResourcePackTexture.Block.RED_MUSHROOM, "assets/minecraft/textures/block/red_mushroom.png")
                 .withTexture(ResourcePackTexture.Block.BROWN_MUSHROOM, "assets/minecraft/textures/block/brown_mushroom.png")
                 .withTexture(ResourcePackTexture.Block.ORE_GOLD, "assets/minecraft/textures/block/gold_ore.png")
@@ -213,8 +326,8 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.GRASS_SIDE_OVERLAY, "assets/minecraft/textures/block/grass_block_side_overlay.png")
                 .withTexture(ResourcePackTexture.Block.TALL_GRASS, "assets/minecraft/textures/block/grass.png")
                 .withTexture(ResourcePackTexture.Block.GRASS_TOP_SNOWY, "assets/minecraft/textures/block/grass_block_top.png")
-                .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_LEFT, "assets/minecraft/textures/block/.png")
-                .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_RIGHT, "assets/minecraft/textures/block/.png")
+                .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_LEFT, "assets/minecraft/textures/entity/chest/normal_left.png")
+                .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_RIGHT, "assets/minecraft/textures/entity/chest/normal_right.png")
                 .withTexture(ResourcePackTexture.Block.CRAFTING_TABLE_TOP, "assets/minecraft/textures/block/crafting_table_top.png")
                 .withTexture(ResourcePackTexture.Block.FURNACE_FRONT, "assets/minecraft/textures/block/furnace_front.png")
                 .withTexture(ResourcePackTexture.Block.FURNACE_SIDE, "assets/minecraft/textures/block/furnace_side.png")
@@ -226,8 +339,8 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.LEAVES_FANCY, "assets/minecraft/textures/block/oak_leaves.png")
                 .withTexture(ResourcePackTexture.Block.DEADBUSH, "assets/minecraft/textures/block/dead_bush.png")
                 .withTexture(ResourcePackTexture.Block.FERN, "assets/minecraft/textures/block/fern.png")
-                .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_BACK_LEFT, "assets/minecraft/textures/block/.png")
-                .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_BACK_RIGHT, "assets/minecraft/textures/block/.png")
+                .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_BACK_LEFT, "assets/minecraft/textures/entity/chest/normal_left.png")
+                .withTexture(ResourcePackTexture.Block.DOUBLE_CHEST_BACK_RIGHT, "assets/minecraft/textures/entity/chest/normal_right.png")
                 .withTexture(ResourcePackTexture.Block.CRAFTING_TABLE_SIDE_SCISSORS, "assets/minecraft/textures/block/crafting_table_front.png")
                 .withTexture(ResourcePackTexture.Block.CRAFTING_TABLE_SIDE_SAW, "assets/minecraft/textures/block/crafting_table_side.png")
                 .withTexture(ResourcePackTexture.Block.FURNACE_BURNING, "assets/minecraft/textures/block/furnace_front_on.png")
