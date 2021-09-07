@@ -246,6 +246,10 @@ public class ResourcePackBuilder {
                 graphics2D.drawImage(redstoneLine, 0, 0, null);
                 textures.put(ResourcePackTexture.Block.REDSTONE_CROSS, redstoneCross);
             }
+
+            if (texture == ResourcePackTexture.ENVIRONMENT_MOON_PHASES) {
+                textures.put(texture, sprite.getSubimage(0, 0, sprite.getWidth() / 4, sprite.getHeight() / 2));
+            }
         } catch (Exception ex) {
 //            ex.printStackTrace();
         }
