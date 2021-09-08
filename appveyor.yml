@@ -1,5 +1,5 @@
 version: '{build}'
-image: ubuntu
+image: Visual Studio 2019
 
 install:
   - ps: .\build_scripts\UpdateBuildVersion.ps1
@@ -9,9 +9,8 @@ build_script:
   - mvn clean package -DskipTests
 test_script:
   - mvn install verify
-on_finish:
-  - sh: |
-      find "$APPVEYOR_BUILD_FOLDER" -type f -name 'TEST*.xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
+#on_finish:
+#  - sh: find "$APPVEYOR_BUILD_FOLDER" -type f -name 'TEST*.xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
 artifacts:
   - path: "**/target/*.?ar"
     name: "SpriteCaster"
