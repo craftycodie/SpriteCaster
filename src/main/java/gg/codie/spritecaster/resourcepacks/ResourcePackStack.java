@@ -1,5 +1,6 @@
 package gg.codie.spritecaster.resourcepacks;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -30,8 +31,12 @@ public class ResourcePackStack extends LinkedList<ResourcePack> implements IReso
         for (int i = size(); i > 0; i--) {
             ResourcePack resourcePack = get(i - 1);
             BufferedImage bufferedImage = resourcePack.getTexture(texture);
-            if (bufferedImage != null)
-                return bufferedImage;
+            if (bufferedImage != null) {
+                BufferedImage correctedType = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
+                Graphics2D g2 = correctedType.createGraphics();
+                g2.drawImage(bufferedImage, 0, 0, null);
+                return correctedType;
+            }
         }
         System.err.println("No texture available for " + texture.name());
 

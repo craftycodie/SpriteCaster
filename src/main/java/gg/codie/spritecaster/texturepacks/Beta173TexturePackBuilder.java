@@ -9,13 +9,13 @@ import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 import java.awt.image.BufferedImage;
 import java.awt.image.BufferedImageOp;
 
-public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
+public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
     SpriteAtlas terrainAtlas;
     SpriteAtlas itemAtlas;
     SpriteAtlas particleAtlas;
     SpriteAtlas paintingsAtlas;
 
-    private SpriteAtlas createTerrain() {
+    protected SpriteAtlas createTerrain() {
         return new SpriteAtlasBuilder()
                 .setSpriteSize(resourcePack.getTexture(ResourcePackTexture.Block.STONE).getWidth())
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_TOP), 1, 1)
@@ -397,7 +397,7 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
                 .build();
     }
 
-    public Beta17TexturePackBuilder(ResourcePackStack resourcePack) {
+    public Beta173TexturePackBuilder(ResourcePackStack resourcePack) {
         super(resourcePack);
 
         terrainAtlas = createTerrain();
@@ -465,6 +465,6 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
 
     @Override
     public String getMinecraftVersion() {
-        return "b1.7";
+        return "b1.7.3";
     }
 }

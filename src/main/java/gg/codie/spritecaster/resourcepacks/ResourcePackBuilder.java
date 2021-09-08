@@ -604,6 +604,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Item.SIGN, "assets/minecraft/textures/item/oak_sign.png")
                 .withTexture(ResourcePackTexture.Item.DOOR_WOODEN, "assets/minecraft/textures/item/oak_door.png")
                 .withTexture(ResourcePackTexture.Item.DOOR_IRON, "assets/minecraft/textures/item/iron_door.png")
+                .withTexture(ResourcePackTexture.Item.BED, "assets/minecraft/spritecaster/item/red_bed.png")
                 .withTexture(ResourcePackTexture.Item.BED, "assets/minecraft/textures/item/red_bed.png")
                 .withTexture(ResourcePackTexture.Item.LEGS_INVENTORY, "assets/minecraft/textures/item/empty_armor_slot_leggings.png")
                 .withTexture(ResourcePackTexture.Item.BOOTS_CLOTH, "assets/minecraft/textures/item/leather_boots.png")
