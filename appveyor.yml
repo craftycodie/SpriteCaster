@@ -6,7 +6,7 @@ install:
 before_build:
   - mvn -v
 build_script:
-  - mvn clean package -DskipTests
+  - mvn clean package -DskipTests -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true
 test_script:
   - mvn install verify
 on_finish:
