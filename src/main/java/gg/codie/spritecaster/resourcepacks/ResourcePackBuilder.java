@@ -74,7 +74,7 @@ public class ResourcePackBuilder {
                 BufferedImage bedFrontTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
                 Graphics2D graphics2D = bedFrontTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(180), bedFrontTop.getWidth() / 2, bedFrontTop.getHeight() / 2);
-                graphics2D.drawImage(sprite.getSubimage(22 * scale, 22 * scale, 16 * scale, 5 * scale), 0, 3 * scale, null);
+                graphics2D.drawImage(sprite.getSubimage(22 * scale, 22 * scale, 16 * scale, 6 * scale), 0, 3 * scale, null);
                 BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
                 graphics2D = bedLeg.createGraphics();
                 graphics2D.rotate(Math.toRadians(270), bedFrontTop.getWidth() / 2, bedFrontTop.getHeight() / 2);
@@ -93,7 +93,7 @@ public class ResourcePackBuilder {
                 BufferedImage bedBackTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
                 Graphics2D graphics2D = bedBackTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(180), bedBackTop.getWidth() / 2, bedBackTop.getHeight() / 2);
-                graphics2D.drawImage(sprite.getSubimage(6 * scale, 0 * scale, 16 * scale, 5 * scale), 0, 3 * scale, null);
+                graphics2D.drawImage(sprite.getSubimage(6 * scale, 0 * scale, 16 * scale, 6 * scale), 0, 3 * scale, null);
                 BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
                 graphics2D = bedLeg.createGraphics();
                 graphics2D.rotate(Math.toRadians(270), bedBackTop.getWidth() / 2, bedBackTop.getHeight() / 2);
@@ -112,7 +112,7 @@ public class ResourcePackBuilder {
                 BufferedImage bedUpperSideTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
                 Graphics2D graphics2D = bedUpperSideTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(90), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
-                graphics2D.drawImage(sprite.getSubimage(23 * scale, 6 * scale, 5 * scale, 16 * scale), 8 * scale, 0, null);
+                graphics2D.drawImage(sprite.getSubimage(22 * scale, 6 * scale, 6 * scale, 16 * scale), 7 * scale, 0, null);
                 BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
                 graphics2D = bedLeg.createGraphics();
                 graphics2D.rotate(Math.toRadians(270), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
@@ -131,7 +131,7 @@ public class ResourcePackBuilder {
                 BufferedImage bedUpperSideTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
                 Graphics2D graphics2D = bedUpperSideTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(90), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
-                graphics2D.drawImage(sprite.getSubimage(23 * scale, 28 * scale, 5 * scale, 16 * scale), 8 * scale, 0, null);
+                graphics2D.drawImage(sprite.getSubimage(22 * scale, 28 * scale, 6 * scale, 16 * scale), 7 * scale, 0, null);
                 BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
                 graphics2D = bedLeg.createGraphics();
                 graphics2D.rotate(Math.toRadians(270), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
