@@ -74,6 +74,7 @@ public enum TexturePackTexture {
     MOJANG("title/mojang.png"),
     WATER_FLOWING("custom_water_flowing.png"),
     WATER_STILL("custom_water_still.png"),
+    PORTAL("custom_portal.png"),
     LAVA_FLOWING("custom_lava_flowing.png"),
     LAVA_STILL("custom_lava_still.png"),
 

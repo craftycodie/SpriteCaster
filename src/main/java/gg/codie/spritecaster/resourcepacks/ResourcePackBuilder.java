@@ -32,10 +32,115 @@ public class ResourcePackBuilder {
         return ImageIO.read(this.resourcePackZip.getInputStream(this.resourcePackZip.getEntry(texturePath)));
     }
 
+    public static void applyQualityRenderingHints(Graphics2D g2d) {
+        g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+        g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+        g2d.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+    }
+
+    public BufferedImage tint(BufferedImage master, Color color, float alpha) {
+        int imgWidth = master.getWidth();
+        int imgHeight = master.getHeight();
+
+        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, master.getType());
+        Graphics2D g2 = imgMask.createGraphics();
+        applyQualityRenderingHints(g2);
+
+        g2.drawImage(master, 0, 0, null);
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, alpha));
+        g2.setColor(color);
+
+        g2.fillRect(0, 0, master.getWidth(), master.getHeight());
+        g2.dispose();
+
+        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, master.getType());
+        g2 = tinted.createGraphics();
+        applyQualityRenderingHints(g2);
+        g2.drawImage(master, 0, 0, null);
+        g2.drawImage(imgMask, 0, 0, null);
+        g2.dispose();
+
+        return tinted;
+    }
+
     public ResourcePackBuilder withTexture(Enum texture, String relativePath) {
         try {
             BufferedImage sprite = getSprite(relativePath);
             textures.put(texture, sprite);
+
+            if (texture == ResourcePackTexture.Block.WATER_STILL) {
+                textures.put(texture, tint(sprite, Color.decode("#3F76E4"), 0.5f));
+            }
+
+            if (texture == ResourcePackTexture.Block.WATER_FLOWING) {
+                textures.put(texture, tint(sprite, Color.decode("#3F76E4"), 0.5f));
+            }
+
+            if (texture == ResourcePackTexture.Item.HELMET_CLOTH) {
+                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+            }
+            if (texture == ResourcePackTexture.Item.CHEST_CLOTH) {
+                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+            }
+            if (texture == ResourcePackTexture.Item.LEGS_CLOTH) {
+                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+            }
+            if (texture == ResourcePackTexture.Item.BOOTS_CLOTH) {
+                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+            }
+            if (texture == ResourcePackTexture.Armour.LEATHER_LOWER) {
+                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+            }
+            if (texture == ResourcePackTexture.Armour.LEATHER_UPPER) {
+                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+            }
+
+            if (texture == ResourcePackTexture.Armour.LEATHER_LOWER_OVERLAY) {
+                BufferedImage base = textures.get(ResourcePackTexture.Armour.LEATHER_LOWER);
+                Graphics2D g2 = base.createGraphics();
+                g2.drawImage(sprite, 0, 0, null);
+                textures.put(ResourcePackTexture.Armour.LEATHER_LOWER, base);
+            }
+
+            if (texture == ResourcePackTexture.Armour.LEATHER_UPPER_OVERLAY) {
+                BufferedImage base = textures.get(ResourcePackTexture.Armour.LEATHER_UPPER);
+                Graphics2D g2 = base.createGraphics();
+                g2.drawImage(sprite, 0, 0, null);
+                textures.put(ResourcePackTexture.Armour.LEATHER_UPPER, base);
+            }
+
+            if (texture == ResourcePackTexture.Item.HELMET_CLOTH_OVERLAY) {
+                BufferedImage base = textures.get(ResourcePackTexture.Item.HELMET_CLOTH);
+                Graphics2D g2 = base.createGraphics();
+                g2.drawImage(sprite, 0, 0, null);
+                textures.put(ResourcePackTexture.Item.HELMET_CLOTH, base);
+            }
+
+            if (texture == ResourcePackTexture.Item.CHEST_CLOTH_OVERLAY) {
+                BufferedImage base = textures.get(ResourcePackTexture.Item.CHEST_CLOTH);
+                Graphics2D g2 = base.createGraphics();
+                g2.drawImage(sprite, 0, 0, null);
+                textures.put(ResourcePackTexture.Item.CHEST_CLOTH, base);
+            }
+
+            if (texture == ResourcePackTexture.Item.LEGS_CLOTH_OVERLAY) {
+                BufferedImage base = textures.get(ResourcePackTexture.Item.LEGS_CLOTH);
+                Graphics2D g2 = base.createGraphics();
+                g2.drawImage(sprite, 0, 0, null);
+                textures.put(ResourcePackTexture.Item.LEGS_CLOTH, base);
+            }
+
+            if (texture == ResourcePackTexture.Item.BOOTS_CLOTH_OVERLAY) {
+                BufferedImage base = textures.get(ResourcePackTexture.Item.BOOTS_CLOTH);
+                Graphics2D g2 = base.createGraphics();
+                g2.drawImage(sprite, 0, 0, null);
+                textures.put(ResourcePackTexture.Item.BOOTS_CLOTH, base);
+            }
 
             if (texture == ResourcePackTexture.Block.LEAVES_FANCY) {
                 BufferedImage leaves = sprite;
@@ -446,12 +551,14 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.BREAKING_6, "assets/minecraft/textures/block/destroy_stage_6.png")
                 .withTexture(ResourcePackTexture.Block.BREAKING_7, "assets/minecraft/textures/block/destroy_stage_7.png")
                 .withTexture(ResourcePackTexture.Block.BREAKING_8, "assets/minecraft/textures/block/destroy_stage_8.png")
-                .withTexture(ResourcePackTexture.Block.BREAKING_9, "assets/minecraft/textures/block/destroy_stage_8.png");
+                .withTexture(ResourcePackTexture.Block.BREAKING_9, "assets/minecraft/textures/block/destroy_stage_8.png")
+                .withTexture(ResourcePackTexture.Block.PORTAL, "assets/minecraft/textures/block/nether_portal.png");
     }
 
     private ResourcePackBuilder withItems() {
         return this
-                .withTexture(ResourcePackTexture.Item.HELMET_CLOTH, "assets/minecraft/textures/item/leather_helmet_overlay.png")
+                .withTexture(ResourcePackTexture.Item.HELMET_CLOTH, "assets/minecraft/textures/item/leather_helmet.png")
+                .withTexture(ResourcePackTexture.Item.HELMET_CLOTH_OVERLAY, "assets/minecraft/textures/item/leather_helmet_overlay.png")
                 .withTexture(ResourcePackTexture.Item.HELMET_CHAIN, "assets/minecraft/textures/item/chainmail_helmet.png")
                 .withTexture(ResourcePackTexture.Item.HELMET_IRON, "assets/minecraft/textures/item/iron_helmet.png")
                 .withTexture(ResourcePackTexture.Item.HELMET_DIAMOND, "assets/minecraft/textures/item/diamond_helmet.png")
@@ -467,7 +574,8 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Item.SUGAR, "assets/minecraft/textures/item/sugar.png")
                 .withTexture(ResourcePackTexture.Item.SNOWBALL, "assets/minecraft/textures/item/snowball.png")
                 .withTexture(ResourcePackTexture.Item.HELMET_INVENTORY, "assets/minecraft/textures/item/empty_armor_slot_helmet.png")
-                .withTexture(ResourcePackTexture.Item.CHEST_CLOTH, "assets/minecraft/textures/item/leather_chestplate_overlay.png")
+                .withTexture(ResourcePackTexture.Item.CHEST_CLOTH, "assets/minecraft/textures/item/leather_chestplate.png")
+                .withTexture(ResourcePackTexture.Item.CHEST_CLOTH_OVERLAY, "assets/minecraft/textures/item/leather_chestplate_overlay.png")
                 .withTexture(ResourcePackTexture.Item.CHEST_CHAIN, "assets/minecraft/textures/item/chainmail_chestplate.png")
                 .withTexture(ResourcePackTexture.Item.CHEST_IRON, "assets/minecraft/textures/item/iron_chestplate.png")
                 .withTexture(ResourcePackTexture.Item.CHEST_DIAMOND, "assets/minecraft/textures/item/diamond_chestplate.png")
@@ -483,7 +591,8 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Item.CAKE, "assets/minecraft/textures/item/cake.png")
                 .withTexture(ResourcePackTexture.Item.SLIMEBALL, "assets/minecraft/textures/item/slime_ball.png")
                 .withTexture(ResourcePackTexture.Item.CHEST_INVENTORY, "assets/minecraft/textures/item/empty_armor_slot_chestplate.png")
-                .withTexture(ResourcePackTexture.Item.LEGS_CLOTH, "assets/minecraft/textures/item/leather_leggings_overlay.png")
+                .withTexture(ResourcePackTexture.Item.LEGS_CLOTH, "assets/minecraft/textures/item/leather_leggings.png")
+                .withTexture(ResourcePackTexture.Item.LEGS_CLOTH_OVERLAY, "assets/minecraft/textures/item/leather_leggings_overlay.png")
                 .withTexture(ResourcePackTexture.Item.LEGS_CHAIN, "assets/minecraft/textures/item/chainmail_leggings.png")
                 .withTexture(ResourcePackTexture.Item.LEGS_IRON, "assets/minecraft/textures/item/iron_leggings.png")
                 .withTexture(ResourcePackTexture.Item.LEGS_DIAMOND, "assets/minecraft/textures/item/diamond_leggings.png")
@@ -497,7 +606,8 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Item.DOOR_IRON, "assets/minecraft/textures/item/iron_door.png")
                 .withTexture(ResourcePackTexture.Item.BED, "assets/minecraft/textures/item/red_bed.png")
                 .withTexture(ResourcePackTexture.Item.LEGS_INVENTORY, "assets/minecraft/textures/item/empty_armor_slot_leggings.png")
-                .withTexture(ResourcePackTexture.Item.BOOTS_CLOTH, "assets/minecraft/textures/item/leather_boots_overlay.png")
+                .withTexture(ResourcePackTexture.Item.BOOTS_CLOTH, "assets/minecraft/textures/item/leather_boots.png")
+                .withTexture(ResourcePackTexture.Item.BOOTS_CLOTH_OVERLAY, "assets/minecraft/textures/item/leather_boots_overlay.png")
                 .withTexture(ResourcePackTexture.Item.BOOTS_CHAIN, "assets/minecraft/textures/item/chainmail_boots.png")
                 .withTexture(ResourcePackTexture.Item.BOOTS_IRON, "assets/minecraft/textures/item/iron_boots.png")
                 .withTexture(ResourcePackTexture.Item.BOOTS_DIAMOND, "assets/minecraft/textures/item/diamond_boots.png")
@@ -602,16 +712,20 @@ public class ResourcePackBuilder {
                 .withBlocks()
                 .withItems()
                 .withTexture(ResourcePackTexture.Gui.WIDGETS, "assets/minecraft/textures/gui/widgets.png")
-                .withTexture(ResourcePackTexture.Gui.INVENTORY, "assets/minecraft/textures/gui/container/inventory.png")
+                .withTexture(ResourcePackTexture.Gui.INVENTORY, "assets/minecraft/spritecaster/gui/container/inventory_v1.png")
+//                .withTexture(ResourcePackTexture.Gui.INVENTORY, "assets/minecraft/textures/gui/container/inventory.png")
                 .withTexture(ResourcePackTexture.PACK, "pack.png")
                 .withTexture(ResourcePackTexture.Block.WATER_STILL, "assets/minecraft/textures/block/water_still.png")
+                .withTexture(ResourcePackTexture.Block.WATER_FLOWING, "assets/minecraft/textures/block/water_flow.png")
+                .withTexture(ResourcePackTexture.Block.LAVA_STILL, "assets/minecraft/textures/block/lava_still.png")
+                .withTexture(ResourcePackTexture.Block.LAVA_FLOWING, "assets/minecraft/textures/block/lava_flow.png")
                 .withTexture(ResourcePackTexture.FONT, "assets/minecraft/textures/font/ascii.png")
                 .withTexture(ResourcePackTexture.Armour.CHAIN_UPPER, "assets/minecraft/textures/models/armor/chainmail_layer_1.png")
                 .withTexture(ResourcePackTexture.Armour.CHAIN_LOWER, "assets/minecraft/textures/models/armor/chainmail_layer_2.png")
-                .withTexture(ResourcePackTexture.Armour.LEATHER_UPPER_OVERLAY, "assets/minecraft/textures/models/armor/leather_layer_1_overlay.png")
-                .withTexture(ResourcePackTexture.Armour.LEATHER_LOWER_OVERLAY, "assets/minecraft/textures/models/armor/leather_layer_2_overlay.png")
                 .withTexture(ResourcePackTexture.Armour.LEATHER_UPPER, "assets/minecraft/textures/models/armor/leather_layer_1.png")
                 .withTexture(ResourcePackTexture.Armour.LEATHER_LOWER, "assets/minecraft/textures/models/armor/leather_layer_2.png")
+                .withTexture(ResourcePackTexture.Armour.LEATHER_UPPER_OVERLAY, "assets/minecraft/textures/models/armor/leather_layer_1_overlay.png")
+                .withTexture(ResourcePackTexture.Armour.LEATHER_LOWER_OVERLAY, "assets/minecraft/textures/models/armor/leather_layer_2_overlay.png")
                 .withTexture(ResourcePackTexture.Armour.DIAMOND_UPPER, "assets/minecraft/textures/models/armor/diamond_layer_1.png")
                 .withTexture(ResourcePackTexture.Armour.DIAMOND_LOWER, "assets/minecraft/textures/models/armor/diamond_layer_2.png")
                 .withTexture(ResourcePackTexture.Armour.GOLD_UPPER, "assets/minecraft/textures/models/armor/gold_layer_1.png")

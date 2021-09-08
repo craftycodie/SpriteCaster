@@ -7,6 +7,7 @@ import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
 
 public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
     SpriteAtlas terrainAtlas;
@@ -404,6 +405,8 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
         particleAtlas = createParticles();
         paintingsAtlas = createPaintings();
 
+        BufferedImage waterStill = resourcePack.getTexture(ResourcePackTexture.Block.WATER_STILL);
+
         BufferedImage terrain = terrainAtlas.getImage();
         BufferedImage items = itemAtlas.getImage();
         BufferedImage particles = particleAtlas.getImage();
@@ -417,6 +420,9 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.GUI_BACKGROUND, resourcePack.getTexture(ResourcePackTexture.Block.DIRT));
         addTexture(TexturePackTexture.WATER_STILL, resourcePack.getTexture(ResourcePackTexture.Block.WATER_STILL));
         addTexture(TexturePackTexture.WATER_FLOWING, resourcePack.getTexture(ResourcePackTexture.Block.WATER_FLOWING));
+        addTexture(TexturePackTexture.LAVA_STILL, resourcePack.getTexture(ResourcePackTexture.Block.LAVA_STILL));
+        addTexture(TexturePackTexture.LAVA_FLOWING, resourcePack.getTexture(ResourcePackTexture.Block.LAVA_FLOWING));
+        addTexture(TexturePackTexture.PORTAL, resourcePack.getTexture(ResourcePackTexture.Block.PORTAL));
         addTexture(TexturePackTexture.GRASS_COLOR, resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR));
         addTexture(TexturePackTexture.FONT, resourcePack.getTexture(ResourcePackTexture.FONT));
         addTexture(TexturePackTexture.CHAINMAIL_ARMOUR_LOWER, resourcePack.getTexture(ResourcePackTexture.Armour.CHAIN_LOWER));
@@ -446,7 +452,7 @@ public class Beta17TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.ITEM_SIGN, resourcePack.getTexture(ResourcePackTexture.ITEM_SIGN));
         addTexture(TexturePackTexture.PUMPKIN_BLUR, resourcePack.getTexture(ResourcePackTexture.PUMPKIN_BLUR));
         addTexture(TexturePackTexture.VIGNETTE, resourcePack.getTexture(ResourcePackTexture.VIGNETTE));
-//        addTexture(TexturePackTexture.WATER_BLUR, ResourcePackTexture.Block.WATER_BLUR)
+        addTexture(TexturePackTexture.WATER_BLUR, waterStill.getSubimage(0, 0, waterStill.getWidth(), waterStill.getHeight()));
         addTexture(TexturePackTexture.SHEEP, resourcePack.getTexture(ResourcePackTexture.Mob.SHEEP));
         addTexture(TexturePackTexture.SHEEP_FUR, resourcePack.getTexture(ResourcePackTexture.Mob.SHEEP_FUR));
         addTexture(TexturePackTexture.MCLOGO, resourcePack.getTexture(ResourcePackTexture.Gui.LOGO));
