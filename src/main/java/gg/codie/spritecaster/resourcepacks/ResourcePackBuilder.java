@@ -175,12 +175,12 @@ public class ResourcePackBuilder {
             if (texture == ResourcePackTexture.Block.BED_FRONT) {
                 int scale = sprite.getWidth() / 64;
 //                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
-                BufferedImage bedFront = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
-                BufferedImage bedFrontTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedFront = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
+                BufferedImage bedFrontTop = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = bedFrontTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(180), bedFrontTop.getWidth() / 2, bedFrontTop.getHeight() / 2);
                 graphics2D.drawImage(sprite.getSubimage(22 * scale, 22 * scale, 16 * scale, 6 * scale), 0, 3 * scale, null);
-                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 graphics2D = bedLeg.createGraphics();
                 graphics2D.rotate(Math.toRadians(270), bedFrontTop.getWidth() / 2, bedFrontTop.getHeight() / 2);
                 graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 0, null);
@@ -194,12 +194,12 @@ public class ResourcePackBuilder {
             if (texture == ResourcePackTexture.Block.BED_BACK) {
                 int scale = sprite.getWidth() / 64;
 //                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
-                BufferedImage bedBack = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
-                BufferedImage bedBackTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedBack = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
+                BufferedImage bedBackTop = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = bedBackTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(180), bedBackTop.getWidth() / 2, bedBackTop.getHeight() / 2);
                 graphics2D.drawImage(sprite.getSubimage(6 * scale, 0 * scale, 16 * scale, 6 * scale), 0, 3 * scale, null);
-                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 graphics2D = bedLeg.createGraphics();
                 graphics2D.rotate(Math.toRadians(270), bedBackTop.getWidth() / 2, bedBackTop.getHeight() / 2);
                 graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 0, null);
@@ -213,12 +213,12 @@ public class ResourcePackBuilder {
             if (texture == ResourcePackTexture.Block.BED_UPPER_SIDE) {
                 int scale = sprite.getWidth() / 64;
 //                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
-                BufferedImage bedUpperSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
-                BufferedImage bedUpperSideTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedUpperSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
+                BufferedImage bedUpperSideTop = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = bedUpperSideTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(90), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
                 graphics2D.drawImage(sprite.getSubimage(22 * scale, 6 * scale, 6 * scale, 16 * scale), 7 * scale, 0, null);
-                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 graphics2D = bedLeg.createGraphics();
                 graphics2D.rotate(Math.toRadians(270), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
 //                graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 0, null);
@@ -232,12 +232,12 @@ public class ResourcePackBuilder {
             if (texture == ResourcePackTexture.Block.BED_LOWER_SIDE) {
                 int scale = sprite.getWidth() / 64;
 //                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
-                BufferedImage bedUpperSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
-                BufferedImage bedUpperSideTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedUpperSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
+                BufferedImage bedUpperSideTop = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = bedUpperSideTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(90), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
                 graphics2D.drawImage(sprite.getSubimage(22 * scale, 28 * scale, 6 * scale, 16 * scale), 7 * scale, 0, null);
-                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage bedLeg = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 graphics2D = bedLeg.createGraphics();
                 graphics2D.rotate(Math.toRadians(270), bedUpperSideTop.getWidth() / 2, bedUpperSideTop.getHeight() / 2);
                 graphics2D.drawImage(sprite.getSubimage(50 * scale, 3 * scale, 3 * scale, 3 * scale), 0, 0, null);
@@ -250,7 +250,7 @@ public class ResourcePackBuilder {
 
             if (texture == ResourcePackTexture.Block.CHEST_FRONT) {
                 int scale = sprite.getWidth() / 64;
-                BufferedImage chestFront = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage chestFront = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestFront.createGraphics();
                 graphics2D.rotate(Math.toRadians(180), chestFront.getWidth() / 2, chestFront.getHeight() / 2);
                 graphics2D.drawImage(sprite.getSubimage(42 * scale, 14 * scale,  14 * scale, 5 * scale), scale, 10 * scale, null);
@@ -262,7 +262,7 @@ public class ResourcePackBuilder {
 
             if (texture == ResourcePackTexture.Block.CHEST_SIDE) {
                 int scale = sprite.getWidth() / 64;
-                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestSide.createGraphics();
                 graphics2D.rotate(Math.toRadians(180), chestSide.getWidth() / 2, chestSide.getHeight() / 2);
                 graphics2D.drawImage(sprite.getSubimage(28 * scale, 14 * scale,  14 * scale, 5 * scale), scale, 10 * scale, null);
@@ -273,7 +273,7 @@ public class ResourcePackBuilder {
 
             if (texture == ResourcePackTexture.Block.CHEST_TOP) {
                 int scale = sprite.getWidth() / 64;
-                BufferedImage chestTop = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage chestTop = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(180), chestTop.getWidth() / 2, chestTop.getHeight() / 2);
                 graphics2D.drawImage(sprite.getSubimage(28 * scale, 0 * scale,  14 * scale, 14 * scale), scale, scale, null);
@@ -283,7 +283,7 @@ public class ResourcePackBuilder {
 
             if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_BACK_RIGHT) {
                 int scale = sprite.getWidth() / 64;
-                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestSide.createGraphics();
                 graphics2D.drawImage(flipVertical(sprite.getSubimage(14 * scale, 14 * scale,  15 * scale, 5 * scale)), scale, scale, null);
                 graphics2D.drawImage(flipVertical(sprite.getSubimage(14 * scale, 33 * scale,  15 * scale, 10 * scale)), scale, 5 * scale, null);
@@ -294,7 +294,7 @@ public class ResourcePackBuilder {
 
             if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_BACK_LEFT) {
                 int scale = sprite.getWidth() / 64;
-                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestSide.createGraphics();
                 graphics2D.drawImage(flipVertical(sprite.getSubimage(14 * scale, 14 * scale,  15 * scale, 5 * scale)), 0, scale, null);
                 graphics2D.drawImage(flipVertical(sprite.getSubimage(14 * scale, 33 * scale,  15 * scale, 10 * scale)), 0, 5 * scale, null);
@@ -305,7 +305,7 @@ public class ResourcePackBuilder {
 
             if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_RIGHT) {
                 int scale = sprite.getWidth() / 64;
-                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestSide.createGraphics();
                 graphics2D.drawImage(flipVertical(sprite.getSubimage(43 * scale, 14 * scale,  15 * scale, 5 * scale)), 0, scale, null);
                 graphics2D.drawImage(flipVertical(sprite.getSubimage(43 * scale, 33 * scale,  15 * scale, 10 * scale)), 0, 5 * scale, null);
@@ -318,7 +318,7 @@ public class ResourcePackBuilder {
 
             if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_LEFT) {
                 int scale = sprite.getWidth() / 64;
-                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, sprite.getType());
+                BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestSide.createGraphics();
                 graphics2D.drawImage(flipVertical(sprite.getSubimage(43 * scale, 14 * scale,  15 * scale, 5 * scale)), scale, scale, null);
                 graphics2D.drawImage(flipVertical(sprite.getSubimage(43 * scale, 33 * scale,  15 * scale, 10 * scale)), scale, 5 * scale, null);
@@ -339,7 +339,7 @@ public class ResourcePackBuilder {
             }
 
             if (texture == ResourcePackTexture.Block.REDSTONE_LINE) {
-                BufferedImage redstoneLine = new BufferedImage(sprite.getWidth(), sprite.getHeight(), sprite.getType());
+                BufferedImage redstoneLine = new BufferedImage(sprite.getWidth(), sprite.getHeight(), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = redstoneLine.createGraphics();
                 graphics2D.rotate(Math.toRadians(90), redstoneLine.getWidth() / 2, redstoneLine.getHeight() / 2);
                 graphics2D.drawImage(sprite, 0, 0, null);
