@@ -5,8 +5,10 @@ install:
   - ps: .\build_scripts\UpdateBuildVersion.ps1
 before_build:
   - mvn -v
+  # fix certs
+  - sh: sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
 build_script:
-  - mvn clean package -DskipTests -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true
+  - mvn clean package -DskipTests
 test_script:
   - mvn install verify
 on_finish:
