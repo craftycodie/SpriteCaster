@@ -101,8 +101,8 @@
             <configuration>
               <dontWrapJar>false</dontWrapJar>
               <headerType>gui</headerType>
-              <jar>${project.basedir}/target/${artifactId}.jar</jar>
-              <outfile>${project.basedir}/target/${artifactId}.exe</outfile>
+              <jar>${project.basedir}/target/${project.artifactId}.jar</jar>
+              <outfile>${project.basedir}/target/${project.artifactId}.exe</outfile>
               <errTitle></errTitle>
               <cmdLine></cmdLine>
               <chdir>.</chdir>
