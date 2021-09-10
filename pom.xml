@@ -6,7 +6,7 @@
 
   <groupId>gg.codie.spritecaster</groupId>
   <artifactId>SpriteCaster</artifactId>
-  <version>0.13.0</version>
+  <version>0.14.0</version>
 
   <name>SpriteCaster</name>
   <url>https://codie.gg/</url>
@@ -117,8 +117,8 @@
             <configuration>
               <dontWrapJar>false</dontWrapJar>
               <headerType>gui</headerType>
-              <jar>${project.basedir}/target/${project.artifactId}.jar</jar>
-              <outfile>${project.basedir}/target/${project.artifactId}.exe</outfile>
+              <jar>${project.basedir}/target/${project.artifactId}-${project.version}.jar</jar>
+              <outfile>${project.basedir}/target/${project.artifactId}-${project.version}.exe</outfile>
               <errTitle></errTitle>
               <cmdLine></cmdLine>
               <chdir>.</chdir>
