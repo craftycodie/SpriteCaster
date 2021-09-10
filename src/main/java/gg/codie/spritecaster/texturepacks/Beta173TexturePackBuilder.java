@@ -452,6 +452,25 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.VIGNETTE, resourcePack.getTexture(ResourcePackTexture.VIGNETTE));
         addTexture(TexturePackTexture.WATER_BLUR, waterStill.getSubimage(0, 0, waterStill.getWidth(), waterStill.getHeight()));
         addTexture(TexturePackTexture.SHEEP, resourcePack.getTexture(ResourcePackTexture.Mob.SHEEP));
+        addTexture(TexturePackTexture.CHICKEN, resourcePack.getTexture(ResourcePackTexture.Mob.CHICKEN));
+        addTexture(TexturePackTexture.ZOMBIE, resourcePack.getTexture(ResourcePackTexture.Mob.ZOMBIE));
+        addTexture(TexturePackTexture.WOLF, resourcePack.getTexture(ResourcePackTexture.Mob.WOLF));
+        addTexture(TexturePackTexture.DOGGY, resourcePack.getTexture(ResourcePackTexture.Mob.DOGGY));
+        addTexture(TexturePackTexture.WOLF_ANGRY, resourcePack.getTexture(ResourcePackTexture.Mob.WOLF_ANGRY));
+        addTexture(TexturePackTexture.SQUID, resourcePack.getTexture(ResourcePackTexture.Mob.SQUID));
+        addTexture(TexturePackTexture.SPIDER, resourcePack.getTexture(ResourcePackTexture.Mob.SPIDER));
+        addTexture(TexturePackTexture.SPIDER_EYES, resourcePack.getTexture(ResourcePackTexture.Mob.SPIDER_EYES));
+        addTexture(TexturePackTexture.SLIME, resourcePack.getTexture(ResourcePackTexture.Mob.SLIME));
+        addTexture(TexturePackTexture.SKELETON, resourcePack.getTexture(ResourcePackTexture.Mob.SKELETON));
+        addTexture(TexturePackTexture.PIGZOMBIE, resourcePack.getTexture(ResourcePackTexture.Mob.PIGZOMBIE));
+        addTexture(TexturePackTexture.PIG, resourcePack.getTexture(ResourcePackTexture.Mob.PIG));
+        addTexture(TexturePackTexture.PIG_SADDLE, resourcePack.getTexture(ResourcePackTexture.Mob.PIG_SADDLE));
+        addTexture(TexturePackTexture.COW, resourcePack.getTexture(ResourcePackTexture.Mob.COW));
+        addTexture(TexturePackTexture.CREEPER_CHARGE, resourcePack.getTexture(ResourcePackTexture.Mob.CREEPER_CHARGE));
+        addTexture(TexturePackTexture.CREEPER, resourcePack.getTexture(ResourcePackTexture.Mob.CREEPER));
+        addTexture(TexturePackTexture.GHAST_FIRE, resourcePack.getTexture(ResourcePackTexture.Mob.GHAST_FIRE));
+        addTexture(TexturePackTexture.GHAST, resourcePack.getTexture(ResourcePackTexture.Mob.GHAST));
+
         addTexture(TexturePackTexture.SHEEP_FUR, resourcePack.getTexture(ResourcePackTexture.Mob.SHEEP_FUR));
         addTexture(TexturePackTexture.MCLOGO, resourcePack.getTexture(ResourcePackTexture.Gui.LOGO));
         addTexture(TexturePackTexture.MOON, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_MOON_PHASES));
