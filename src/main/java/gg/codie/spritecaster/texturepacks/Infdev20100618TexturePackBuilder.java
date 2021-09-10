@@ -115,6 +115,14 @@ public class Infdev20100618TexturePackBuilder extends Alpha11201TexturePackBuild
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_LIGHT_GREY), 5, 15)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_WHITE), 5, 16)
 
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BLOCK_OF_IRON_SIDE), 3, 7)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BLOCK_OF_IRON_BOTTOM), 4, 7)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BLOCK_OF_GOLD_SIDE), 3, 8)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BLOCK_OF_GOLD_BOTTOM), 4, 8)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BLOCK_OF_DIAMOND_SIDE), 3, 9)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BLOCK_OF_DIAMOND_BOTTOM), 4, 9)
+
+
                 .build();
     }
 

@@ -215,7 +215,14 @@ public enum ResourcePackTexture {
         WOOL_CAPRI,
         WOOL_ULTRAMARINE,
         WOOL_VIOLET,
-        WOOL_ROSE
+        WOOL_ROSE,
+
+        BLOCK_OF_IRON_SIDE,
+        BLOCK_OF_IRON_BOTTOM,
+        BLOCK_OF_GOLD_SIDE,
+        BLOCK_OF_GOLD_BOTTOM,
+        BLOCK_OF_DIAMOND_SIDE,
+        BLOCK_OF_DIAMOND_BOTTOM
     }
 
     public enum Painting {

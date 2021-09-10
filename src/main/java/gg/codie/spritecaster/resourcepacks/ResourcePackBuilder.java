@@ -73,6 +73,21 @@ public class ResourcePackBuilder {
             BufferedImage sprite = getSprite(relativePath);
             textures.put(texture, sprite);
 
+            if (texture == ResourcePackTexture.Block.BLOCK_OF_IRON) {
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_IRON_SIDE, sprite);
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_IRON_BOTTOM, sprite);
+            }
+
+            if (texture == ResourcePackTexture.Block.BLOCK_OF_GOLD) {
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_GOLD_SIDE, sprite);
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_GOLD_BOTTOM, sprite);
+            }
+
+            if (texture == ResourcePackTexture.Block.BLOCK_OF_DIAMOND) {
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_DIAMOND_SIDE, sprite);
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_DIAMOND_BOTTOM, sprite);
+            }
+
             if (texture == ResourcePackTexture.Block.WOOL_LIGHT_GREY) {
 //                sprite = tint(sprite, Color.BLACK, 0.5f);
                 textures.put(ResourcePackTexture.Block.WOOL_CHARTREUSE, tint(sprite, Color.decode("#ADFF2F"), 0.5f));
