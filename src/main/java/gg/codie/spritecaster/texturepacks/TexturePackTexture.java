@@ -78,6 +78,11 @@ public enum TexturePackTexture {
     LAVA_FLOWING("custom_lava_flowing.png"),
     LAVA_STILL("custom_lava_still.png"),
 
+    WATER("water.png"),
+    ROCK("rock.png"),
+    GRASS("grass.png"),
+    DIRT("dirt.png"),
+
     PANORAMA0("/title/bg/panorama0.png"),
     PANORAMA1("/title/bg/panorama1.png"),
     PANORAMA2("/title/bg/panorama2.png"),

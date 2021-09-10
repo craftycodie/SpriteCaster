@@ -459,6 +459,13 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.PARTICLES, particles);
         addTexture(TexturePackTexture.GUI_PARTICLES, particles);
         addTexture(TexturePackTexture.PAINTINGS, paintings);
+
+        addTexture(TexturePackTexture.WATER, waterStill);
+        addTexture(TexturePackTexture.ROCK, resourcePack.getTexture(ResourcePackTexture.Block.STONE));
+        addTexture(TexturePackTexture.GRASS, resourcePack.getTexture(ResourcePackTexture.Block.GRASS_TOP));
+        addTexture(TexturePackTexture.DIRT, resourcePack.getTexture(ResourcePackTexture.Block.DIRT));
+
+
     }
 
     @Override

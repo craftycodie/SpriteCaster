@@ -29,6 +29,7 @@ public class Main {
         TexturePack a11201TexturePack = new Alpha11201TexturePackBuilder(resourcePackStack).build();
         TexturePack a1010TexturePack = new Alpha1010TexturePackBuilder(resourcePackStack).build();
         TexturePack infdev20100618TexturePack = new Infdev20100618TexturePackBuilder(resourcePackStack).build();
+        TexturePack indev20100205TexturePack = new Indev20100205TexturePackBuilder(resourcePackStack).build();
 
 
         b166texturePack.save();
@@ -37,6 +38,8 @@ public class Main {
         a11201TexturePack.save();
         a1010TexturePack.save();
         infdev20100618TexturePack.save();
+        indev20100205TexturePack.save();
+
 
         System.out.println("Done!");
     }
