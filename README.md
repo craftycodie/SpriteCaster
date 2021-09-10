@@ -1,5 +1,8 @@
-# SpriteCaster [![Build status](https://ci.appveyor.com/api/projects/status/vv9mxuq9o7xgvjbi?branch=main&svg=true)](https://ci.appveyor.com/project/craftycodie/spritecaster)
+# ![logo](spritecasterlogo.png)
+
 Convert Minecraft Resource Packs to Texture Packs
+
+[![Build status](https://ci.appveyor.com/api/projects/status/vv9mxuq9o7xgvjbi?branch=main&svg=true)](https://ci.appveyor.com/project/craftycodie/spritecaster)
 
 ## What is SpriteCaster?
 SpriteCaster allows you to convert modern minecraft textures for release versions into texture packs compatible with older versions. It essentially allows you to backport resource packs. 
