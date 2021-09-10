@@ -184,7 +184,7 @@ public enum ResourcePackTexture {
         RAIL_DETECTOR,
 
         SANDSTONE_BOTTOM,
-        WOOL_CYAN,
+        WOOL_TEAL,
         WOOL_ORANGE,
 
         WOOL_LIGHT_GREY,
@@ -205,7 +205,17 @@ public enum ResourcePackTexture {
         LAVA_FLOWING,
         LAVA_STILL,
         FIRE,
-        PORTAL;
+        PORTAL,
+        GEAR_CLOCKWISE,
+        GEAR_ANTICLOCKWISE,
+
+        WOOL_CHARTREUSE,
+        WOOL_SPRING_GREEN,
+        WOOL_CYAN,
+        WOOL_CAPRI,
+        WOOL_ULTRAMARINE,
+        WOOL_VIOLET,
+        WOOL_ROSE
     }
 
     public enum Painting {

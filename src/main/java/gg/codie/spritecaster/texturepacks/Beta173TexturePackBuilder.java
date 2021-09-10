@@ -2,12 +2,10 @@ package gg.codie.spritecaster.texturepacks;
 
 import gg.codie.spritecaster.SpriteAtlas;
 import gg.codie.spritecaster.SpriteAtlasBuilder;
-import gg.codie.spritecaster.resourcepacks.ResourcePack;
 import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
 
 public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
     SpriteAtlas terrainAtlas;
@@ -162,7 +160,7 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_MAGENTA), 13, 3)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.RAIL_DETECTOR), 13, 4)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SANDSTONE_BOTTOM), 14, 1)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_CYAN), 14, 2)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_TEAL), 14, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_ORANGE), 14, 3)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_LIGHT_GREY), 15, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BREAKING_0), 16, 1)

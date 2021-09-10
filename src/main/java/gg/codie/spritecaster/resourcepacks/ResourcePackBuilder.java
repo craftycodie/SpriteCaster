@@ -47,7 +47,7 @@ public class ResourcePackBuilder {
         int imgWidth = master.getWidth();
         int imgHeight = master.getHeight();
 
-        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, master.getType());
+        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = imgMask.createGraphics();
         applyQualityRenderingHints(g2);
 
@@ -58,7 +58,7 @@ public class ResourcePackBuilder {
         g2.fillRect(0, 0, master.getWidth(), master.getHeight());
         g2.dispose();
 
-        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, master.getType());
+        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
         g2 = tinted.createGraphics();
         applyQualityRenderingHints(g2);
         g2.drawImage(master, 0, 0, null);
@@ -72,6 +72,17 @@ public class ResourcePackBuilder {
         try {
             BufferedImage sprite = getSprite(relativePath);
             textures.put(texture, sprite);
+
+            if (texture == ResourcePackTexture.Block.WOOL_LIGHT_GREY) {
+//                sprite = tint(sprite, Color.BLACK, 0.5f);
+                textures.put(ResourcePackTexture.Block.WOOL_CHARTREUSE, tint(sprite, Color.decode("#ADFF2F"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_CAPRI, tint(sprite, Color.decode("#00bfff"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_CYAN, tint(sprite, Color.decode("#00FFFF"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_SPRING_GREEN, tint(sprite, Color.decode("#00ff99"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_ROSE, tint(sprite, Color.decode("#ff007f"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_ULTRAMARINE, tint(sprite, Color.decode("#4166f5"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_VIOLET, tint(sprite, Color.decode("#8F00FF"), 0.5f));
+            }
 
             if (texture == ResourcePackTexture.Block.WATER_STILL) {
                 textures.put(texture, tint(sprite, Color.decode("#3F76E4"), 0.5f));
@@ -539,7 +550,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.WOOL_MAGENTA, "assets/minecraft/textures/block/magenta_wool.png")
                 .withTexture(ResourcePackTexture.Block.RAIL_DETECTOR, "assets/minecraft/textures/block/detector_rail.png")
                 .withTexture(ResourcePackTexture.Block.SANDSTONE_BOTTOM, "assets/minecraft/textures/block/sandstone_bottom.png")
-                .withTexture(ResourcePackTexture.Block.WOOL_CYAN, "assets/minecraft/textures/block/cyan_wool.png")
+                .withTexture(ResourcePackTexture.Block.WOOL_TEAL, "assets/minecraft/textures/block/cyan_wool.png")
                 .withTexture(ResourcePackTexture.Block.WOOL_ORANGE, "assets/minecraft/textures/block/orange_wool.png")
                 .withTexture(ResourcePackTexture.Block.WOOL_LIGHT_GREY, "assets/minecraft/textures/block/light_gray_wool.png")
                 .withTexture(ResourcePackTexture.Block.BREAKING_0, "assets/minecraft/textures/block/destroy_stage_0.png")

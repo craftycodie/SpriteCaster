@@ -8,8 +8,8 @@ import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Alpha1010TexturePackBuilder extends Alpha11201TexturePackBuilder {
-    public Alpha1010TexturePackBuilder(ResourcePackStack resourcePack) {
+public class Infdev20100618TexturePackBuilder extends Alpha11201TexturePackBuilder {
+    public Infdev20100618TexturePackBuilder(ResourcePackStack resourcePack) {
         super(resourcePack);
     }
 
@@ -54,48 +54,26 @@ public class Alpha1010TexturePackBuilder extends Alpha11201TexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BOOKSHELF), 3, 4)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.MOSSY_COBBLESTONE), 3, 5)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.OBSIDIAN), 3, 6)
-                .registerSprite(tintGrassGreen(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_SIDE_OVERLAY)), 3, 7)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TALL_GRASS), 3, 8)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_TOP_SNOWY), 3, 9)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_LEFT), 3, 10)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_RIGHT), 3, 11)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.CRAFTING_TABLE_TOP), 3, 12)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.FURNACE_FRONT), 3, 13)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.FURNACE_SIDE), 3, 14)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.DISPENSER_FRONT), 3, 15)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SPONGE), 4, 1)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.GLASS), 4, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.ORE_DIAMOND), 4, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.ORE_REDSTONE), 4, 4)
                 .registerSprite(tintLeavesGreen(resourcePack.getTexture(ResourcePackTexture.Block.LEAVES_FANCY)), 4, 5)
                 .registerSprite(tintLeavesGreen(resourcePack.getTexture(ResourcePackTexture.Block.LEAVES_FAST)), 4, 6)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.DEADBUSH), 4, 8)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.FERN), 4, 9)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.DOUBLE_CHEST_BACK_LEFT), 4, 10)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.DOUBLE_CHEST_BACK_RIGHT), 4, 11)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.CRAFTING_TABLE_SIDE_SCISSORS), 4, 12)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.CRAFTING_TABLE_SIDE_SAW), 4, 13)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.FURNACE_BURNING), 4, 14)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.FURNACE_TOP), 4, 15)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SPRUCE_SAPLING), 4, 16)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_WHITE), 5, 1)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.MOB_SPAWNER), 5, 2)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SNOW), 5, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.ICE), 5, 4)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_SIDE_SNOWY), 5, 5)
-                .registerSprite(upscaleCactus(resourcePack.getTexture(ResourcePackTexture.Block.CACTUS_TOP)), 5, 6)
-                .registerSprite(upscaleCactus(resourcePack.getTexture(ResourcePackTexture.Block.CACTUS_SIDE)), 5, 7)
-                .registerSprite(upscaleCactus(resourcePack.getTexture(ResourcePackTexture.Block.CACTUS_BOTTOM)), 5, 8)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.CLAY), 5, 9)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SUGAR_CANE), 5, 10)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.NOTEBLOCK), 5, 11)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.JUKEBOX_TOP), 5, 12)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BIRCH_SAPLING), 5, 16)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TORCH), 6, 1)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOODEN_DOOR_TOP), 6, 2)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.IRON_DOOR_TOP), 6, 3)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.LADDER), 6, 4)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TRAPDOOR), 6, 5)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.FARMLAND_WET), 6, 7)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.FARMLAND_DRY), 6, 8)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WHEAT_0), 6, 9)
@@ -106,55 +84,9 @@ public class Alpha1010TexturePackBuilder extends Alpha11201TexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WHEAT_5), 6, 14)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WHEAT_6), 6, 15)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WHEAT_7), 6, 16)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.LEVER), 7, 1)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOODEN_DOOR_BOTTOM), 7, 2)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.IRON_DOOR_BOTTOM), 7, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_TORCH_ON), 7, 4)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.PUMPKIN_TOP), 7, 7)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.NETHERRACK), 7, 8)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SOUL_SAND), 7, 9)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.GLOWSTONE), 7, 10)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.RAIL_CORNER), 8, 1)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_BLACK), 8, 2)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_DARK_GREY), 8, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_TORCH_OFF), 8, 4)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.LOG_SPRUCE), 8, 5)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.LOG_BIRCH), 8, 6)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.PUMPKIN_SIDE), 8, 7)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.PUMPKIN_FRONT), 8, 8)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.PUMPKIN_FRONT_LIT), 8, 9)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.CAKE_TOP), 8, 10)
-                .registerSprite(moveBlockUp(resourcePack.getTexture(ResourcePackTexture.Block.CAKE_SIDE), 8), 8, 11)
-                .registerSprite(moveBlockUp(resourcePack.getTexture(ResourcePackTexture.Block.CAKE_SIDE_EATEN), 8), 8, 12)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.CAKE_BOTTOM), 8, 13)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.RAIL), 9, 1)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_RED), 9, 2)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_PINK), 9, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_REPEATER_OFF), 9, 4)
-                .registerSprite(tintSpruceLeavesGreen(resourcePack.getTexture(ResourcePackTexture.Block.LEAVES_FANCY_SPRUCE)), 9, 5)
-                .registerSprite(tintSpruceLeavesGreen(resourcePack.getTexture(ResourcePackTexture.Block.LEAVES_FAST_SPRUCE)), 9, 6)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BLOCK_OF_LAPIS), 10, 1)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_DARK_GREEN), 10, 2)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_LIME), 10, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_REPEATER_ON), 10, 4)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.ORE_LAPIS), 11, 1)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_BROWN), 11, 2)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_YELLOW), 11, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.RAIL_POWERED_OFF), 11, 4)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_CROSS), 11, 5)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_LINE), 11, 6)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SANDSTONE_TOP), 12, 1)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_DARK_BLUE), 12, 2)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_LIGHT_BLUE), 12, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.RAIL_POWERED_ON), 12, 4)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SANDSTONE_SIDE), 13, 1)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_PURPLE), 13, 2)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_MAGENTA), 13, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.RAIL_DETECTOR), 13, 4)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SANDSTONE_BOTTOM), 14, 1)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_TEAL), 14, 2)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_ORANGE), 14, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_LIGHT_GREY), 15, 2)
                 .registerSprite(addGreyBackgroud(resourcePack.getTexture(ResourcePackTexture.Block.BREAKING_0)), 16, 1)
                 .registerSprite(addGreyBackgroud(resourcePack.getTexture(ResourcePackTexture.Block.BREAKING_1)), 16, 2)
                 .registerSprite(addGreyBackgroud(resourcePack.getTexture(ResourcePackTexture.Block.BREAKING_2)), 16, 3) // Electric Boogaloo
@@ -165,27 +97,29 @@ public class Alpha1010TexturePackBuilder extends Alpha11201TexturePackBuilder {
                 .registerSprite(addGreyBackgroud(resourcePack.getTexture(ResourcePackTexture.Block.BREAKING_7)), 16, 8)
                 .registerSprite(addGreyBackgroud(resourcePack.getTexture(ResourcePackTexture.Block.BREAKING_8)), 16, 9)
                 .registerSprite(addGreyBackgroud(resourcePack.getTexture(ResourcePackTexture.Block.BREAKING_9)), 16, 10)
-                .build();
-    }
 
-    private BufferedImage upscaleCactus(BufferedImage in) {
-        int scale = in.getWidth() / 16;
-        BufferedImage chest = new BufferedImage(in.getWidth(), in.getHeight(), in.getType());
-        Graphics2D graphics2D = chest.createGraphics();
-        graphics2D.drawImage(in.getSubimage(scale, scale, scale, 14 * scale), 0, scale, null);
-        graphics2D.drawImage(in.getSubimage(scale, scale, scale, scale), 0, 0, null);
-        graphics2D.drawImage(in.getSubimage(14 * scale, scale, scale, scale), 15 * scale, 0, null);
-        graphics2D.drawImage(in.getSubimage(14 * scale, 14 * scale, scale, scale), 15 * scale, 15 * scale, null);
-        graphics2D.drawImage(in.getSubimage(scale, 14 * scale, scale, scale), 0, 15 * scale, null);
-        graphics2D.drawImage(in.getSubimage(scale, scale, 14 * scale, scale), scale, 0, null);
-        graphics2D.drawImage(in.getSubimage(14 * scale, scale, scale, 14 * scale), 15 * scale, scale, null);
-        graphics2D.drawImage(in.getSubimage(scale, 14 * scale, 14 * scale, scale), scale, 15 * scale, null);
-        graphics2D.drawImage(in.getSubimage(0, 0, 16 * scale, 16 * scale), 0, 0, null);
-        return chest;
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_RED), 5, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_ORANGE), 5, 2)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_YELLOW), 5, 3)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_CHARTREUSE), 5, 4)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_LIME), 5, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_SPRING_GREEN), 5, 6)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_CYAN), 5, 7)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_CAPRI), 5, 8)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_ULTRAMARINE), 5, 9)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_VIOLET), 5, 10)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_PURPLE), 5, 11)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_MAGENTA), 5, 12)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_ROSE), 5, 13)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_DARK_GREY), 5, 14)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_LIGHT_GREY), 5, 15)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOOL_WHITE), 5, 16)
+
+                .build();
     }
 
     @Override
     public String getMinecraftVersion() {
-        return "a1.0.10";
+        return "infdev-201000618";
     }
 }
