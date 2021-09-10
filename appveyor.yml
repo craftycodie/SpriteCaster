@@ -14,6 +14,8 @@ test_script:
 artifacts:
   - path: "**/target/*.?ar"
     name: "SpriteCaster"
+  - path: "**/target/*.exe"
+    name: "SpriteCaster"
 on_success:
   - ps: if ($env:APPVEYOR_REPO_BRANCH -eq "main") {.\build_scripts\discord-webhook.ps1 success $env:DISCORD_WEBHOOK_URL}
 on_failure:

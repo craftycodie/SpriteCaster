@@ -6,7 +6,7 @@
 
   <groupId>gg.codie.spritecaster</groupId>
   <artifactId>SpriteCaster</artifactId>
-  <version>0.13.0</version>
+  <version>0.14.0</version>
 
   <name>SpriteCaster</name>
   <url>https://codie.gg/</url>
@@ -39,6 +39,22 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+        <excludes>
+          <exclude>.properties</exclude>
+        </excludes>
+      </resource>
+    </resources>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
@@ -90,6 +106,56 @@
       </plugins>
     </pluginManagement>
     <plugins>
+      <plugin>
+        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+        <artifactId>launch4j-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>l4j-clui</id>
+            <phase>package</phase>
+            <goals><goal>launch4j</goal></goals>
+            <configuration>
+              <dontWrapJar>false</dontWrapJar>
+              <headerType>gui</headerType>
+              <jar>${project.basedir}/target/${project.artifactId}-${project.version}.jar</jar>
+              <outfile>${project.basedir}/target/${project.artifactId}-${project.version}.exe</outfile>
+              <errTitle></errTitle>
+              <cmdLine></cmdLine>
+              <chdir>.</chdir>
+              <priority>normal</priority>
+              <downloadUrl>http://java.com/download</downloadUrl>
+              <supportUrl></supportUrl>
+              <stayAlive>false</stayAlive>
+              <restartOnCrash>false</restartOnCrash>
+              <manifest></manifest>
+              <icon>${project.basedir}/icon.ico</icon>
+              <jre>
+                <path></path>
+                <bundledJre64Bit>false</bundledJre64Bit>
+                <bundledJreAsFallback>false</bundledJreAsFallback>
+                <minVersion>1.8.0</minVersion>
+                <maxVersion></maxVersion>
+                <jdkPreference>preferJre</jdkPreference>
+                <runtimeBits>64/32</runtimeBits>
+              </jre>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+        <version>4.9.10</version>
+        <executions>
+          <execution>
+            <id>get-the-git-infos</id>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+            <phase>initialize</phase>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
