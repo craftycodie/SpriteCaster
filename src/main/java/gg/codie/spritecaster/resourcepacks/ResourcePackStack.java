@@ -18,7 +18,7 @@ public class ResourcePackStack extends LinkedList<ResourcePack> implements IReso
 
     private void addDefaultResources() {
         try {
-            ZipFile resourcePackZip = new ZipFile(new File("/Volumes/Internal Storage/Projects/GitHub/SpriteCaster/src/main/resources/test/Default-Pack-1.17.X.zip"));
+            ZipFile resourcePackZip = new ZipFile(new File("C:\\Users\\codie\\Downloads\\Default-Pack-1.17.X.zip"));
             ResourcePack resourcePack = new ResourcePackBuilder(resourcePackZip).build();
             add(resourcePack);
         } catch (IOException e) {

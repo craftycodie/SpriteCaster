@@ -62,7 +62,7 @@ public enum TexturePackTexture {
     SPIDER_EYES("mob/spider_eyes.png"),
     SPIDER("mob/spider.png"),
     SQUID("mob/squid.png"),
-    WOLF_ANGRY("mob/wolf_angry.png"),
+    WOLF_ANGRY("mob/wolf/wolf_angry.png"),
     DOGGY("mob/wolf_tame.png"),
     WOLF("mob/wolf.png"),
     ZOMBIE("mob/zombie.png"),

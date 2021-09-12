@@ -26,7 +26,8 @@ public class Main {
 //        ZipFile resourcePackZip = new ZipFile(new File("/Volumes/Internal Storage/Projects/GitHub/SpriteCaster/src/main/resources/test/Faithless16x.zip"));
 //        ZipFile resourcePackZip = new ZipFile(new File("/Volumes/Internal Storage/Projects/GitHub/SpriteCaster/src/main/resources/test/Archive.zip"));
 //        ZipFile resourcePackZip = new ZipFile(new File("/Volumes/Internal Storage/Projects/GitHub/SpriteCaster/src/main/resources/test/PaperCutOut_je-1.17.X.zip"));
-        ZipFile resourcePackZip = new ZipFile(new File("/Volumes/Internal Storage/Projects/GitHub/SpriteCaster/src/main/resources/test/Lithos+v1.56+for+1.17.1+.zip"));
+//        ZipFile resourcePackZip = new ZipFile(new File("/Volumes/Internal Storage/Projects/GitHub/SpriteCaster/src/main/resources/test/Lithos+v1.56+for+1.17.1+.zip"));
+        ZipFile resourcePackZip = new ZipFile(new File("C:\\Users\\codie\\Downloads\\PaperCutOut_4.zip"));
 
 
         ResourcePack resourcePack = new ResourcePackBuilder(resourcePackZip).build();
