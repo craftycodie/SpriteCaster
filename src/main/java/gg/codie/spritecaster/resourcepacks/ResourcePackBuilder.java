@@ -1,7 +1,6 @@
 package gg.codie.spritecaster.resourcepacks;
 
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
-import gg.codie.spritecaster.texturepacks.TexturePackFile;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 
@@ -481,7 +480,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.WOODEN_PLANKS, "assets/minecraft/textures/block/oak_planks.png")
                 .withTexture(ResourcePackTexture.Block.STONE_SLAB_SIDE, "assets/minecraft/textures/block/smooth_stone_slab_side.png")
                 .withTexture(ResourcePackTexture.Block.STONE_SLAB_TOP, "assets/minecraft/textures/block/smooth_stone.png")
-                .withTexture(ResourcePackTexture.Block.BRICK, "assets/minecraft/textures/block/bricks.png")
+                .withTexture(ResourcePackTexture.Block.BRICKS, "assets/minecraft/textures/block/bricks.png")
                 .withTexture(ResourcePackTexture.Block.TNT_SIDE, "assets/minecraft/textures/block/tnt_side.png")
                 .withTexture(ResourcePackTexture.Block.TNT_TOP, "assets/minecraft/textures/block/tnt_top.png")
                 .withTexture(ResourcePackTexture.Block.TNT_BOTTOM, "assets/minecraft/textures/block/tnt_bottom.png")
@@ -541,7 +540,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.CACTUS_SIDE, "assets/minecraft/textures/block/cactus_side.png")
                 .withTexture(ResourcePackTexture.Block.CACTUS_BOTTOM, "assets/minecraft/textures/block/cactus_bottom.png")
                 .withTexture(ResourcePackTexture.Block.CLAY, "assets/minecraft/textures/block/clay.png")
-                .withTexture(ResourcePackTexture.Block.SUGAR_CANE, "assets/minecraft/textures/block/sugar_cane.png")
+                .withTexture(ResourcePackTexture.Block.SUGAR_CANE_BLOCK, "assets/minecraft/textures/block/sugar_cane.png")
                 .withTexture(ResourcePackTexture.Block.NOTEBLOCK, "assets/minecraft/textures/block/note_block.png")
                 .withTexture(ResourcePackTexture.Block.JUKEBOX_TOP, "assets/minecraft/textures/block/jukebox_top.png")
                 .withTexture(ResourcePackTexture.Block.BIRCH_SAPLING, "assets/minecraft/textures/block/birch_sapling.png")
@@ -702,7 +701,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Item.COMPASS_BASE, "assets/minecraft/textures/item/compass.png")
                 .withTexture(ResourcePackTexture.Item.DIAMOND, "assets/minecraft/textures/item/diamond.png")
                 .withTexture(ResourcePackTexture.Item.REDSTONE, "assets/minecraft/textures/item/redstone.png")
-                .withTexture(ResourcePackTexture.Item.CLAY, "assets/minecraft/textures/item/clay_ball.png")
+                .withTexture(ResourcePackTexture.Item.CLAY_BALL, "assets/minecraft/textures/item/clay_ball.png")
                 .withTexture(ResourcePackTexture.Item.PAPER, "assets/minecraft/textures/item/paper.png")
                 .withTexture(ResourcePackTexture.Item.BOOK, "assets/minecraft/textures/item/book.png")
                 .withTexture(ResourcePackTexture.Item.MAP, "assets/minecraft/textures/item/map.png")

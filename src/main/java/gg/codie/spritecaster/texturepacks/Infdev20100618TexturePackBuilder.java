@@ -5,9 +5,6 @@ import gg.codie.spritecaster.SpriteAtlasBuilder;
 import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
 public class Infdev20100618TexturePackBuilder extends Alpha11201TexturePackBuilder {
     public Infdev20100618TexturePackBuilder(ResourcePackStack resourcePack) {
         super(resourcePack);
@@ -26,7 +23,7 @@ public class Infdev20100618TexturePackBuilder extends Alpha11201TexturePackBuild
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOODEN_PLANKS), 1, 5)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.STONE_SLAB_SIDE), 1, 6)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.STONE_SLAB_TOP), 1, 7)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BRICK), 1, 8)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BRICKS), 1, 8)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TNT_SIDE), 1, 9)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TNT_TOP), 1, 10)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TNT_BOTTOM), 1, 11)

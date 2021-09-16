@@ -23,7 +23,7 @@ public class Indev20100205TexturePackBuilder extends Alpha11201TexturePackBuilde
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOODEN_PLANKS), 1, 5)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.STONE_SLAB_SIDE), 1, 6)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.STONE_SLAB_TOP), 1, 7)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BRICK), 1, 8)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BRICKS), 1, 8)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TNT_SIDE), 1, 9)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TNT_TOP), 1, 10)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TNT_BOTTOM), 1, 11)

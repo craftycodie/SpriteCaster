@@ -23,7 +23,7 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOODEN_PLANKS), 1, 5)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.STONE_SLAB_SIDE), 1, 6)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.STONE_SLAB_TOP), 1, 7)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BRICK), 1, 8)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BRICKS), 1, 8)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TNT_SIDE), 1, 9)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TNT_TOP), 1, 10)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TNT_BOTTOM), 1, 11)
@@ -84,7 +84,7 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.CACTUS_SIDE), 5, 7)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.CACTUS_BOTTOM), 5, 8)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.CLAY), 5, 9)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SUGAR_CANE), 5, 10)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SUGAR_CANE_BLOCK), 5, 10)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.NOTEBLOCK), 5, 11)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.JUKEBOX_TOP), 5, 12)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BIRCH_SAPLING), 5, 16)
@@ -238,7 +238,7 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.COMPASS_BASE), 4, 7)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.DIAMOND), 4, 8)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.REDSTONE), 4, 9)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.CLAY), 4, 10)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.CLAY_BALL), 4, 10)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.PAPER), 4, 11)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.BOOK), 4, 12)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Item.MAP), 4, 13)
@@ -452,7 +452,7 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.ITEM_SIGN, resourcePack.getTexture(ResourcePackTexture.ITEM_SIGN));
         addTexture(TexturePackTexture.PUMPKIN_BLUR, resourcePack.getTexture(ResourcePackTexture.PUMPKIN_BLUR));
         addTexture(TexturePackTexture.VIGNETTE, resourcePack.getTexture(ResourcePackTexture.VIGNETTE));
-        addTexture(TexturePackTexture.WATER_BLUR, waterStill.getSubimage(0, 0, waterStill.getWidth(), waterStill.getHeight()));
+        addTexture(TexturePackTexture.WATER_BLUR, waterStill.getSubimage(0, 0, waterStill.getWidth(), waterStill.getWidth()));
         addTexture(TexturePackTexture.SHEEP, resourcePack.getTexture(ResourcePackTexture.Mob.SHEEP));
         addTexture(TexturePackTexture.CHICKEN, resourcePack.getTexture(ResourcePackTexture.Mob.CHICKEN));
         addTexture(TexturePackTexture.ZOMBIE, resourcePack.getTexture(ResourcePackTexture.Mob.ZOMBIE));
@@ -481,7 +481,7 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.GUI_PARTICLES, particles);
         addTexture(TexturePackTexture.PAINTINGS, paintings);
 
-        addTexture(TexturePackTexture.WATER, waterStill);
+        addTexture(TexturePackTexture.WATER, waterStill.getSubimage(0, 0, waterStill.getWidth(), waterStill.getWidth()));
         addTexture(TexturePackTexture.ROCK, resourcePack.getTexture(ResourcePackTexture.Block.STONE));
         addTexture(TexturePackTexture.GRASS, resourcePack.getTexture(ResourcePackTexture.Block.GRASS_TOP));
         addTexture(TexturePackTexture.DIRT, resourcePack.getTexture(ResourcePackTexture.Block.DIRT));
