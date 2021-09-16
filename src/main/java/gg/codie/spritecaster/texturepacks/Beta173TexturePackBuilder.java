@@ -416,6 +416,8 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.GUI_WIDGETS, resourcePack.getTexture(ResourcePackTexture.Gui.WIDGETS));
         addTexture(TexturePackTexture.GUI_INVENTORY, resourcePack.getTexture(ResourcePackTexture.Gui.INVENTORY));
         addTexture(TexturePackTexture.GUI_BACKGROUND, resourcePack.getTexture(ResourcePackTexture.Block.DIRT));
+        addTexture(TexturePackTexture.FIRE_0, resourcePack.getTexture(ResourcePackTexture.Block.FIRE_0));
+        addTexture(TexturePackTexture.FIRE_1, resourcePack.getTexture(ResourcePackTexture.Block.FIRE_1));
         addTexture(TexturePackTexture.WATER_STILL, resourcePack.getTexture(ResourcePackTexture.Block.WATER_STILL));
         addTexture(TexturePackTexture.WATER_FLOWING, resourcePack.getTexture(ResourcePackTexture.Block.WATER_FLOWING));
         addTexture(TexturePackTexture.LAVA_STILL, resourcePack.getTexture(ResourcePackTexture.Block.LAVA_STILL));

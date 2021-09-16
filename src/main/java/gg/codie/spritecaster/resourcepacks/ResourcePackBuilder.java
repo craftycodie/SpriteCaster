@@ -604,7 +604,13 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Block.BREAKING_7, "assets/minecraft/textures/block/destroy_stage_7.png")
                 .withTexture(ResourcePackTexture.Block.BREAKING_8, "assets/minecraft/textures/block/destroy_stage_8.png")
                 .withTexture(ResourcePackTexture.Block.BREAKING_9, "assets/minecraft/textures/block/destroy_stage_8.png")
-                .withTexture(ResourcePackTexture.Block.PORTAL, "assets/minecraft/textures/block/nether_portal.png");
+                .withTexture(ResourcePackTexture.Block.PORTAL, "assets/minecraft/textures/block/nether_portal.png")
+                .withTexture(ResourcePackTexture.Block.FIRE_0, "assets/minecraft/textures/block/fire_0.png")
+                .withTexture(ResourcePackTexture.Block.FIRE_1, "assets/minecraft/textures/block/fire_1.png")
+                .withTexture(ResourcePackTexture.Block.WATER_STILL, "assets/minecraft/textures/block/water_still.png")
+                .withTexture(ResourcePackTexture.Block.WATER_FLOWING, "assets/minecraft/textures/block/water_flow.png")
+                .withTexture(ResourcePackTexture.Block.LAVA_STILL, "assets/minecraft/textures/block/lava_still.png")
+                .withTexture(ResourcePackTexture.Block.LAVA_FLOWING, "assets/minecraft/textures/block/lava_flow.png");
     }
 
     private ResourcePackBuilder withItems() {
@@ -769,10 +775,6 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Gui.INVENTORY, "assets/minecraft/spritecaster/gui/container/inventory_v1.png")
 //                .withTexture(ResourcePackTexture.Gui.INVENTORY, "assets/minecraft/textures/gui/container/inventory.png")
                 .withTexture(ResourcePackTexture.PACK, "pack.png")
-                .withTexture(ResourcePackTexture.Block.WATER_STILL, "assets/minecraft/textures/block/water_still.png")
-                .withTexture(ResourcePackTexture.Block.WATER_FLOWING, "assets/minecraft/textures/block/water_flow.png")
-                .withTexture(ResourcePackTexture.Block.LAVA_STILL, "assets/minecraft/textures/block/lava_still.png")
-                .withTexture(ResourcePackTexture.Block.LAVA_FLOWING, "assets/minecraft/textures/block/lava_flow.png")
                 .withTexture(ResourcePackTexture.FONT, "assets/minecraft/textures/font/ascii.png")
                 .withTexture(ResourcePackTexture.Armour.CHAIN_UPPER, "assets/minecraft/textures/models/armor/chainmail_layer_1.png")
                 .withTexture(ResourcePackTexture.Armour.CHAIN_LOWER, "assets/minecraft/textures/models/armor/chainmail_layer_2.png")
