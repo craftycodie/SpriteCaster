@@ -10,16 +10,21 @@ import java.util.HashMap;
 import java.util.Properties;
 
 public abstract class AbstractTexturePackBuilder {
-    private HashMap<TexturePackTexture, BufferedImage> textures = new HashMap<>();
-    private HashMap<TexturePackFile, byte[]> files = new HashMap<>();
+    private HashMap<String, BufferedImage> textures = new HashMap<>();
+    private HashMap<String, byte[]> files = new HashMap<>();
 
     public AbstractTexturePackBuilder addTexture(TexturePackTexture texture, BufferedImage image) {
+        textures.put(texture.getPath(), image);
+        return this;
+    }
+
+    public AbstractTexturePackBuilder addTexture(String texture, BufferedImage image) {
         textures.put(texture, image);
         return this;
     }
 
     public AbstractTexturePackBuilder addFile(TexturePackFile texturePackFile, byte[] content) {
-        files.put(texturePackFile, content);
+        files.put(texturePackFile.getPath(), content);
         return this;
     }
 

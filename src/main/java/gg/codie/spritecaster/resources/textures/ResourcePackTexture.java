@@ -171,7 +171,11 @@ public enum ResourcePackTexture {
         WOOL_YELLOW,
         RAIL_POWERED_OFF,
         REDSTONE_CROSS,
+        REDSTONE_CROSS_OFF,
+        REDSTONE_CROSS_ON,
         REDSTONE_LINE,
+        REDSTONE_LINE_OFF,
+        REDSTONE_LINE_ON,
 
         SANDSTONE_TOP,
         WOOL_DARK_BLUE,

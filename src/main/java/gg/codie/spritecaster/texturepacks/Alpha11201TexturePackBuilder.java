@@ -95,7 +95,10 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOODEN_DOOR_TOP), 6, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.IRON_DOOR_TOP), 6, 3)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.LADDER), 6, 4)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.TRAPDOOR), 6, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_CROSS_OFF), 6, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_LINE_OFF), 6, 6)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_CROSS_ON), 7, 5)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.REDSTONE_LINE_ON), 7, 6)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.FARMLAND_WET), 6, 7)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.FARMLAND_DRY), 6, 8)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WHEAT_0), 6, 9)
@@ -194,7 +197,7 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
 
         g2.drawImage(master, 0, 0, null);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.5f));
-        g2.setColor(Color.decode("#47CD33"));
+        g2.setColor(Color.decode("#7CBD6B"));
 
         g2.fillRect(0, 0, master.getWidth(), master.getHeight());
         g2.dispose();
@@ -219,7 +222,7 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
 
         g2.drawImage(master, 0, 0, null);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.5f));
-        g2.setColor(Color.decode("#1ABF00"));
+        g2.setColor(Color.decode("#48B518"));
 
         g2.fillRect(0, 0, master.getWidth(), master.getHeight());
         g2.dispose();
@@ -244,7 +247,7 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
 
         g2.drawImage(master, 0, 0, null);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.5f));
-        g2.setColor(Color.decode("#6B9793"));
+        g2.setColor(Color.decode("#619961"));
 
         g2.fillRect(0, 0, master.getWidth(), master.getHeight());
         g2.dispose();

@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.zip.ZipFile;
 
 public class ResourcePackBuilder {
-    HashMap<Enum, BufferedImage> textures = new HashMap<>();
+    HashMap<String, BufferedImage> textures = new HashMap<>();
     HashMap<String, byte[]> files = new HashMap<>();
     String info = null;
     final String name;
@@ -72,116 +72,120 @@ public class ResourcePackBuilder {
     }
 
     public ResourcePackBuilder withTexture(Enum texture, String relativePath) {
+        return withTexture(texture.name(), relativePath);
+    }
+
+    public ResourcePackBuilder withTexture(String texture, String relativePath) {
         try {
             BufferedImage sprite = getSprite(relativePath);
             textures.put(texture, sprite);
 
-            if (texture == ResourcePackTexture.Block.BLOCK_OF_IRON) {
-                textures.put(ResourcePackTexture.Block.BLOCK_OF_IRON_SIDE, sprite);
-                textures.put(ResourcePackTexture.Block.BLOCK_OF_IRON_BOTTOM, sprite);
+            if (texture.equals(ResourcePackTexture.Block.BLOCK_OF_IRON.name())) {
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_IRON_SIDE.name(), sprite);
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_IRON_BOTTOM.name(), sprite);
             }
 
-            if (texture == ResourcePackTexture.Block.BLOCK_OF_GOLD) {
-                textures.put(ResourcePackTexture.Block.BLOCK_OF_GOLD_SIDE, sprite);
-                textures.put(ResourcePackTexture.Block.BLOCK_OF_GOLD_BOTTOM, sprite);
+            if (texture.equals(ResourcePackTexture.Block.BLOCK_OF_GOLD.name())) {
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_GOLD_SIDE.name(), sprite);
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_GOLD_BOTTOM.name(), sprite);
             }
 
-            if (texture == ResourcePackTexture.Block.BLOCK_OF_DIAMOND) {
-                textures.put(ResourcePackTexture.Block.BLOCK_OF_DIAMOND_SIDE, sprite);
-                textures.put(ResourcePackTexture.Block.BLOCK_OF_DIAMOND_BOTTOM, sprite);
+            if (texture.equals(ResourcePackTexture.Block.BLOCK_OF_DIAMOND.name())) {
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_DIAMOND_SIDE.name(), sprite);
+                textures.put(ResourcePackTexture.Block.BLOCK_OF_DIAMOND_BOTTOM.name(), sprite);
             }
 
-            if (texture == ResourcePackTexture.Block.WOOL_LIGHT_GREY) {
+            if (texture.equals(ResourcePackTexture.Block.WOOL_LIGHT_GREY.name())) {
 //                sprite = tint(sprite, Color.BLACK, 0.5f);
-                textures.put(ResourcePackTexture.Block.WOOL_CHARTREUSE, tint(sprite, Color.decode("#ADFF2F"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_CAPRI, tint(sprite, Color.decode("#00bfff"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_CYAN, tint(sprite, Color.decode("#00FFFF"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_SPRING_GREEN, tint(sprite, Color.decode("#00ff99"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_ROSE, tint(sprite, Color.decode("#ff007f"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_ULTRAMARINE, tint(sprite, Color.decode("#4166f5"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_VIOLET, tint(sprite, Color.decode("#8F00FF"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_CHARTREUSE.name(), tint(sprite, Color.decode("#ADFF2F"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_CAPRI.name(), tint(sprite, Color.decode("#00bfff"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_CYAN.name(), tint(sprite, Color.decode("#00FFFF"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_SPRING_GREEN.name(), tint(sprite, Color.decode("#00ff99"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_ROSE.name(), tint(sprite, Color.decode("#ff007f"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_ULTRAMARINE.name(), tint(sprite, Color.decode("#4166f5"), 0.5f));
+                textures.put(ResourcePackTexture.Block.WOOL_VIOLET.name(), tint(sprite, Color.decode("#8F00FF"), 0.5f));
             }
 
-            if (texture == ResourcePackTexture.Block.WATER_STILL) {
+            if (texture.equals(ResourcePackTexture.Block.WATER_STILL.name())) {
                 textures.put(texture, tint(sprite, Color.decode("#3F76E4"), 0.5f));
             }
 
-            if (texture == ResourcePackTexture.Block.WATER_FLOWING) {
+            if (texture.equals(ResourcePackTexture.Block.WATER_FLOWING.name())) {
                 textures.put(texture, tint(sprite, Color.decode("#3F76E4"), 0.5f));
             }
 
-            if (texture == ResourcePackTexture.Item.HELMET_CLOTH) {
+            if (texture.equals(ResourcePackTexture.Item.HELMET_CLOTH.name())) {
                 textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
             }
-            if (texture == ResourcePackTexture.Item.CHEST_CLOTH) {
+            if (texture.equals(ResourcePackTexture.Item.CHEST_CLOTH.name())) {
                 textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
             }
-            if (texture == ResourcePackTexture.Item.LEGS_CLOTH) {
+            if (texture.equals(ResourcePackTexture.Item.LEGS_CLOTH.name())) {
                 textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
             }
-            if (texture == ResourcePackTexture.Item.BOOTS_CLOTH) {
+            if (texture.equals(ResourcePackTexture.Item.BOOTS_CLOTH.name())) {
                 textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
             }
-            if (texture == ResourcePackTexture.Armour.LEATHER_LOWER) {
+            if (texture.equals(ResourcePackTexture.Armour.LEATHER_LOWER.name())) {
                 textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
             }
-            if (texture == ResourcePackTexture.Armour.LEATHER_UPPER) {
+            if (texture.equals(ResourcePackTexture.Armour.LEATHER_UPPER.name())) {
                 textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
             }
 
-            if (texture == ResourcePackTexture.Armour.LEATHER_LOWER_OVERLAY) {
-                BufferedImage base = textures.get(ResourcePackTexture.Armour.LEATHER_LOWER);
+            if (texture.equals(ResourcePackTexture.Armour.LEATHER_LOWER_OVERLAY.name())) {
+                BufferedImage base = textures.get(ResourcePackTexture.Armour.LEATHER_LOWER.name());
                 Graphics2D g2 = base.createGraphics();
                 g2.drawImage(sprite, 0, 0, null);
-                textures.put(ResourcePackTexture.Armour.LEATHER_LOWER, base);
+                textures.put(ResourcePackTexture.Armour.LEATHER_LOWER.name(), base);
             }
 
-            if (texture == ResourcePackTexture.Armour.LEATHER_UPPER_OVERLAY) {
-                BufferedImage base = textures.get(ResourcePackTexture.Armour.LEATHER_UPPER);
+            if (texture.equals(ResourcePackTexture.Armour.LEATHER_UPPER_OVERLAY.name())) {
+                BufferedImage base = textures.get(ResourcePackTexture.Armour.LEATHER_UPPER.name());
                 Graphics2D g2 = base.createGraphics();
                 g2.drawImage(sprite, 0, 0, null);
-                textures.put(ResourcePackTexture.Armour.LEATHER_UPPER, base);
+                textures.put(ResourcePackTexture.Armour.LEATHER_UPPER.name(), base);
             }
 
-            if (texture == ResourcePackTexture.Item.HELMET_CLOTH_OVERLAY) {
-                BufferedImage base = textures.get(ResourcePackTexture.Item.HELMET_CLOTH);
+            if (texture.equals(ResourcePackTexture.Item.HELMET_CLOTH_OVERLAY.name())) {
+                BufferedImage base = textures.get(ResourcePackTexture.Item.HELMET_CLOTH.name());
                 Graphics2D g2 = base.createGraphics();
                 g2.drawImage(sprite, 0, 0, null);
-                textures.put(ResourcePackTexture.Item.HELMET_CLOTH, base);
+                textures.put(ResourcePackTexture.Item.HELMET_CLOTH.name(), base);
             }
 
-            if (texture == ResourcePackTexture.Item.CHEST_CLOTH_OVERLAY) {
-                BufferedImage base = textures.get(ResourcePackTexture.Item.CHEST_CLOTH);
+            if (texture.equals(ResourcePackTexture.Item.CHEST_CLOTH_OVERLAY.name())) {
+                BufferedImage base = textures.get(ResourcePackTexture.Item.CHEST_CLOTH.name());
                 Graphics2D g2 = base.createGraphics();
                 g2.drawImage(sprite, 0, 0, null);
-                textures.put(ResourcePackTexture.Item.CHEST_CLOTH, base);
+                textures.put(ResourcePackTexture.Item.CHEST_CLOTH.name(), base);
             }
 
-            if (texture == ResourcePackTexture.Item.LEGS_CLOTH_OVERLAY) {
-                BufferedImage base = textures.get(ResourcePackTexture.Item.LEGS_CLOTH);
+            if (texture.equals(ResourcePackTexture.Item.LEGS_CLOTH_OVERLAY.name())) {
+                BufferedImage base = textures.get(ResourcePackTexture.Item.LEGS_CLOTH.name());
                 Graphics2D g2 = base.createGraphics();
                 g2.drawImage(sprite, 0, 0, null);
-                textures.put(ResourcePackTexture.Item.LEGS_CLOTH, base);
+                textures.put(ResourcePackTexture.Item.LEGS_CLOTH.name(), base);
             }
 
-            if (texture == ResourcePackTexture.Item.BOOTS_CLOTH_OVERLAY) {
-                BufferedImage base = textures.get(ResourcePackTexture.Item.BOOTS_CLOTH);
+            if (texture.equals(ResourcePackTexture.Item.BOOTS_CLOTH_OVERLAY.name())) {
+                BufferedImage base = textures.get(ResourcePackTexture.Item.BOOTS_CLOTH.name());
                 Graphics2D g2 = base.createGraphics();
                 g2.drawImage(sprite, 0, 0, null);
-                textures.put(ResourcePackTexture.Item.BOOTS_CLOTH, base);
+                textures.put(ResourcePackTexture.Item.BOOTS_CLOTH.name(), base);
             }
 
-            if (texture == ResourcePackTexture.Block.LEAVES_FANCY) {
+            if (texture.equals(ResourcePackTexture.Block.LEAVES_FANCY.name())) {
                 BufferedImage leaves = sprite;
                 BufferedImage black = new BufferedImage(leaves.getWidth(), leaves.getHeight(), BufferedImage.TYPE_INT_BGR);
                 BufferedImage fastLeaves = new BufferedImage(leaves.getWidth(), leaves.getHeight(), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = fastLeaves.createGraphics();
                 graphics2D.drawImage(black, 0, 0, null);
                 graphics2D.drawImage(leaves, 0, 0, null);
-                textures.put(ResourcePackTexture.Block.LEAVES_FAST, fastLeaves);
+                textures.put(ResourcePackTexture.Block.LEAVES_FAST.name(), fastLeaves);
             }
 
-            if (texture == ResourcePackTexture.Block.BED_UPPER_TOP) {
+            if (texture.equals(ResourcePackTexture.Block.BED_UPPER_TOP.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage bedUpperTop = sprite.getSubimage(6 * scale, 6 * scale, 16 * scale, 16 * scale);
                 BufferedImage rotatedBedUpperTop = new BufferedImage(bedUpperTop.getWidth(), bedUpperTop.getHeight(), bedUpperTop.getType());
@@ -191,7 +195,7 @@ public class ResourcePackBuilder {
                 textures.put(texture, rotatedBedUpperTop);
             }
 
-            if (texture == ResourcePackTexture.Block.BED_LOWER_TOP) {
+            if (texture.equals(ResourcePackTexture.Block.BED_LOWER_TOP.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage bedUpperTop = sprite.getSubimage(6 * scale, 28  * scale, 16 * scale, 16 * scale);
                 BufferedImage rotatedBedUpperTop = new BufferedImage(bedUpperTop.getWidth(), bedUpperTop.getHeight(), bedUpperTop.getType());
@@ -201,7 +205,7 @@ public class ResourcePackBuilder {
                 textures.put(texture, rotatedBedUpperTop);
             }
 
-            if (texture == ResourcePackTexture.Block.BED_FRONT) {
+            if (texture.equals(ResourcePackTexture.Block.BED_FRONT.name())) {
                 int scale = sprite.getWidth() / 64;
 //                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
                 BufferedImage bedFront = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
@@ -220,7 +224,7 @@ public class ResourcePackBuilder {
                 textures.put(texture, bedFront);
             }
 
-            if (texture == ResourcePackTexture.Block.BED_BACK) {
+            if (texture.equals(ResourcePackTexture.Block.BED_BACK.name())) {
                 int scale = sprite.getWidth() / 64;
 //                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
                 BufferedImage bedBack = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
@@ -239,7 +243,7 @@ public class ResourcePackBuilder {
                 textures.put(texture, bedBack);
             }
 
-            if (texture == ResourcePackTexture.Block.BED_UPPER_SIDE) {
+            if (texture.equals(ResourcePackTexture.Block.BED_UPPER_SIDE.name())) {
                 int scale = sprite.getWidth() / 64;
 //                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
                 BufferedImage bedUpperSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
@@ -258,7 +262,7 @@ public class ResourcePackBuilder {
                 textures.put(texture, bedUpperSide);
             }
 
-            if (texture == ResourcePackTexture.Block.BED_LOWER_SIDE) {
+            if (texture.equals(ResourcePackTexture.Block.BED_LOWER_SIDE.name())) {
                 int scale = sprite.getWidth() / 64;
 //                BufferedImage bedFrontTop = sprite.getSubimage(22 * scale, 22     * scale, 16 * scale, 5 * scale);
                 BufferedImage bedUpperSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
@@ -277,7 +281,7 @@ public class ResourcePackBuilder {
                 textures.put(texture, bedUpperSide);
             }
 
-            if (texture == ResourcePackTexture.Block.CHEST_FRONT) {
+            if (texture.equals(ResourcePackTexture.Block.CHEST_FRONT.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage chestFront = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestFront.createGraphics();
@@ -289,7 +293,7 @@ public class ResourcePackBuilder {
                 textures.put(texture, chestFront);
             }
 
-            if (texture == ResourcePackTexture.Block.CHEST_SIDE) {
+            if (texture.equals(ResourcePackTexture.Block.CHEST_SIDE.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestSide.createGraphics();
@@ -300,17 +304,17 @@ public class ResourcePackBuilder {
                 textures.put(texture, chestSide);
             }
 
-            if (texture == ResourcePackTexture.Block.CHEST_TOP) {
+            if (texture.equals(ResourcePackTexture.Block.CHEST_TOP.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage chestTop = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(180), chestTop.getWidth() / 2, chestTop.getHeight() / 2);
-                graphics2D.drawImage(sprite.getSubimage(28 * scale, 0 * scale,  14 * scale, 14 * scale), scale, scale, null);
+                graphics2D.drawImage(sprite.getSubimage(28 * scale, 0,  14 * scale, 14 * scale), scale, scale, null);
                 chestTop = upscaleChest(chestTop);
                 textures.put(texture, chestTop);
             }
 
-            if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_BACK_RIGHT) {
+            if (texture.equals(ResourcePackTexture.Block.DOUBLE_CHEST_BACK_RIGHT.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestSide.createGraphics();
@@ -321,7 +325,7 @@ public class ResourcePackBuilder {
                 textures.put(texture, chestSide);
             }
 
-            if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_BACK_LEFT) {
+            if (texture.equals(ResourcePackTexture.Block.DOUBLE_CHEST_BACK_LEFT.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestSide.createGraphics();
@@ -332,7 +336,7 @@ public class ResourcePackBuilder {
                 textures.put(texture, chestSide);
             }
 
-            if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_RIGHT) {
+            if (texture.equals(ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_RIGHT.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestSide.createGraphics();
@@ -345,7 +349,7 @@ public class ResourcePackBuilder {
                 textures.put(texture, chestSide);
             }
 
-            if (texture == ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_LEFT) {
+            if (texture.equals(ResourcePackTexture.Block.DOUBLE_CHEST_FRONT_LEFT.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage chestSide = new BufferedImage(16 * scale, 16 * scale, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = chestSide.createGraphics();
@@ -357,17 +361,17 @@ public class ResourcePackBuilder {
                 textures.put(texture, chestSide);
             }
 
-            if (texture == ResourcePackTexture.Block.LEAVES_FANCY_SPRUCE) {
+            if (texture.equals(ResourcePackTexture.Block.LEAVES_FANCY_SPRUCE.name())) {
                 BufferedImage leaves = sprite;
                 BufferedImage black = new BufferedImage(leaves.getWidth(), leaves.getHeight(), BufferedImage.TYPE_INT_BGR);
                 BufferedImage fastLeaves = new BufferedImage(leaves.getWidth(), leaves.getHeight(), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = fastLeaves.createGraphics();
                 graphics2D.drawImage(black, 0, 0, null);
                 graphics2D.drawImage(leaves, 0, 0, null);
-                textures.put(ResourcePackTexture.Block.LEAVES_FAST_SPRUCE, fastLeaves);
+                textures.put(ResourcePackTexture.Block.LEAVES_FAST_SPRUCE.name(), fastLeaves);
             }
 
-            if (texture == ResourcePackTexture.Block.REDSTONE_LINE) {
+            if (texture.equals(ResourcePackTexture.Block.REDSTONE_LINE.name())) {
                 BufferedImage redstoneLine = new BufferedImage(sprite.getWidth(), sprite.getHeight(), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = redstoneLine.createGraphics();
                 graphics2D.rotate(Math.toRadians(90), redstoneLine.getWidth() / 2, redstoneLine.getHeight() / 2);
@@ -378,17 +382,20 @@ public class ResourcePackBuilder {
                 graphics2D.drawImage(redstoneLine, 0, 0, null);
                 graphics2D.rotate(Math.toRadians(90), redstoneCross.getWidth() / 2, redstoneCross.getHeight() / 2);
                 graphics2D.drawImage(redstoneLine, 0, 0, null);
-                textures.put(ResourcePackTexture.Block.REDSTONE_CROSS, redstoneCross);
+                textures.put(ResourcePackTexture.Block.REDSTONE_CROSS.name(), redstoneCross);
+
+                textures.put(ResourcePackTexture.Block.REDSTONE_LINE_OFF.name(), tint(tint(redstoneLine, Color.black, 0.5f), Color.decode("#4B0000"), 0.5f));
+                textures.put(ResourcePackTexture.Block.REDSTONE_LINE_ON.name(), tint(tint(redstoneLine, Color.black, 0.5f), Color.decode("#FF3201"), 0.5f));
+                textures.put(ResourcePackTexture.Block.REDSTONE_CROSS_OFF.name(), tint(tint(redstoneCross, Color.black, 0.5f), Color.decode("#4B0000"), 0.5f));
+                textures.put(ResourcePackTexture.Block.REDSTONE_CROSS_ON.name(), tint(tint(redstoneCross, Color.black, 0.5f), Color.decode("#FF3201"), 0.5f));
             }
 
-            if (texture == ResourcePackTexture.ENVIRONMENT_MOON_PHASES) {
+            if (texture.equals(ResourcePackTexture.ENVIRONMENT_MOON_PHASES.name())) {
                 textures.put(texture, sprite.getSubimage(0, 0, sprite.getWidth() / 4, sprite.getHeight() / 2));
             }
         } catch (Exception ex) {
 //            ex.printStackTrace();
         }
-
-
 
         return this;
     }
@@ -446,6 +453,24 @@ public class ResourcePackBuilder {
                 .withFile("assets/minecraft/textures/block/fire_1.png.mcmeta")
                 .withFile("assets/minecraft/spritecaster/block/gear_clockwise.png.mcmeta")
                 .withFile("assets/minecraft/spritecaster/block/gear_counter_clockwise.png.mcmeta");
+    }
+
+    private ResourcePackBuilder withClock() {
+        for (int i = 0; i < 64; i++) {
+            String path = "assets/minecraft/textures/item/clock_" + String.format("%02d", i)  + ".png";
+            withTexture(path, path);
+        }
+
+        return this;
+    }
+
+    private ResourcePackBuilder withCompass() {
+        for (int i = 0; i < 32; i++) {
+            String path = "assets/minecraft/textures/item/compass_" + String.format("%02d", i)  + ".png";
+            withTexture(path, path);
+        }
+
+        return this;
     }
 
     private ResourcePackBuilder withBlocks() {
@@ -615,6 +640,8 @@ public class ResourcePackBuilder {
 
     private ResourcePackBuilder withItems() {
         return this
+                .withClock()
+                .withCompass()
                 .withTexture(ResourcePackTexture.Item.HELMET_CLOTH, "assets/minecraft/textures/item/leather_helmet.png")
                 .withTexture(ResourcePackTexture.Item.HELMET_CLOTH_OVERLAY, "assets/minecraft/textures/item/leather_helmet_overlay.png")
                 .withTexture(ResourcePackTexture.Item.HELMET_CHAIN, "assets/minecraft/textures/item/chainmail_helmet.png")
@@ -829,7 +856,7 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Gui.TRAP, "assets/minecraft/textures/gui/container/dispenser.png")
                 .withTexture(ResourcePackTexture.Gui.UNKNOWN_PACK, "assets/minecraft/textures/misc/unknown_pack.png")
                 .withTexture(ResourcePackTexture.ITEM_ARROWS, "assets/minecraft/textures/entity/projectiles/arrow.png")
-                .withTexture(ResourcePackTexture.ITEM_BOAT, "")
+                .withTexture(ResourcePackTexture.ITEM_BOAT, "assets/minecraft/textures/entity/boat/oak.png")
                 .withTexture(ResourcePackTexture.ITEM_CART, "assets/minecraft/textures/entity/minecart.png")
                 .withTexture(ResourcePackTexture.ITEM_SIGN, "assets/minecraft/textures/entity/signs/oak.png")
                 .withTexture(ResourcePackTexture.Item.CLOCK_DIAL, "")

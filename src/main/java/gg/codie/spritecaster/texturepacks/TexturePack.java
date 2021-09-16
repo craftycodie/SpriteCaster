@@ -7,17 +7,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class TexturePack {
-    private final HashMap<TexturePackTexture, BufferedImage> textures;
-    private final HashMap<TexturePackFile, byte[]> files;
+    private final HashMap<String, BufferedImage> textures;
+    private final HashMap<String, byte[]> files;
     public final String name;
     private final String info;
 
-    public TexturePack(String name, String info, HashMap<TexturePackTexture, BufferedImage> textures, HashMap<TexturePackFile, byte[]> files) {
+    public TexturePack(String name, String info, HashMap<String, BufferedImage> textures, HashMap<String, byte[]> files) {
         this.textures = textures;
         this.files = files;
         this.name = name;
@@ -33,7 +32,7 @@ public class TexturePack {
                 System.out.println("MISSING FILE " + file);
                 return;
             }
-            try (PrintStream out = new PrintStream(new FileOutputStream(new File(tempFolder, file.getPath())))) {
+            try (PrintStream out = new PrintStream(new FileOutputStream(new File(tempFolder, file)))) {
                 out.print(new String(content));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -45,13 +44,13 @@ public class TexturePack {
                 System.out.println("MISSING TEXTURE " + texture);
                 return;
             }
-            File textureFile = new File(tempFolder, texture.getPath());
+            File textureFile = new File(tempFolder, texture);
             try {
                 textureFile.mkdirs();
                 textureFile.createNewFile();
                 ImageIO.write(image, "png", textureFile);
             } catch (IOException e) {
-                System.err.println(texture.getPath());
+                System.err.println(texture);
                 e.printStackTrace();
             }
         });

@@ -495,6 +495,14 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addFile(TexturePackFile.FIRE_1, resourcePack.getFile("assets/minecraft/textures/block/fire_1.png.mcmeta"));
         addFile(TexturePackFile.GEAR_CLOCKWISE_MCMETA, resourcePack.getFile("assets/minecraft/spritecaster/block/gear_clockwise.png.mcmeta"));
         addFile(TexturePackFile.GEAR_COUNTER_CLOCKWISE_MCMETA, resourcePack.getFile("assets/minecraft/spritecaster/block/gear_counter_clockwise.png.mcmeta"));
+
+
+        for (int i = 0; i < 64; i++) {
+            addTexture("item/clock_" + String.format("%02d", i) + ".png", resourcePack.getTexture("assets/minecraft/textures/item/clock_" + String.format("%02d", i)  + ".png"));
+        }
+        for (int i = 0; i < 32; i++) {
+            addTexture("item/compass_" + String.format("%02d", i)  + ".png", resourcePack.getTexture("assets/minecraft/textures/item/compass_" + String.format("%02d", i)  + ".png"));
+        }
     }
 
     @Override

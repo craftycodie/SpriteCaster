@@ -4,9 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.zip.ZipFile;
 
@@ -27,7 +25,7 @@ public class ResourcePackStack extends LinkedList<ResourcePack> implements IReso
     }
 
     @Override
-    public BufferedImage getTexture(Enum texture) {
+    public BufferedImage getTexture(String texture) {
         for (int i = size(); i > 0; i--) {
             ResourcePack resourcePack = get(i - 1);
             BufferedImage bufferedImage = resourcePack.getTexture(texture);
@@ -38,9 +36,14 @@ public class ResourcePackStack extends LinkedList<ResourcePack> implements IReso
                 return correctedType;
             }
         }
-        System.err.println("No texture available for " + texture.name());
+        System.err.println("No texture available for " + texture);
 
         return null;
+    }
+
+    @Override
+    public BufferedImage getTexture(Enum texture) {
+        return getTexture(texture.name());
     }
 
     @Override
