@@ -484,7 +484,15 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.GRASS, resourcePack.getTexture(ResourcePackTexture.Block.GRASS_TOP));
         addTexture(TexturePackTexture.DIRT, resourcePack.getTexture(ResourcePackTexture.Block.DIRT));
 
-
+        addFile(TexturePackFile.WATER_FLOWING_MCMETA, resourcePack.getFile("assets/minecraft/textures/block/water_flow.png.mcmeta"));
+        addFile(TexturePackFile.WATER_STILL_MCMETA, resourcePack.getFile("assets/minecraft/textures/block/water_still.png.mcmeta"));
+        addFile(TexturePackFile.LAVA_FLOWING_MCMETA, resourcePack.getFile("assets/minecraft/textures/block/lava_flow.png.mcmeta"));
+        addFile(TexturePackFile.LAVA_STILL_MCMETA, resourcePack.getFile("assets/minecraft/textures/block/lava_still.png.mcmeta"));
+        addFile(TexturePackFile.PORTAL_MCMETA, resourcePack.getFile("assets/minecraft/textures/block/nether_portal.png.mcmeta"));
+        addFile(TexturePackFile.FIRE_0, resourcePack.getFile("assets/minecraft/textures/block/fire_0.png.mcmeta"));
+        addFile(TexturePackFile.FIRE_1, resourcePack.getFile("assets/minecraft/textures/block/fire_1.png.mcmeta"));
+        addFile(TexturePackFile.GEAR_CLOCKWISE_MCMETA, resourcePack.getFile("assets/minecraft/spritecaster/block/gear_clockwise.png.mcmeta"));
+        addFile(TexturePackFile.GEAR_COUNTER_CLOCKWISE_MCMETA, resourcePack.getFile("assets/minecraft/spritecaster/block/gear_counter_clockwise.png.mcmeta"));
     }
 
     @Override

@@ -44,6 +44,20 @@ public class ResourcePackStack extends LinkedList<ResourcePack> implements IReso
     }
 
     @Override
+    public byte[] getFile(String path) {
+        for (int i = size(); i > 0; i--) {
+            ResourcePack resourcePack = get(i - 1);
+            byte[] content = resourcePack.getFile(path);
+            if (content != null) {
+                return content;
+            }
+        }
+        System.err.println("No file available for " + path);
+
+        return null;
+    }
+
+    @Override
     public String getName() {
         if (size() == 2) return get(1).getName();
         return "ResourcePackStack-" + hashCode();

@@ -1,6 +1,8 @@
 package gg.codie.spritecaster.resourcepacks;
 
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
+import gg.codie.spritecaster.texturepacks.TexturePackFile;
+import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 
 import javax.imageio.ImageIO;
@@ -14,6 +16,7 @@ import java.util.zip.ZipFile;
 
 public class ResourcePackBuilder {
     HashMap<Enum, BufferedImage> textures = new HashMap<>();
+    HashMap<String, byte[]> files = new HashMap<>();
     String info = null;
     final String name;
     ZipFile resourcePackZip;
@@ -414,12 +417,35 @@ public class ResourcePackBuilder {
         return chest;
     }
 
+    private ResourcePackBuilder withFile(String path) {
+        try {
+            byte[] content = IOUtils.toByteArray(this.resourcePackZip.getInputStream(this.resourcePackZip.getEntry(path)));
+            files.put(path, content);
+        } catch (IOException | NullPointerException ex) {
+            ex.printStackTrace();
+        }
+        return this;
+    }
+
     private BufferedImage flipHorizontal(BufferedImage in) {
         AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
         tx.translate(-in.getWidth(null), 0);
         AffineTransformOp op = new AffineTransformOp(tx,
                 AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
         return op.filter(in, null);
+    }
+
+    private ResourcePackBuilder withMCMeta() {
+        return this
+                .withFile("assets/minecraft/textures/block/water_flow.png.mcmeta")
+                .withFile("assets/minecraft/textures/block/water_still.png.mcmeta")
+                .withFile("assets/minecraft/textures/block/lava_flow.png.mcmeta")
+                .withFile("assets/minecraft/textures/block/lava_still.png.mcmeta")
+                .withFile("assets/minecraft/textures/block/nether_portal.png.mcmeta")
+                .withFile("assets/minecraft/textures/block/fire_0.png.mcmeta")
+                .withFile("assets/minecraft/textures/block/fire_1.png.mcmeta")
+                .withFile("assets/minecraft/spritecaster/block/gear_clockwise.png.mcmeta")
+                .withFile("assets/minecraft/spritecaster/block/gear_counter_clockwise.png.mcmeta");
     }
 
     private ResourcePackBuilder withBlocks() {
@@ -738,6 +764,7 @@ public class ResourcePackBuilder {
                 .withInfo(new JSONObject(readTextFile("pack.mcmeta")).getJSONObject("pack").getString("description"))
                 .withBlocks()
                 .withItems()
+                .withMCMeta()
                 .withTexture(ResourcePackTexture.Gui.WIDGETS, "assets/minecraft/textures/gui/widgets.png")
                 .withTexture(ResourcePackTexture.Gui.INVENTORY, "assets/minecraft/spritecaster/gui/container/inventory_v1.png")
 //                .withTexture(ResourcePackTexture.Gui.INVENTORY, "assets/minecraft/textures/gui/container/inventory.png")
@@ -860,6 +887,6 @@ public class ResourcePackBuilder {
 
 
 
-        return new ResourcePack(name, info, textures);
+        return new ResourcePack(name, info, textures, files);
     }
 }

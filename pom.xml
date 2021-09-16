@@ -6,7 +6,7 @@
 
   <groupId>gg.codie.spritecaster</groupId>
   <artifactId>SpriteCaster</artifactId>
-  <version>0.15.0</version>
+  <version>0.16.0</version>
 
   <name>SpriteCaster</name>
   <url>https://codie.gg/</url>
@@ -19,22 +19,15 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20200518</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20200518</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.11.0</version>
     </dependency>
   </dependencies>
 
@@ -109,6 +102,7 @@
       <plugin>
         <groupId>com.akathist.maven.plugins.launch4j</groupId>
         <artifactId>launch4j-maven-plugin</artifactId>
+        <version>2.1.1</version>
         <executions>
           <execution>
             <id>l4j-clui</id>

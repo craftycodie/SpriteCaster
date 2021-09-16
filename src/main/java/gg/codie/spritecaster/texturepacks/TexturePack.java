@@ -13,11 +13,13 @@ import java.util.zip.ZipOutputStream;
 
 public class TexturePack {
     private final HashMap<TexturePackTexture, BufferedImage> textures;
+    private final HashMap<TexturePackFile, byte[]> files;
     public final String name;
     private final String info;
 
-    public TexturePack(String name, String info, HashMap<TexturePackTexture, BufferedImage> textures) {
+    public TexturePack(String name, String info, HashMap<TexturePackTexture, BufferedImage> textures, HashMap<TexturePackFile, byte[]> files) {
         this.textures = textures;
+        this.files = files;
         this.name = name;
         this.info = info;
     }
@@ -26,25 +28,17 @@ public class TexturePack {
         File tempFolder = new File(name + File.separator);
         tempFolder.mkdir();
 
-        if (info != null) {
-            try (PrintStream out = new PrintStream(new FileOutputStream(new File(tempFolder, "pack.txt")))) {
-                out.print(info);
+        files.forEach((file, content) -> {
+            if (content == null) {
+                System.out.println("MISSING FILE " + file);
+                return;
+            }
+            try (PrintStream out = new PrintStream(new FileOutputStream(new File(tempFolder, file.getPath())))) {
+                out.print(new String(content));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        }
-
-        try {
-            final Properties properties = new Properties();
-            properties.load(ClassLoader.getSystemClassLoader().getResourceAsStream(".properties"));
-            try (PrintStream out = new PrintStream(new FileOutputStream(new File(tempFolder, "spritecaster.txt")))) {
-                out.print("Resource Pack converted with SpriteCaster v" + properties.getProperty("version") + " (" + properties.getProperty("commit") + ")");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        });
 
         textures.forEach((texture, image) -> {
             if (image == null) {

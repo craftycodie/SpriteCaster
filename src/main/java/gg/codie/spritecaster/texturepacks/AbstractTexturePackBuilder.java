@@ -4,21 +4,43 @@ import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 
 import java.awt.image.BufferedImage;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Properties;
 
 public abstract class AbstractTexturePackBuilder {
-    private HashMap<TexturePackTexture, BufferedImage> textures = new HashMap<TexturePackTexture, BufferedImage>();
+    private HashMap<TexturePackTexture, BufferedImage> textures = new HashMap<>();
+    private HashMap<TexturePackFile, byte[]> files = new HashMap<>();
 
     public AbstractTexturePackBuilder addTexture(TexturePackTexture texture, BufferedImage image) {
         textures.put(texture, image);
         return this;
     }
 
+    public AbstractTexturePackBuilder addFile(TexturePackFile texturePackFile, byte[] content) {
+        files.put(texturePackFile, content);
+        return this;
+    }
+
     public TexturePack build() {
         addTexture(TexturePackTexture.PACK, resourcePack.getTexture(ResourcePackTexture.PACK));
+        addFile(TexturePackFile.PACK_FILE, resourcePack.getDescription().getBytes(StandardCharsets.UTF_8));
+        addFile(TexturePackFile.SPRITECASTER_INFO, getSpriteCasterInfo().getBytes(StandardCharsets.UTF_8));
         addMineOnlineTextures();
 
-        return new TexturePack(resourcePack.getName() + "-" + getMinecraftVersion(), resourcePack.getDescription(), textures);
+        return new TexturePack(resourcePack.getName() + "-" + getMinecraftVersion(), resourcePack.getDescription(), textures, files);
+    }
+
+    private String getSpriteCasterInfo() {
+        try {
+            final Properties properties = new Properties();
+            properties.load(ClassLoader.getSystemClassLoader().getResourceAsStream(".properties"));
+            return "Resource Pack converted with SpriteCaster v" + properties.getProperty("version") + " (" + properties.getProperty("commit") + ")";
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return "";
     }
 
     private void addMineOnlineTextures() {
