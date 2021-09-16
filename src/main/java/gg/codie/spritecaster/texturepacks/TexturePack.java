@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Properties;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -25,12 +26,24 @@ public class TexturePack {
         File tempFolder = new File(name + File.separator);
         tempFolder.mkdir();
 
-        if(info != null) {
+        if (info != null) {
             try (PrintStream out = new PrintStream(new FileOutputStream(new File(tempFolder, "pack.txt")))) {
                 out.print(info);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+        }
+
+        try {
+            final Properties properties = new Properties();
+            properties.load(ClassLoader.getSystemClassLoader().getResourceAsStream(".properties"));
+            try (PrintStream out = new PrintStream(new FileOutputStream(new File(tempFolder, "spritecaster.txt")))) {
+                out.print("Resource Pack converted with SpriteCaster v" + properties.getProperty("version") + " (" + properties.getProperty("commit") + ")");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
 
         textures.forEach((texture, image) -> {
