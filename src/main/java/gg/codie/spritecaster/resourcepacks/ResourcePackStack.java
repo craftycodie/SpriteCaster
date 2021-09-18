@@ -1,9 +1,12 @@
 package gg.codie.spritecaster.resourcepacks;
 
+import gg.codie.minecraft.MinecraftVersionsService;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 import java.util.zip.ZipFile;
@@ -16,10 +19,13 @@ public class ResourcePackStack extends LinkedList<ResourcePack> implements IReso
 
     private void addDefaultResources() {
         try {
-            ZipFile resourcePackZip = new ZipFile(new File("C:\\Users\\codie\\Downloads\\Default-Pack-1.17.X.zip"));
+            ZipFile resourcePackZip = new ZipFile(new File(getClass().getResource("/SpriteCasterBackups.zip").toURI()));
             ResourcePack resourcePack = new ResourcePackBuilder(resourcePackZip).build();
             add(resourcePack);
-        } catch (IOException e) {
+            resourcePackZip = new MinecraftVersionsService().getLatestVersion();
+            resourcePack = new ResourcePackBuilder(resourcePackZip).build();
+            add(resourcePack);
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
     }
@@ -62,14 +68,14 @@ public class ResourcePackStack extends LinkedList<ResourcePack> implements IReso
 
     @Override
     public String getName() {
-        if (size() == 2) return get(1).getName();
+        if (size() == 3) return get(2).getName();
         return "ResourcePackStack-" + hashCode();
     }
 
     @Override
     public String getDescription() {
-        if (size() == 2) return get(1).getDescription();
+        if (size() == 3) return get(2).getDescription();
 
-        return subList(0, size() - 1).stream().map(resourcePack -> resourcePack.getName()).collect(Collectors.joining(", "));
+        return subList(2, size() - 2).stream().map(resourcePack -> resourcePack.getName()).collect(Collectors.joining(", "));
     }
 }

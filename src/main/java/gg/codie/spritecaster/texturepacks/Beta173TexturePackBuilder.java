@@ -334,6 +334,8 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_5), 1, 6)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_6), 1, 7)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.GENERIC_7), 1, 8)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.OLD_SPLASH_0), 2, 1)
+                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.OLD_SPLASH_1), 2, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.SPLASH_0), 2, 4)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.SPLASH_1), 2, 5)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Particle.SPLASH_2), 2, 6)

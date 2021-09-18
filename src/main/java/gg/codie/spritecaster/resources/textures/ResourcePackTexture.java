@@ -486,6 +486,9 @@ public enum ResourcePackTexture {
 
         HEART,
 
+        OLD_SPLASH_0,
+        OLD_SPLASH_1,
+
         SPLASH_0,
         SPLASH_1,
         SPLASH_2,

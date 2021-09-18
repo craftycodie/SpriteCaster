@@ -14,6 +14,7 @@ public class SpriteCasterFiles {
 
     public static final String MINECRAFT_TEXTURE_PACKS_PATH = OLD_MINECRAFT_FOLDER + File.separator + "texturepacks" + File.separator;
     public static final String MINECRAFT_RESOURCE_PACKS_PATH = NEW_MINECRAFT_FOLDER + File.separator + "resourcepacks" + File.separator;
+    public static final String MINECRAFT_VERSIONS_PATH = NEW_MINECRAFT_FOLDER + File.separator + "versions" + File.separator;
 
     private static File getSpriteCasterDirectory() {
         File workingDirectory;

@@ -783,6 +783,7 @@ public class ResourcePackBuilder {
 
     private String readTextFile(String path) {
         try {
+            if (resourcePackZip.getEntry(path) == null) return null;
             InputStream input = resourcePackZip.getInputStream(resourcePackZip.getEntry(path));
             BufferedReader br = new BufferedReader(new InputStreamReader(input, "UTF-8"));
             StringBuilder file = new StringBuilder();
@@ -915,6 +916,9 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Particle.HEART, "assets/minecraft/textures/particle/heart.png")
                 .withTexture(ResourcePackTexture.Particle.LAVA, "assets/minecraft/textures/particle/lava.png")
                 .withTexture(ResourcePackTexture.Particle.NOTE, "assets/minecraft/textures/particle/note.png")
+                .withTexture(ResourcePackTexture.Particle.OLD_SPLASH_0, "assets/minecraft/textures/particle/splash_0.png")
+                .withTexture(ResourcePackTexture.Particle.OLD_SPLASH_0, "assets/minecraft/spritecaster/particle/old_splash_0.png")
+                .withTexture(ResourcePackTexture.Particle.OLD_SPLASH_1, "assets/minecraft/spritecaster/particle/old_splash_1.png")
                 .withTexture(ResourcePackTexture.Particle.SPLASH_0, "assets/minecraft/textures/particle/splash_0.png")
                 .withTexture(ResourcePackTexture.Particle.SPLASH_1, "assets/minecraft/textures/particle/splash_1.png")
                 .withTexture(ResourcePackTexture.Particle.SPLASH_2, "assets/minecraft/textures/particle/splash_2.png")
