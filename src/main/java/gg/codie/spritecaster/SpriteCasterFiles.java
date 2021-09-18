@@ -3,6 +3,9 @@ package gg.codie.spritecaster;
 import gg.codie.common.utils.OSUtils;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class SpriteCasterFiles {
     public static final String OLD_MINECRAFT_FOLDER = getOldMinecraftDirectory().getPath();
@@ -11,6 +14,8 @@ public class SpriteCasterFiles {
 
     public static final String SPRITECASTER_TEMP_FOLDER = SPRITECASTER_FOLDER + "temp" + File.separator;
     public static final String SPRITECASTER_LATEST_LOG = SPRITECASTER_FOLDER + "latest.log";
+    public static final String SPRITECASTER_BACKUPS_ZIP = SPRITECASTER_FOLDER + "SpriteCasterBackups.zip";
+
 
     public static final String MINECRAFT_TEXTURE_PACKS_PATH = OLD_MINECRAFT_FOLDER + File.separator + "texturepacks" + File.separator;
     public static final String MINECRAFT_RESOURCE_PACKS_PATH = NEW_MINECRAFT_FOLDER + File.separator + "resourcepacks" + File.separator;
@@ -91,10 +96,38 @@ public class SpriteCasterFiles {
         return workingDirectory;
     }
 
+    static public void exportSpriteCasterBackups() throws Exception {
+        InputStream stream = null;
+        OutputStream resStreamOut = null;
+        if (new File(SPRITECASTER_BACKUPS_ZIP).exists())
+            return;
+
+        try {
+            stream = SpriteCasterFiles.class.getResourceAsStream("/SpriteCasterBackups.zip");//note that each / is a directory down in the "jar tree" been the jar the root of the tree
+
+            int readBytes;
+            byte[] buffer = new byte[4096];
+            resStreamOut = new FileOutputStream(SPRITECASTER_BACKUPS_ZIP);
+            while ((readBytes = stream.read(buffer)) > 0) {
+                resStreamOut.write(buffer, 0, readBytes);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            stream.close();
+            resStreamOut.close();
+        }
+    }
+
     static {
         new File(MINECRAFT_TEXTURE_PACKS_PATH).mkdirs();
         new File(MINECRAFT_RESOURCE_PACKS_PATH).mkdirs();
         new File(SPRITECASTER_TEMP_FOLDER).mkdirs();
+        try {
+            exportSpriteCasterBackups();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

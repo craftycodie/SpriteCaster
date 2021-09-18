@@ -1,6 +1,7 @@
 package gg.codie.spritecaster.resourcepacks;
 
 import gg.codie.minecraft.MinecraftVersionsService;
+import gg.codie.spritecaster.SpriteCasterFiles;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,13 +20,13 @@ public class ResourcePackStack extends LinkedList<ResourcePack> implements IReso
 
     private void addDefaultResources() {
         try {
-            ZipFile resourcePackZip = new ZipFile(new File(getClass().getResource("/SpriteCasterBackups.zip").toURI()));
+            ZipFile resourcePackZip = new ZipFile(new File(SpriteCasterFiles.SPRITECASTER_BACKUPS_ZIP));
             ResourcePack resourcePack = new ResourcePackBuilder(resourcePackZip).build();
             add(resourcePack);
             resourcePackZip = new MinecraftVersionsService().getLatestVersion();
             resourcePack = new ResourcePackBuilder(resourcePackZip).build();
             add(resourcePack);
-        } catch (IOException | URISyntaxException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
