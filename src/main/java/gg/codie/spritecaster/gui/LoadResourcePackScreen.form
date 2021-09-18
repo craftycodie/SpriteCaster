@@ -45,6 +45,7 @@
                 <constraints border-constraint="East"/>
                 <properties>
                   <actionCommand value="selectResourcePack"/>
+                  <enabled value="false"/>
                   <label value="Select"/>
                   <text value="Select"/>
                 </properties>

@@ -12,11 +12,13 @@ public class SpriteAtlasBuilder {
 
     public SpriteAtlasBuilder setRowCount(int rowCount) {
         this.rowCount = rowCount;
+        sprites = new BufferedImage[rowCount][colCount];
         return this;
     }
 
     public SpriteAtlasBuilder setColCount(int colCount) {
         this.colCount = colCount;
+        sprites = new BufferedImage[rowCount][colCount];
         return this;
     }
 

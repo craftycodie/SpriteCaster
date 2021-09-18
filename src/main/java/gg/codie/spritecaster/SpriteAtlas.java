@@ -18,7 +18,7 @@ public class SpriteAtlas {
     }
 
     public BufferedImage getImage() {
-        BufferedImage atlas = new BufferedImage(spriteSize * rowCount, spriteSize * colCount, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage atlas = new BufferedImage(spriteSize * colCount, spriteSize * rowCount, BufferedImage.TYPE_INT_ARGB);
         Graphics2D graphics2D = atlas.createGraphics();
 
         for(int row = 0; row < rowCount; row++) {

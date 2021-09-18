@@ -1,7 +1,7 @@
 package gg.codie.spritecaster.gui;
 
-import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
+import gg.codie.common.utils.OSUtils;
+import gg.codie.spritecaster.SpriteCasterFiles;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -10,23 +10,40 @@ import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
+import java.io.File;
 import java.util.Locale;
-import java.util.Properties;
 
-public class WelcomeScreen extends JFrame {
+public class DoneScreen {
     public JPanel contentPane;
     private JPanel logoPanel;
-    private JButton selectResourcePackButton;
+    private JButton convertAnotherButton;
+    private JButton exitButton;
+    private JButton openTexturePackFolderButton;
 
-    public WelcomeScreen() {
+    public DoneScreen() {
         JLabel logoLabel = new JLabel(new ImageIcon(getClass().getResource("/logo.png")));
         logoPanel.add(logoLabel);
-        selectResourcePackButton.addMouseListener(new MouseAdapter() {
+        openTexturePackFolderButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().open(new File(SpriteCasterFiles.MINECRAFT_TEXTURE_PACKS_PATH));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        convertAnotherButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 FrameManager.getInstance().setContentPane(new LoadResourcePackScreen().contentPane);
                 FrameManager.getInstance().pack();
+            }
+        });
+        exitButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.exit(0);
             }
         });
     }
@@ -46,11 +63,14 @@ public class WelcomeScreen extends JFrame {
      * @noinspection ALL
      */
     private void $$$setupUI$$$() {
+        final JPanel panel1 = new JPanel();
+        panel1.setLayout(new BorderLayout(0, 0));
         contentPane = new JPanel();
         contentPane.setLayout(new BorderLayout(0, 0));
         contentPane.setMaximumSize(new Dimension(500, 600));
         contentPane.setMinimumSize(new Dimension(500, 600));
         contentPane.setPreferredSize(new Dimension(500, 600));
+        panel1.add(contentPane, BorderLayout.CENTER);
         contentPane.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, new Color(-4473925)));
         logoPanel = new JPanel();
         logoPanel.setLayout(new BorderLayout(0, 0));
@@ -60,14 +80,24 @@ public class WelcomeScreen extends JFrame {
         logoPanel.setPreferredSize(new Dimension(450, 53));
         contentPane.add(logoPanel, BorderLayout.NORTH);
         logoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, new Color(-4473925)));
-        final JPanel panel1 = new JPanel();
-        panel1.setLayout(new BorderLayout(0, 0));
-        contentPane.add(panel1, BorderLayout.SOUTH);
-        selectResourcePackButton = new JButton();
-        selectResourcePackButton.setActionCommand("selectResourcePack");
-        selectResourcePackButton.setLabel("Select Resource Pack");
-        selectResourcePackButton.setText("Select Resource Pack");
-        panel1.add(selectResourcePackButton, BorderLayout.CENTER);
+        final JPanel panel2 = new JPanel();
+        panel2.setLayout(new BorderLayout(0, 0));
+        contentPane.add(panel2, BorderLayout.SOUTH);
+        convertAnotherButton = new JButton();
+        convertAnotherButton.setMaximumSize(new Dimension(190, 40));
+        convertAnotherButton.setMinimumSize(new Dimension(190, 40));
+        convertAnotherButton.setPreferredSize(new Dimension(190, 40));
+        convertAnotherButton.setText("Convert Another");
+        panel2.add(convertAnotherButton, BorderLayout.EAST);
+        exitButton = new JButton();
+        exitButton.setMaximumSize(new Dimension(190, 40));
+        exitButton.setMinimumSize(new Dimension(190, 40));
+        exitButton.setPreferredSize(new Dimension(190, 40));
+        exitButton.setText("Exit");
+        panel2.add(exitButton, BorderLayout.WEST);
+        final JPanel panel3 = new JPanel();
+        panel3.setLayout(new BorderLayout(0, 0));
+        contentPane.add(panel3, BorderLayout.CENTER);
         final JLabel label1 = new JLabel();
         label1.setAutoscrolls(false);
         label1.setDoubleBuffered(false);
@@ -76,10 +106,24 @@ public class WelcomeScreen extends JFrame {
         if (label1Font != null) label1.setFont(label1Font);
         label1.setHorizontalAlignment(2);
         label1.setHorizontalTextPosition(2);
-        label1.setText("<html><br/><h1>Welcome</h1>This application allows you to convert modern <br/>Minecraft resource packs to the old texture pack format.<br/><br/>Begin by selecting a resource pack to convert!</html>");
+        label1.setText("<html><br/><h1>Done</h1>Your resource pack has successfully been converted!<br/><br/>When playing with old versions, choose the texture pack for the same version, or the next version up.<br/></html>");
         label1.setVerticalAlignment(1);
         label1.setVerticalTextPosition(0);
-        contentPane.add(label1, BorderLayout.CENTER);
+        panel3.add(label1, BorderLayout.NORTH);
+        final JPanel panel4 = new JPanel();
+        panel4.setLayout(new BorderLayout(0, 0));
+        panel4.setMaximumSize(new Dimension(450, 40));
+        panel4.setMinimumSize(new Dimension(450, 40));
+        panel4.setPreferredSize(new Dimension(450, 40));
+        panel3.add(panel4, BorderLayout.CENTER);
+        panel4.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(50, 0, 85, 0), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
+        openTexturePackFolderButton = new JButton();
+        openTexturePackFolderButton.setMaximumSize(new Dimension(300, 40));
+        openTexturePackFolderButton.setMinimumSize(new Dimension(300, 40));
+        openTexturePackFolderButton.setOpaque(true);
+        openTexturePackFolderButton.setPreferredSize(new Dimension(300, 40));
+        openTexturePackFolderButton.setText("Open Texture Pack Folder");
+        panel4.add(openTexturePackFolderButton, BorderLayout.WEST);
     }
 
     /**
@@ -104,14 +148,4 @@ public class WelcomeScreen extends JFrame {
         return fontWithFallback instanceof FontUIResource ? fontWithFallback : new FontUIResource(fontWithFallback);
     }
 
-    /**
-     * @noinspection ALL
-     */
-    public JComponent $$$getRootComponent$$$() {
-        return contentPane;
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }

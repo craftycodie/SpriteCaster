@@ -395,6 +395,30 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
                 .build();
     }
 
+    private SpriteAtlas createCompass() {
+        SpriteAtlasBuilder builder = new SpriteAtlasBuilder()
+                .setColCount(1)
+                .setRowCount(32);
+
+        for (int i = 0; i < 32; i++) {
+            builder.registerSprite(resourcePack.getTexture("assets/minecraft/textures/item/compass_" + String.format("%02d", i)  + ".png"), i + 1, 1);
+        }
+
+        return builder.build();
+    }
+
+    private SpriteAtlas createClock() {
+        SpriteAtlasBuilder builder = new SpriteAtlasBuilder()
+                .setColCount(1)
+                .setRowCount(64);
+
+        for (int i = 0; i < 64; i++) {
+            builder.registerSprite(resourcePack.getTexture("assets/minecraft/textures/item/clock_" + String.format("%02d", i)  + ".png"), i + 1, 1);
+        }
+
+        return builder.build();
+    }
+
     public Beta173TexturePackBuilder(ResourcePackStack resourcePack) {
         super(resourcePack);
 
@@ -412,7 +436,10 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
 
         addTexture(TexturePackTexture.TERRAIN, terrain);
         addTexture(TexturePackTexture.ITEMS, items);
-
+        addTexture(TexturePackTexture.CLOCK, createClock().getImage());
+        addTexture(TexturePackTexture.COMPASS, createCompass().getImage());
+        
+        addTexture(TexturePackTexture.SHADOW, resourcePack.getTexture(ResourcePackTexture.SHADOW));
         addTexture(TexturePackTexture.GUI_WIDGETS, resourcePack.getTexture(ResourcePackTexture.Gui.WIDGETS));
         addTexture(TexturePackTexture.GUI_INVENTORY, resourcePack.getTexture(ResourcePackTexture.Gui.INVENTORY));
         addTexture(TexturePackTexture.GUI_BACKGROUND, resourcePack.getTexture(ResourcePackTexture.Block.DIRT));
@@ -440,10 +467,13 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.SNOW, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_SNOW));
         addTexture(TexturePackTexture.GUI_CONTAINER, resourcePack.getTexture(ResourcePackTexture.Gui.CONTAINER));
         addTexture(TexturePackTexture.GUI_CRAFTING, resourcePack.getTexture(ResourcePackTexture.Gui.CRAFTING));
+        addTexture(TexturePackTexture.GUI_FURNACE, resourcePack.getTexture(ResourcePackTexture.Gui.FURNACE));
         addTexture(TexturePackTexture.GUI_LOGO, resourcePack.getTexture(ResourcePackTexture.Gui.LOGO));
 //        addTexture(TexturePackTexture.GUI_PARTICLES, resourcePack.getTexture(ResourcePackTexture))
 //        addTexture(TexturePackTexture.GUI_SLOT, resourcePack)
-//        addTexture(TexturePackTexture.GUI_DISPENSER, resourcePack.getTexture(ResourcePackTexture.Gui.D))
+        addTexture(TexturePackTexture.MAP_BG, resourcePack.getTexture(ResourcePackTexture.MAP_BACKGROUND));
+        addTexture(TexturePackTexture.MAP_ICONS, resourcePack.getTexture(ResourcePackTexture.MAP_ICONS));
+        addTexture(TexturePackTexture.GUI_DISPENSER, resourcePack.getTexture(ResourcePackTexture.Gui.TRAP));
         addTexture(TexturePackTexture.GUI_ICONS, resourcePack.getTexture(ResourcePackTexture.Gui.ICONS));
         addTexture(TexturePackTexture.UNKNOWN_PACK, resourcePack.getTexture(ResourcePackTexture.Gui.UNKNOWN_PACK));
         addTexture(TexturePackTexture.ITEM_ARROWS, resourcePack.getTexture(ResourcePackTexture.ITEM_ARROWS));
@@ -495,14 +525,6 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addFile(TexturePackFile.FIRE_1, resourcePack.getFile("assets/minecraft/textures/block/fire_1.png.mcmeta"));
         addFile(TexturePackFile.GEAR_CLOCKWISE_MCMETA, resourcePack.getFile("assets/minecraft/spritecaster/block/gear_clockwise.png.mcmeta"));
         addFile(TexturePackFile.GEAR_COUNTER_CLOCKWISE_MCMETA, resourcePack.getFile("assets/minecraft/spritecaster/block/gear_counter_clockwise.png.mcmeta"));
-
-
-        for (int i = 0; i < 64; i++) {
-            addTexture("item/clock_" + String.format("%02d", i) + ".png", resourcePack.getTexture("assets/minecraft/textures/item/clock_" + String.format("%02d", i)  + ".png"));
-        }
-        for (int i = 0; i < 32; i++) {
-            addTexture("item/compass_" + String.format("%02d", i)  + ".png", resourcePack.getTexture("assets/minecraft/textures/item/compass_" + String.format("%02d", i)  + ".png"));
-        }
     }
 
     @Override

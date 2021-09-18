@@ -50,8 +50,8 @@
           <doubleBuffered value="false"/>
           <focusCycleRoot value="false"/>
           <font size="22" style="0"/>
-          <horizontalAlignment value="0"/>
-          <horizontalTextPosition value="0"/>
+          <horizontalAlignment value="2"/>
+          <horizontalTextPosition value="2"/>
           <text value="&lt;html&gt;&lt;br/&gt;&lt;h1&gt;Welcome&lt;/h1&gt;This application allows you to convert modern &lt;br/&gt;Minecraft resource packs to the old texture pack format.&lt;br/&gt;&lt;br/&gt;Begin by selecting a resource pack to convert!&lt;/html&gt;"/>
           <verticalAlignment value="1"/>
           <verticalTextPosition value="0"/>

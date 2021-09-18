@@ -3,22 +3,19 @@ package gg.codie.spritecaster.gui;
 import gg.codie.spritecaster.SpriteCasterFiles;
 import gg.codie.spritecaster.gui.components.ResourcePackListItem;
 import gg.codie.spritecaster.gui.components.ResourcePackListItemRenderer;
-import gg.codie.spritecaster.resourcepacks.ResourcePack;
-import gg.codie.spritecaster.resourcepacks.ResourcePackBuilder;
-import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
-import gg.codie.spritecaster.texturepacks.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.IOException;
 import java.util.Locale;
-import java.util.zip.ZipFile;
 
 public class LoadResourcePackScreen {
 
@@ -40,11 +37,6 @@ public class LoadResourcePackScreen {
                 if (child.getName().endsWith(".zip"))
                     demoList.addElement(new ResourcePackListItem(child));
             }
-        } else {
-            // Handle the case where dir is not really a directory.
-            // Checking dir.isDirectory() above would not be sufficient
-            // to avoid race conditions with another process that deletes
-            // directories.
         }
 
         list1.setCellRenderer(new ResourcePackListItemRenderer());
@@ -58,48 +50,42 @@ public class LoadResourcePackScreen {
         browseButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                FileDialog fileDialog = new FileDialog(FrameManager.getInstance());
-                fileDialog.setDirectory(SpriteCasterFiles.MINECRAFT_RESOURCE_PACKS_PATH);
-                fileDialog.setFilenameFilter((dir, name) -> name.endsWith(".zip"));
-                fileDialog.setVisible(true);
-                selectResourcePack(new File(fileDialog.getDirectory() + fileDialog.getFile()));
+                JFileChooser j = new JFileChooser(SpriteCasterFiles.MINECRAFT_RESOURCE_PACKS_PATH);
+                j.setDialogTitle("SpriteCaster - Select Resource Pack");
+                j.setFileFilter(new FileFilter() {
+                    @Override
+                    public boolean accept(File f) {
+                        return f.getName().endsWith(".zip");
+                    }
+
+                    @Override
+                    public String getDescription() {
+                        return "Zip Archives";
+                    }
+                });
+
+                FrameManager.getInstance().setVisible(false);
+                int r = j.showSaveDialog(FrameManager.getInstance());
+
+                if (r == JFileChooser.APPROVE_OPTION)
+                {
+                    selectResourcePack(j.getSelectedFile());
+                }
+                FrameManager.getInstance().setVisible(true);
+            }
+        });
+        list1.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                selectButton.setEnabled(list1.getSelectedValue() != null);
             }
         });
     }
 
     private void selectResourcePack(File resourcePackFile) {
-        try {
-            if (!resourcePackFile.exists()) return;
-            FrameManager.getInstance().setVisible(false);
-            System.out.println("Selected " + resourcePackFile.getName());
-            System.out.println("Converting resource pack...");
-            ZipFile resourcePackZip = new ZipFile(resourcePackFile);
-
-            ResourcePack resourcePack = new ResourcePackBuilder(resourcePackZip).build();
-            ResourcePackStack resourcePackStack = new ResourcePackStack();
-            resourcePackStack.add(resourcePack);
-            TexturePack b173TexturePack = new Beta173TexturePackBuilder(resourcePackStack).build();
-            TexturePack b166texturePack = new Beta166TexturePackBuilder(resourcePackStack).build();
-            TexturePack b1501TexturePack = new Beta1501TexturePackBuilder(resourcePackStack).build();
-            TexturePack a11201TexturePack = new Alpha11201TexturePackBuilder(resourcePackStack).build();
-            TexturePack a1010TexturePack = new Alpha1010TexturePackBuilder(resourcePackStack).build();
-            TexturePack infdev20100618TexturePack = new Infdev20100618TexturePackBuilder(resourcePackStack).build();
-            TexturePack indev20100205TexturePack = new Indev20100205TexturePackBuilder(resourcePackStack).build();
-
-            b166texturePack.save();
-            b173TexturePack.save();
-            b1501TexturePack.save();
-            a11201TexturePack.save();
-            a1010TexturePack.save();
-            infdev20100618TexturePack.save();
-            indev20100205TexturePack.save();
-
-            System.out.println("Done!");
-            System.exit(0);
-        } catch (IOException ex) {
-            FrameManager.getInstance().setVisible(true);
-            ex.printStackTrace();
-        }
+        if (resourcePackFile == null || !resourcePackFile.exists()) return;
+        FrameManager.getInstance().setContentPane(new ConvertingScreen(resourcePackFile).contentPane);
+        FrameManager.getInstance().pack();
     }
 
     {
@@ -141,6 +127,7 @@ public class LoadResourcePackScreen {
         contentPane.add(panel2, BorderLayout.SOUTH);
         selectButton = new JButton();
         selectButton.setActionCommand("selectResourcePack");
+        selectButton.setEnabled(false);
         selectButton.setLabel("Select");
         selectButton.setText("Select");
         panel2.add(selectButton, BorderLayout.EAST);
