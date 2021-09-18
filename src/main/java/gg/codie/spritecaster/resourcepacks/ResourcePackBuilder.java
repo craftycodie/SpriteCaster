@@ -139,6 +139,13 @@ public class ResourcePackBuilder {
                 textures.put(ResourcePackTexture.Armour.LEATHER_LOWER.name(), base);
             }
 
+            if (texture.equals(ResourcePackTexture.Mob.DOGGY_COLLAR.name())) {
+                BufferedImage base = textures.get(ResourcePackTexture.Mob.DOGGY.name());
+                Graphics2D g2 = base.createGraphics();
+                g2.drawImage(tint(sprite, Color.red, 0.5f), 0, 0, null);
+                textures.put(ResourcePackTexture.Mob.DOGGY.name(), base);
+            }
+
             if (texture.equals(ResourcePackTexture.Armour.LEATHER_UPPER_OVERLAY.name())) {
                 BufferedImage base = textures.get(ResourcePackTexture.Armour.LEATHER_UPPER.name());
                 Graphics2D g2 = base.createGraphics();
@@ -884,7 +891,8 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.Mob.SPIDER, "assets/minecraft/textures/entity/spider/spider.png")
                 .withTexture(ResourcePackTexture.Mob.SQUID, "assets/minecraft/textures/entity/squid/squid.png")
                 .withTexture(ResourcePackTexture.Mob.WOLF_ANGRY, "assets/minecraft/textures/entity/wolf/wolf_angry.png")
-                .withTexture(ResourcePackTexture.Mob.DOGGY, "assets/minecraft/textures/entity/wolf/wolf_angry.png")
+                .withTexture(ResourcePackTexture.Mob.DOGGY, "assets/minecraft/textures/entity/wolf/wolf_tame.png")
+                .withTexture(ResourcePackTexture.Mob.DOGGY_COLLAR, "assets/minecraft/textures/entity/wolf/wolf_collar.png")
                 .withTexture(ResourcePackTexture.Mob.WOLF, "assets/minecraft/textures/entity/wolf/wolf.png")
                 .withTexture(ResourcePackTexture.Mob.ZOMBIE, "assets/minecraft/textures/entity/zombie/zombie.png")
                 .withTexture(ResourcePackTexture.Gui.PANORAMA0, "assets/minecraft/textures/gui/title/background/panorama_0.png")

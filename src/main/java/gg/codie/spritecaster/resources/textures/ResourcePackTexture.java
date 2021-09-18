@@ -279,6 +279,7 @@ public enum ResourcePackTexture {
         SQUID,
         WOLF_ANGRY,
         DOGGY,
+        DOGGY_COLLAR,
         WOLF,
         ZOMBIE,
     }
