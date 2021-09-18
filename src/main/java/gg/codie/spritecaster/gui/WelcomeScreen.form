@@ -33,7 +33,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="91bc8" class="javax.swing.JButton" binding="button1" default-binding="true">
+          <component id="91bc8" class="javax.swing.JButton" binding="selectResourcePackButton" default-binding="true">
             <constraints border-constraint="Center"/>
             <properties>
               <actionCommand value="selectResourcePack"/>

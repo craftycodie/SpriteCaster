@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gg.codie.spritecaster.gui.LoadResourcePackScreen">
+  <grid id="27dc6" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="600"/>
+    </constraints>
+    <properties>
+      <minimumSize width="500" height="600"/>
+      <preferredSize width="500" height="600"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="bcb1" binding="contentPane" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <maximumSize width="500" height="600"/>
+          <minimumSize width="500" height="600"/>
+          <preferredSize width="500" height="600"/>
+        </properties>
+        <border type="empty">
+          <title-color color="-4473925"/>
+          <size top="25" left="25" bottom="25" right="25"/>
+        </border>
+        <children>
+          <grid id="2c590" binding="logoPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="North"/>
+            <properties>
+              <alignmentY value="0.5"/>
+              <maximumSize width="450" height="53"/>
+              <minimumSize width="450" height="53"/>
+              <preferredSize width="450" height="53"/>
+            </properties>
+            <border type="empty">
+              <title-color color="-4473925"/>
+              <size top="0" left="0" bottom="0" right="0"/>
+            </border>
+            <children/>
+          </grid>
+          <grid id="ff3ea" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="South"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="a9c59" class="javax.swing.JButton" binding="selectButton" default-binding="true">
+                <constraints border-constraint="East"/>
+                <properties>
+                  <actionCommand value="selectResourcePack"/>
+                  <label value="Select"/>
+                  <text value="Select"/>
+                </properties>
+              </component>
+              <component id="50ce5" class="javax.swing.JButton" binding="browseButton">
+                <constraints border-constraint="West"/>
+                <properties>
+                  <actionCommand value="selectResourcePack"/>
+                  <label value="Browse"/>
+                  <text value="Browse"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="ecd52" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="empty">
+              <size top="25" left="0" bottom="25" right="0"/>
+            </border>
+            <children>
+              <scrollpane id="700c3">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none">
+                  <size top="0" left="0" bottom="0" right="0"/>
+                </border>
+                <children>
+                  <component id="d0b37" class="javax.swing.JList" binding="list1" default-binding="true">
+                    <constraints/>
+                    <properties>
+                      <font size="24"/>
+                      <model>
+                        <item value="Faithless 16x"/>
+                        <item value="Paper Cut Out"/>
+                        <item value="Some Other Resource Pack"/>
+                      </model>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

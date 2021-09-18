@@ -8,40 +8,27 @@ import javax.swing.border.TitledBorder;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Properties;
 
 public class WelcomeScreen extends JFrame {
-    private JPanel contentPane;
+    public JPanel contentPane;
     private JPanel logoPanel;
-    private JButton button1;
-
-    public static void main(String[] args) throws IOException {
-        FlatIntelliJLaf.setup();
-        FlatDarkPurpleIJTheme.setup();
-        final Properties properties = new Properties();
-        properties.load(ClassLoader.getSystemClassLoader().getResourceAsStream(".properties"));
-        JFrame frame = new JFrame("SpriteCaster " + properties.getProperty("version") + " (" + properties.getProperty("commit") + ")");
-        frame.setContentPane(new WelcomeScreen().contentPane);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 600);
-        frame.setResizable(false);
-
-//        frame.setMinimumSize(500, 600);
-//        frame.setMaximumSize(500, 600);
-
-        ImageIcon iconImage = new ImageIcon(WelcomeScreen.class.getResource("/icon.png"));
-        frame.setIconImage(iconImage.getImage());
-
-
-        frame.pack();
-        frame.setVisible(true);
-    }
+    private JButton selectResourcePackButton;
 
     public WelcomeScreen() {
         JLabel logoLabel = new JLabel(new ImageIcon(getClass().getResource("/logo.png")));
         logoPanel.add(logoLabel);
+        selectResourcePackButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                FrameManager.getInstance().setContentPane(new LoadResourcePackScreen().contentPane);
+                FrameManager.getInstance().pack();
+            }
+        });
     }
 
     {
@@ -76,11 +63,11 @@ public class WelcomeScreen extends JFrame {
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new BorderLayout(0, 0));
         contentPane.add(panel1, BorderLayout.SOUTH);
-        button1 = new JButton();
-        button1.setActionCommand("selectResourcePack");
-        button1.setLabel("Select Resource Pack");
-        button1.setText("Select Resource Pack");
-        panel1.add(button1, BorderLayout.CENTER);
+        selectResourcePackButton = new JButton();
+        selectResourcePackButton.setActionCommand("selectResourcePack");
+        selectResourcePackButton.setLabel("Select Resource Pack");
+        selectResourcePackButton.setText("Select Resource Pack");
+        panel1.add(selectResourcePackButton, BorderLayout.CENTER);
         final JLabel label1 = new JLabel();
         label1.setAutoscrolls(false);
         label1.setDoubleBuffered(false);

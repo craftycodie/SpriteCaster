@@ -22,7 +22,7 @@ public class ResourcePackBuilder {
 
     public ResourcePackBuilder(ZipFile resourcePack) {
         this.resourcePackZip = resourcePack;
-        this.name = resourcePack.getName().replace(".zip", "");
+        this.name = new File(resourcePack.getName()).getName().replace(".zip", "");
     }
 
     public ResourcePackBuilder withInfo(String info) {
@@ -793,7 +793,7 @@ public class ResourcePackBuilder {
 
     public ResourcePack build() {
         this
-                .withInfo(new JSONObject(readTextFile("pack.mcmeta")).getJSONObject("pack").getString("description"))
+                .withInfo(readTextFile("pack.mcmeta") != null ? new JSONObject(readTextFile("pack.mcmeta")).getJSONObject("pack").getString("description") : "")
                 .withBlocks()
                 .withItems()
                 .withMCMeta()

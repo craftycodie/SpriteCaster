@@ -1,5 +1,8 @@
 package gg.codie.spritecaster.texturepacks;
 
+import gg.codie.spritecaster.SpriteCasterFiles;
+import org.apache.commons.io.FileUtils;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -24,7 +27,7 @@ public class TexturePack {
     }
 
     public void save() {
-        File tempFolder = new File(name + File.separator);
+        File tempFolder = new File(SpriteCasterFiles.SPRITECASTER_TEMP_FOLDER + name);
         tempFolder.mkdir();
 
         files.forEach((file, content) -> {
@@ -56,10 +59,10 @@ public class TexturePack {
         });
 
         try {
-            Files.deleteIfExists(Paths.get(name + ".zip"));
-            Path p = Files.createFile(Paths.get(name + ".zip"));
+            Files.deleteIfExists(new File(SpriteCasterFiles.MINECRAFT_TEXTURE_PACKS_PATH + name + ".zip").toPath());
+            Path p = Files.createFile(new File(SpriteCasterFiles.MINECRAFT_TEXTURE_PACKS_PATH + name + ".zip").toPath());
             try (ZipOutputStream zs = new ZipOutputStream(Files.newOutputStream(p))) {
-                Path pp = Paths.get(name + File.separator);
+                Path pp = Paths.get(SpriteCasterFiles.SPRITECASTER_TEMP_FOLDER + name + File.separator);
                 Files.walk(pp)
                         .filter(path -> !Files.isDirectory(path))
                         .forEach(path -> {
@@ -72,6 +75,7 @@ public class TexturePack {
                                 System.err.println(e);
                             }
                         });
+                FileUtils.deleteDirectory(tempFolder);
             } catch (IOException e) {
                 e.printStackTrace();
             }
