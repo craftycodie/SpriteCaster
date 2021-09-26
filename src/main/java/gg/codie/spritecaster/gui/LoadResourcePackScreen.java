@@ -55,7 +55,7 @@ public class LoadResourcePackScreen {
                 j.setFileFilter(new FileFilter() {
                     @Override
                     public boolean accept(File f) {
-                        return f.getName().endsWith(".zip");
+                        return f.getName().endsWith(".zip") || f.isDirectory();
                     }
 
                     @Override
@@ -64,14 +64,12 @@ public class LoadResourcePackScreen {
                     }
                 });
 
-                FrameManager.getInstance().setVisible(false);
-                int r = j.showSaveDialog(FrameManager.getInstance());
+                int r = j.showOpenDialog(FrameManager.getInstance());
 
                 if (r == JFileChooser.APPROVE_OPTION)
                 {
                     selectResourcePack(j.getSelectedFile());
                 }
-                FrameManager.getInstance().setVisible(true);
             }
         });
         list1.addListSelectionListener(new ListSelectionListener() {
