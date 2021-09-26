@@ -82,6 +82,10 @@ public class ResourcePackBuilder {
             BufferedImage sprite = getSprite(relativePath);
             textures.put(texture, sprite);
 
+            if (texture.equals(ResourcePackTexture.Block.WATER_FLOWING.name()) || texture.equals(ResourcePackTexture.Block.LAVA_FLOWING.name())) {
+                textures.put(texture, sprite.getSubimage(0, 0, sprite.getWidth() / 2, sprite.getHeight()));
+            }
+
             if (texture.equals(ResourcePackTexture.Block.BLOCK_OF_IRON.name())) {
                 textures.put(ResourcePackTexture.Block.BLOCK_OF_IRON_SIDE.name(), sprite);
                 textures.put(ResourcePackTexture.Block.BLOCK_OF_IRON_BOTTOM.name(), sprite);
