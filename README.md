@@ -11,4 +11,4 @@ For example, if you wanted to play Minecraft Beta 1.7.3 using Faithless, you're 
 
 [Download](https://ci.appveyor.com/project/craftycodie/spritecaster/build/artifacts)
 
-<!--![demo](demo.png)-->
+![demo](demo.png)
