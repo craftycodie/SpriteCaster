@@ -173,7 +173,7 @@ public class Alpha1010TexturePackBuilder extends Alpha11201TexturePackBuilder {
 
     private BufferedImage upscaleCactus(BufferedImage in) {
         int scale = in.getWidth() / 16;
-        BufferedImage chest = new BufferedImage(in.getWidth(), in.getHeight(), in.getType());
+        BufferedImage chest = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D graphics2D = chest.createGraphics();
         graphics2D.drawImage(in.getSubimage(scale, scale, scale, 14 * scale), 0, scale, null);
         graphics2D.drawImage(in.getSubimage(scale, scale, scale, scale), 0, 0, null);

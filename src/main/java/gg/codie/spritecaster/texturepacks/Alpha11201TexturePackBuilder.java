@@ -191,7 +191,7 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
         int imgWidth = master.getWidth();
         int imgHeight = master.getHeight();
 
-        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, master.getType());
+        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = imgMask.createGraphics();
         applyQualityRenderingHints(g2);
 
@@ -202,7 +202,7 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
         g2.fillRect(0, 0, master.getWidth(), master.getHeight());
         g2.dispose();
 
-        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, master.getType());
+        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
         g2 = tinted.createGraphics();
         applyQualityRenderingHints(g2);
         g2.drawImage(master, 0, 0, null);
@@ -216,7 +216,7 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
         int imgWidth = master.getWidth();
         int imgHeight = master.getHeight();
 
-        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, master.getType());
+        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = imgMask.createGraphics();
         applyQualityRenderingHints(g2);
 
@@ -227,7 +227,7 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
         g2.fillRect(0, 0, master.getWidth(), master.getHeight());
         g2.dispose();
 
-        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, master.getType());
+        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
         g2 = tinted.createGraphics();
         applyQualityRenderingHints(g2);
         g2.drawImage(master, 0, 0, null);
@@ -241,7 +241,7 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
         int imgWidth = master.getWidth();
         int imgHeight = master.getHeight();
 
-        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, master.getType());
+        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = imgMask.createGraphics();
         applyQualityRenderingHints(g2);
 
@@ -252,7 +252,7 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
         g2.fillRect(0, 0, master.getWidth(), master.getHeight());
         g2.dispose();
 
-        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, master.getType());
+        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
         g2 = tinted.createGraphics();
         applyQualityRenderingHints(g2);
         g2.drawImage(master, 0, 0, null);

@@ -31,7 +31,10 @@ public class ResourcePackBuilder {
     }
 
     private BufferedImage getSprite(String texturePath) throws IOException {
-        return ImageIO.read(this.resourcePackZip.getInputStream(this.resourcePackZip.getEntry(texturePath)));
+        BufferedImage in = ImageIO.read(this.resourcePackZip.getInputStream(this.resourcePackZip.getEntry(texturePath)));
+        BufferedImage bufferedImage = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        bufferedImage.createGraphics().drawImage(in, 0, 0, null);
+        return bufferedImage;
     }
 
     public static void applyQualityRenderingHints(Graphics2D g2d) {
@@ -194,7 +197,7 @@ public class ResourcePackBuilder {
             if (texture.equals(ResourcePackTexture.Block.BED_UPPER_TOP.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage bedUpperTop = sprite.getSubimage(6 * scale, 6 * scale, 16 * scale, 16 * scale);
-                BufferedImage rotatedBedUpperTop = new BufferedImage(bedUpperTop.getWidth(), bedUpperTop.getHeight(), bedUpperTop.getType());
+                BufferedImage rotatedBedUpperTop = new BufferedImage(bedUpperTop.getWidth(), bedUpperTop.getHeight(), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = rotatedBedUpperTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(90), rotatedBedUpperTop.getWidth() / 2, rotatedBedUpperTop.getHeight() / 2);
                 graphics2D.drawImage(bedUpperTop, 0, 0, null);
@@ -204,7 +207,7 @@ public class ResourcePackBuilder {
             if (texture.equals(ResourcePackTexture.Block.BED_LOWER_TOP.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage bedUpperTop = sprite.getSubimage(6 * scale, 28  * scale, 16 * scale, 16 * scale);
-                BufferedImage rotatedBedUpperTop = new BufferedImage(bedUpperTop.getWidth(), bedUpperTop.getHeight(), bedUpperTop.getType());
+                BufferedImage rotatedBedUpperTop = new BufferedImage(bedUpperTop.getWidth(), bedUpperTop.getHeight(), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics2D = rotatedBedUpperTop.createGraphics();
                 graphics2D.rotate(Math.toRadians(90), rotatedBedUpperTop.getWidth() / 2, rotatedBedUpperTop.getHeight() / 2);
                 graphics2D.drawImage(bedUpperTop, 0, 0, null);
@@ -383,7 +386,7 @@ public class ResourcePackBuilder {
                 graphics2D.rotate(Math.toRadians(90), redstoneLine.getWidth() / 2, redstoneLine.getHeight() / 2);
                 graphics2D.drawImage(sprite, 0, 0, null);
                 textures.put(texture, redstoneLine);
-                BufferedImage redstoneCross = new BufferedImage(redstoneLine.getWidth(), redstoneLine.getHeight(), redstoneLine.getType());
+                BufferedImage redstoneCross = new BufferedImage(redstoneLine.getWidth(), redstoneLine.getHeight(), BufferedImage.TYPE_INT_ARGB);
                 graphics2D = redstoneCross.createGraphics();
                 graphics2D.drawImage(redstoneLine, 0, 0, null);
                 graphics2D.rotate(Math.toRadians(90), redstoneCross.getWidth() / 2, redstoneCross.getHeight() / 2);
@@ -416,7 +419,7 @@ public class ResourcePackBuilder {
 
     private BufferedImage upscaleChest(BufferedImage in) {
         int scale = in.getWidth() / 16;
-        BufferedImage chest = new BufferedImage(in.getWidth(), in.getHeight(), in.getType());
+        BufferedImage chest = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D graphics2D = chest.createGraphics();
         graphics2D.drawImage(in.getSubimage(scale, scale, scale, 14 * scale), 0, scale, null);
         graphics2D.drawImage(in.getSubimage(scale, scale, scale, scale), 0, 0, null);

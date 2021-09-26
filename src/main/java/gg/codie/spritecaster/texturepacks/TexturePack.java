@@ -66,7 +66,7 @@ public class TexturePack {
                 Files.walk(pp)
                         .filter(path -> !Files.isDirectory(path))
                         .forEach(path -> {
-                            ZipEntry zipEntry = new ZipEntry(pp.relativize(path).toString());
+                            ZipEntry zipEntry = new ZipEntry(pp.relativize(path).toString().replace(File.separator, "/"));
                             try {
                                 zs.putNextEntry(zipEntry);
                                 Files.copy(path, zs);
@@ -75,6 +75,8 @@ public class TexturePack {
                                 System.err.println(e);
                             }
                         });
+                zs.flush();
+                zs.close();
                 FileUtils.deleteDirectory(tempFolder);
             } catch (IOException e) {
                 e.printStackTrace();
