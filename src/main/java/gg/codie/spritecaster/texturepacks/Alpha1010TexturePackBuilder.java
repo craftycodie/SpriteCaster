@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 public class Alpha1010TexturePackBuilder extends Alpha11201TexturePackBuilder {
     public Alpha1010TexturePackBuilder(ResourcePackStack resourcePack) {
         super(resourcePack);
+        addTexture(TexturePackTexture.GUI_LOGO, resourcePack.getTexture(ResourcePackTexture.Gui.LOGO_OLD));
     }
 
     @Override

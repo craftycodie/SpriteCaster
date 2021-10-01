@@ -1,6 +1,7 @@
 package gg.codie.spritecaster.resourcepacks;
 
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
+import gg.codie.spritecaster.utils.BufferedImageUtils;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 
@@ -48,31 +49,6 @@ public class ResourcePackBuilder {
         g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
     }
 
-    public BufferedImage tint(BufferedImage master, Color color, float alpha) {
-        int imgWidth = master.getWidth();
-        int imgHeight = master.getHeight();
-
-        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2 = imgMask.createGraphics();
-        applyQualityRenderingHints(g2);
-
-        g2.drawImage(master, 0, 0, null);
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, alpha));
-        g2.setColor(color);
-
-        g2.fillRect(0, 0, master.getWidth(), master.getHeight());
-        g2.dispose();
-
-        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
-        g2 = tinted.createGraphics();
-        applyQualityRenderingHints(g2);
-        g2.drawImage(master, 0, 0, null);
-        g2.drawImage(imgMask, 0, 0, null);
-        g2.dispose();
-
-        return tinted;
-    }
-
     public ResourcePackBuilder withTexture(Enum texture, String relativePath) {
         return withTexture(texture.name(), relativePath);
     }
@@ -82,7 +58,16 @@ public class ResourcePackBuilder {
             BufferedImage sprite = getSprite(relativePath);
             textures.put(texture, sprite);
 
-            if (texture.equals(ResourcePackTexture.Block.WATER_FLOWING.name()) || texture.equals(ResourcePackTexture.Block.LAVA_FLOWING.name())) {
+            if (texture.equals(ResourcePackTexture.Gui.LOGO.name())) {
+                float scale = (float)sprite.getWidth() / 256;
+                BufferedImage logoOld = new BufferedImage((int)(274 * scale), (int)(274 * scale), BufferedImage.TYPE_INT_ARGB);
+                Graphics2D g2 = logoOld.createGraphics();
+                g2.drawImage(sprite.getSubimage(0, 0, (int)(155 * scale), (int)(45 * scale)), 0, 0, null);
+                g2.drawImage(sprite.getSubimage(0, 45, (int)(119 * scale), (int)(45 * scale)), (int)(155 * scale), 0, null);
+                textures.put(ResourcePackTexture.Gui.LOGO_OLD.name(), logoOld);
+            }
+
+            if (texture.equals(ResourcePackTexture.Block.LAVA_FLOWING.name())) {
                 textures.put(texture, sprite.getSubimage(0, 0, sprite.getWidth() / 2, sprite.getHeight()));
             }
 
@@ -101,42 +86,41 @@ public class ResourcePackBuilder {
                 textures.put(ResourcePackTexture.Block.BLOCK_OF_DIAMOND_BOTTOM.name(), sprite);
             }
 
-            if (texture.equals(ResourcePackTexture.Block.WOOL_LIGHT_GREY.name())) {
-//                sprite = tint(sprite, Color.BLACK, 0.5f);
-                textures.put(ResourcePackTexture.Block.WOOL_CHARTREUSE.name(), tint(sprite, Color.decode("#ADFF2F"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_CAPRI.name(), tint(sprite, Color.decode("#00bfff"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_CYAN.name(), tint(sprite, Color.decode("#00FFFF"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_SPRING_GREEN.name(), tint(sprite, Color.decode("#00ff99"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_ROSE.name(), tint(sprite, Color.decode("#ff007f"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_ULTRAMARINE.name(), tint(sprite, Color.decode("#4166f5"), 0.5f));
-                textures.put(ResourcePackTexture.Block.WOOL_VIOLET.name(), tint(sprite, Color.decode("#8F00FF"), 0.5f));
+            if (texture.equals(ResourcePackTexture.Block.WOOL_WHITE.name())) {
+                textures.put(ResourcePackTexture.Block.WOOL_CHARTREUSE.name(), BufferedImageUtils.tint(sprite, Color.decode("#ADFF2F")));
+                textures.put(ResourcePackTexture.Block.WOOL_CAPRI.name(), BufferedImageUtils.tint(sprite, Color.decode("#00bfff")));
+                textures.put(ResourcePackTexture.Block.WOOL_CYAN.name(), BufferedImageUtils.tint(sprite, Color.decode("#00FFFF")));
+                textures.put(ResourcePackTexture.Block.WOOL_SPRING_GREEN.name(), BufferedImageUtils.tint(sprite, Color.decode("#00ff99")));
+                textures.put(ResourcePackTexture.Block.WOOL_ROSE.name(), BufferedImageUtils.tint(sprite, Color.decode("#ff007f")));
+                textures.put(ResourcePackTexture.Block.WOOL_ULTRAMARINE.name(), BufferedImageUtils.tint(sprite, Color.decode("#4166f5")));
+                textures.put(ResourcePackTexture.Block.WOOL_VIOLET.name(), BufferedImageUtils.tint(sprite, Color.decode("#8F00FF")));
             }
 
             if (texture.equals(ResourcePackTexture.Block.WATER_STILL.name())) {
-                textures.put(texture, tint(sprite, Color.decode("#3F76E4"), 0.5f));
+                textures.put(texture, BufferedImageUtils.tint(sprite, Color.decode("#3F76E4"), true));
             }
 
             if (texture.equals(ResourcePackTexture.Block.WATER_FLOWING.name())) {
-                textures.put(texture, tint(sprite, Color.decode("#3F76E4"), 0.5f));
+                textures.put(texture, BufferedImageUtils.tint(sprite.getSubimage(0, 0, sprite.getWidth() / 2, sprite.getHeight()), Color.decode("#3F76E4"), true));
             }
 
             if (texture.equals(ResourcePackTexture.Item.HELMET_CLOTH.name())) {
-                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+                textures.put(texture, BufferedImageUtils.tint(sprite, Color.decode("#A06540")));
             }
             if (texture.equals(ResourcePackTexture.Item.CHEST_CLOTH.name())) {
-                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+                textures.put(texture, BufferedImageUtils.tint(sprite, Color.decode("#A06540")));
             }
             if (texture.equals(ResourcePackTexture.Item.LEGS_CLOTH.name())) {
-                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+                textures.put(texture, BufferedImageUtils.tint(sprite, Color.decode("#A06540")));
             }
             if (texture.equals(ResourcePackTexture.Item.BOOTS_CLOTH.name())) {
-                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+                textures.put(texture, BufferedImageUtils.tint(sprite, Color.decode("#A06540")));
             }
             if (texture.equals(ResourcePackTexture.Armour.LEATHER_LOWER.name())) {
-                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+                textures.put(texture, BufferedImageUtils.tint(sprite, Color.decode("#A06540")));
             }
             if (texture.equals(ResourcePackTexture.Armour.LEATHER_UPPER.name())) {
-                textures.put(texture, tint(sprite, Color.decode("#A06540"), 0.5f));
+                textures.put(texture, BufferedImageUtils.tint(sprite, Color.decode("#A06540")));
             }
 
             if (texture.equals(ResourcePackTexture.Armour.LEATHER_LOWER_OVERLAY.name())) {
@@ -149,7 +133,7 @@ public class ResourcePackBuilder {
             if (texture.equals(ResourcePackTexture.Mob.DOGGY_COLLAR.name())) {
                 BufferedImage base = textures.get(ResourcePackTexture.Mob.DOGGY.name());
                 Graphics2D g2 = base.createGraphics();
-                g2.drawImage(tint(sprite, Color.red, 0.5f), 0, 0, null);
+                g2.drawImage(BufferedImageUtils.tint(sprite, Color.red), 0, 0, null);
                 textures.put(ResourcePackTexture.Mob.DOGGY.name(), base);
             }
 
@@ -397,17 +381,17 @@ public class ResourcePackBuilder {
                 graphics2D.drawImage(redstoneLine, 0, 0, null);
                 textures.put(ResourcePackTexture.Block.REDSTONE_CROSS.name(), redstoneCross);
 
-                textures.put(ResourcePackTexture.Block.REDSTONE_LINE_OFF.name(), tint(tint(redstoneLine, Color.black, 0.5f), Color.decode("#4B0000"), 0.5f));
-                textures.put(ResourcePackTexture.Block.REDSTONE_LINE_ON.name(), tint(tint(redstoneLine, Color.black, 0.5f), Color.decode("#FF3201"), 0.5f));
-                textures.put(ResourcePackTexture.Block.REDSTONE_CROSS_OFF.name(), tint(tint(redstoneCross, Color.black, 0.5f), Color.decode("#4B0000"), 0.5f));
-                textures.put(ResourcePackTexture.Block.REDSTONE_CROSS_ON.name(), tint(tint(redstoneCross, Color.black, 0.5f), Color.decode("#FF3201"), 0.5f));
+                textures.put(ResourcePackTexture.Block.REDSTONE_LINE_OFF.name(), BufferedImageUtils.tint(redstoneLine, Color.decode("#4B0000")));
+                textures.put(ResourcePackTexture.Block.REDSTONE_LINE_ON.name(), BufferedImageUtils.tint(redstoneLine, Color.decode("#FF3201")));
+                textures.put(ResourcePackTexture.Block.REDSTONE_CROSS_OFF.name(), BufferedImageUtils.tint(redstoneCross, Color.decode("#4B0000")));
+                textures.put(ResourcePackTexture.Block.REDSTONE_CROSS_ON.name(), BufferedImageUtils.tint(redstoneCross, Color.decode("#FF3201")));
             }
 
             if (texture.equals(ResourcePackTexture.ENVIRONMENT_MOON_PHASES.name())) {
                 textures.put(texture, sprite.getSubimage(0, 0, sprite.getWidth() / 4, sprite.getHeight() / 2));
             }
         } catch (Exception ex) {
-//            ex.printStackTrace();
+            ex.printStackTrace();
         }
 
         return this;
@@ -487,7 +471,9 @@ public class ResourcePackBuilder {
     }
 
     private ResourcePackBuilder withBlocks() {
-        return this.withTexture(ResourcePackTexture.Block.GRASS_TOP, "assets/minecraft/textures/block/grass_block_top.png")
+        return this.withTexture(ResourcePackTexture.GRASS_COLOR, "assets/minecraft/textures/colormap/grass.png")
+                .withTexture(ResourcePackTexture.FOLIAGE_COLOR, "assets/minecraft/textures/colormap/foliage.png")
+                .withTexture(ResourcePackTexture.Block.GRASS_TOP, "assets/minecraft/textures/block/grass_block_top.png")
                 .withTexture(ResourcePackTexture.Block.STONE, "assets/minecraft/textures/block/stone.png")
                 .withTexture(ResourcePackTexture.Block.DIRT, "assets/minecraft/textures/block/dirt.png")
                 .withTexture(ResourcePackTexture.Block.GRASS_SIDE, "assets/minecraft/textures/block/grass_block_side.png")
@@ -873,9 +859,6 @@ public class ResourcePackBuilder {
                 .withTexture(ResourcePackTexture.ITEM_BOAT, "assets/minecraft/textures/entity/boat/oak.png")
                 .withTexture(ResourcePackTexture.ITEM_CART, "assets/minecraft/textures/entity/minecart.png")
                 .withTexture(ResourcePackTexture.ITEM_SIGN, "assets/minecraft/textures/entity/signs/oak.png")
-                .withTexture(ResourcePackTexture.Item.CLOCK_DIAL, "")
-                .withTexture(ResourcePackTexture.FOLIAGE_COLOR, "")
-                .withTexture(ResourcePackTexture.GRASS_COLOR, "")
                 .withTexture(ResourcePackTexture.MAP_BACKGROUND, "assets/minecraft/textures/map/map_background.png")
                 .withTexture(ResourcePackTexture.MAP_ICONS, "assets/minecraft/textures/map/map_icons.png")
                 .withTexture(ResourcePackTexture.PUMPKIN_BLUR, "assets/minecraft/textures/misc/pumpkinblur.png")

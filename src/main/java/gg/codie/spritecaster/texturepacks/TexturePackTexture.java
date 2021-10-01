@@ -88,6 +88,8 @@ public enum TexturePackTexture {
     ROCK("rock.png"),
     GRASS("grass.png"),
     DIRT("dirt.png"),
+    OLD_RAIN("rain.png"),
+    OLD_CLOUDS("clouds.png"),
 
     PANORAMA0("/title/bg/panorama0.png"),
     PANORAMA1("/title/bg/panorama1.png"),

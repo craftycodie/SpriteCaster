@@ -440,6 +440,7 @@ public enum ResourcePackTexture {
         ICONS,
         INVENTORY,
         LOGO,
+        LOGO_OLD,
         SLOT,
         TRAP,
         UNKNOWN_PACK,

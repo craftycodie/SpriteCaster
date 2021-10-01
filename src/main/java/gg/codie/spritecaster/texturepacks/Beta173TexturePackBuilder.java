@@ -453,6 +453,7 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.LAVA_FLOWING, resourcePack.getTexture(ResourcePackTexture.Block.LAVA_FLOWING));
         addTexture(TexturePackTexture.PORTAL, resourcePack.getTexture(ResourcePackTexture.Block.PORTAL));
         addTexture(TexturePackTexture.GRASS_COLOR, resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR));
+        addTexture(TexturePackTexture.FOLIAGE_COLOR, resourcePack.getTexture(ResourcePackTexture.FOLIAGE_COLOR));
         addTexture(TexturePackTexture.FONT, resourcePack.getTexture(ResourcePackTexture.FONT));
         addTexture(TexturePackTexture.CHAINMAIL_ARMOUR_LOWER, resourcePack.getTexture(ResourcePackTexture.Armour.CHAIN_LOWER));
         addTexture(TexturePackTexture.CHAINMAIL_ARMOUR_UPPER, resourcePack.getTexture(ResourcePackTexture.Armour.CHAIN_UPPER));
@@ -465,7 +466,9 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addTexture(TexturePackTexture.IRON_ARMOUR_UPPER, resourcePack.getTexture(ResourcePackTexture.Armour.IRON_UPPER));
         addTexture(TexturePackTexture.IRON_ARMOUR_LOWER, resourcePack.getTexture(ResourcePackTexture.Armour.IRON_LOWER));
         addTexture(TexturePackTexture.CLOUDS, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_CLOUDS));
+        addTexture(TexturePackTexture.OLD_CLOUDS, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_CLOUDS));
         addTexture(TexturePackTexture.RAIN, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_RAIN));
+        addTexture(TexturePackTexture.OLD_RAIN, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_RAIN));
         addTexture(TexturePackTexture.SNOW, resourcePack.getTexture(ResourcePackTexture.ENVIRONMENT_SNOW));
         addTexture(TexturePackTexture.GUI_CONTAINER, resourcePack.getTexture(ResourcePackTexture.Gui.CONTAINER));
         addTexture(TexturePackTexture.GUI_CRAFTING, resourcePack.getTexture(ResourcePackTexture.Gui.CRAFTING));

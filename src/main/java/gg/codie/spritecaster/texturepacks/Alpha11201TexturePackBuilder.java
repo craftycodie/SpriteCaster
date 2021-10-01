@@ -4,6 +4,7 @@ import gg.codie.spritecaster.SpriteAtlas;
 import gg.codie.spritecaster.SpriteAtlasBuilder;
 import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
+import gg.codie.spritecaster.utils.BufferedImageUtils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,6 +12,7 @@ import java.awt.image.BufferedImage;
 public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
     public Alpha11201TexturePackBuilder(ResourcePackStack resourcePack) {
         super(resourcePack);
+        addTexture(TexturePackTexture.GUI_LOGO, resourcePack.getTexture(ResourcePackTexture.Gui.LOGO_OLD));
     }
 
     @Override
@@ -188,89 +190,23 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
     }
 
     protected BufferedImage tintGrassGreen(BufferedImage master) {
-        int imgWidth = master.getWidth();
-        int imgHeight = master.getHeight();
-
-        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2 = imgMask.createGraphics();
-        applyQualityRenderingHints(g2);
-
-        g2.drawImage(master, 0, 0, null);
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.5f));
-        g2.setColor(Color.decode("#7CBD6B"));
-
-        g2.fillRect(0, 0, master.getWidth(), master.getHeight());
-        g2.dispose();
-
-        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
-        g2 = tinted.createGraphics();
-        applyQualityRenderingHints(g2);
-        g2.drawImage(master, 0, 0, null);
-        g2.drawImage(imgMask, 0, 0, null);
-        g2.dispose();
-
-        return tinted;
+        Color green = Color.decode("#97FF5B");
+        if (resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR) != null) {
+            green = new Color(resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR).getRGB(0, 0));
+        }
+        return BufferedImageUtils.tint(master, green);
     }
 
     protected BufferedImage tintLeavesGreen(BufferedImage master) {
-        int imgWidth = master.getWidth();
-        int imgHeight = master.getHeight();
-
-        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2 = imgMask.createGraphics();
-        applyQualityRenderingHints(g2);
-
-        g2.drawImage(master, 0, 0, null);
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.5f));
-        g2.setColor(Color.decode("#48B518"));
-
-        g2.fillRect(0, 0, master.getWidth(), master.getHeight());
-        g2.dispose();
-
-        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
-        g2 = tinted.createGraphics();
-        applyQualityRenderingHints(g2);
-        g2.drawImage(master, 0, 0, null);
-        g2.drawImage(imgMask, 0, 0, null);
-        g2.dispose();
-
-        return tinted;
+        Color green = Color.decode("#97FF5B");
+        if (resourcePack.getTexture(ResourcePackTexture.FOLIAGE_COLOR) != null) {
+            green = new Color(resourcePack.getTexture(ResourcePackTexture.FOLIAGE_COLOR).getRGB(0, 0));
+        }
+        return BufferedImageUtils.tint(master, green);
     }
 
     protected BufferedImage tintSpruceLeavesGreen(BufferedImage master) {
-        int imgWidth = master.getWidth();
-        int imgHeight = master.getHeight();
-
-        BufferedImage imgMask = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2 = imgMask.createGraphics();
-        applyQualityRenderingHints(g2);
-
-        g2.drawImage(master, 0, 0, null);
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.5f));
-        g2.setColor(Color.decode("#619961"));
-
-        g2.fillRect(0, 0, master.getWidth(), master.getHeight());
-        g2.dispose();
-
-        BufferedImage tinted = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
-        g2 = tinted.createGraphics();
-        applyQualityRenderingHints(g2);
-        g2.drawImage(master, 0, 0, null);
-        g2.drawImage(imgMask, 0, 0, null);
-        g2.dispose();
-
-        return tinted;
-    }
-
-    private void applyQualityRenderingHints(Graphics2D g2d) {
-        g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        g2d.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        g2d.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+        return BufferedImageUtils.tint(master, Color.decode("#619961"));
     }
 
     @Override
