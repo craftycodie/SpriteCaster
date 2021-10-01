@@ -5,6 +5,8 @@ import gg.codie.spritecaster.SpriteAtlasBuilder;
 import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
 
+import java.awt.image.BufferedImage;
+
 public class Indev20100205TexturePackBuilder extends Alpha11201TexturePackBuilder {
     public Indev20100205TexturePackBuilder(ResourcePackStack resourcePack) {
         super(resourcePack);
@@ -13,6 +15,9 @@ public class Indev20100205TexturePackBuilder extends Alpha11201TexturePackBuilde
     @Override
     protected SpriteAtlas createTerrain() {
         int scale = resourcePack.getTexture(ResourcePackTexture.Block.STONE).getWidth() / 16;
+
+        BufferedImage waterStill = resourcePack.getTexture(ResourcePackTexture.Block.WATER_STILL);
+        BufferedImage lavaStill = resourcePack.getTexture(ResourcePackTexture.Block.LAVA_STILL);
 
         return new SpriteAtlasBuilder()
                 .setSpriteSize(16 * scale)
@@ -30,6 +35,8 @@ public class Indev20100205TexturePackBuilder extends Alpha11201TexturePackBuilde
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.COBWEB), 1, 12)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.RED_FLOWER), 1, 13)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.YELLOW_FLOWER), 1, 14)
+                .registerSprite(waterStill.getSubimage(0, 0, waterStill.getWidth(), waterStill.getWidth()), 1, 15)
+                .registerSprite(lavaStill.getSubimage(0, 0, lavaStill.getWidth(), lavaStill.getWidth()), 2, 15)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.SAPLING), 1, 16)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.COBBLESTONE), 2, 1)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.BEDROCK), 2, 2)
