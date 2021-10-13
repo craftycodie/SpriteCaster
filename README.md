@@ -21,6 +21,7 @@ All unchanged blocks and textures work as you'd expect in older versions!
 
 ### What doesn't work?
 - Most notably, the inventory screen remains unchanged, due to the release one being too different.
+  - You can include a suitable inventory texture in a resource pack if you wish, at `assets\minecraft\spritecaster\gui\container\inventory_v1.png`
 - Boat entities are not yet converted.
 - Most release packs don't have bed icons these days. They will be used if present, but if not the default icon will be used.
 
