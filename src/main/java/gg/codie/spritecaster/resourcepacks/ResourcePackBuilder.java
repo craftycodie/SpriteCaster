@@ -192,6 +192,30 @@ public class ResourcePackBuilder {
                 textures.put(texture, rotatedBedUpperTop);
             }
 
+            if (texture.equals(ResourcePackTexture.Mob.COW.name())) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage cowButt = sprite.getSubimage(40 * scale, 4 * scale, 12 * scale, 10 * scale);
+                BufferedImage rotatedCowButt = new BufferedImage(cowButt.getWidth(), cowButt.getHeight(), BufferedImage.TYPE_INT_ARGB);
+                Graphics2D graphics2D = rotatedCowButt.createGraphics();
+                AffineTransform at = new AffineTransform();
+                at.concatenate(AffineTransform.getScaleInstance(1, -1));
+                at.concatenate(AffineTransform.getTranslateInstance(0, -cowButt.getHeight()));
+                graphics2D.transform(at);
+                graphics2D.drawImage(cowButt, 0, 0, null);
+                graphics2D.dispose();
+                graphics2D = sprite.createGraphics();
+                graphics2D.drawImage(rotatedCowButt, 40 * scale, 4 * scale, null);
+                textures.put(texture, sprite);
+            }
+
+            if (texture.equals(ResourcePackTexture.Mob.PIG.name())) {
+                int scale = sprite.getWidth() / 64;
+                BufferedImage pigNose = sprite.getSubimage(16 * scale, 17 * scale, 6 * scale, 3 * scale);
+                Graphics2D graphics2D = sprite.createGraphics();
+                graphics2D.drawImage(pigNose, 10 * scale, 12 * scale, null);
+                textures.put(texture, sprite);
+            }
+
             if (texture.equals(ResourcePackTexture.Block.BED_LOWER_TOP.name())) {
                 int scale = sprite.getWidth() / 64;
                 BufferedImage bedUpperTop = sprite.getSubimage(6 * scale, 28  * scale, 16 * scale, 16 * scale);
