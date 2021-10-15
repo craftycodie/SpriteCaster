@@ -210,7 +210,7 @@ public class ResourcePackBuilder {
 
             if (texture.equals(ResourcePackTexture.Mob.PIG.name())) {
                 int scale = sprite.getWidth() / 64;
-                BufferedImage pigNose = sprite.getSubimage(16 * scale, 17 * scale, 6 * scale, 3 * scale);
+                BufferedImage pigNose = sprite.getSubimage(17 * scale, 17 * scale, 4 * scale, 3 * scale);
                 Graphics2D graphics2D = sprite.createGraphics();
                 graphics2D.drawImage(pigNose, 10 * scale, 12 * scale, null);
                 textures.put(texture, sprite);
