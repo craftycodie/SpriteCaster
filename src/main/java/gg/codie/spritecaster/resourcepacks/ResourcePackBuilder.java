@@ -390,6 +390,28 @@ public class ResourcePackBuilder {
             if (texture.equals(ResourcePackTexture.ENVIRONMENT_MOON_PHASES.name())) {
                 textures.put(texture, sprite.getSubimage(0, 0, sprite.getWidth() / 4, sprite.getHeight() / 2));
             }
+
+            if (texture.equals(ResourcePackTexture.Mob.ZOMBIE.name())) {
+                BufferedImage skin = sprite;
+                boolean tall = skin.getHeight() >= skin.getWidth();
+                BufferedImage movePart;
+                Graphics2D graphics = skin.createGraphics();
+                AlphaComposite alpha = AlphaComposite.getInstance(AlphaComposite.SRC_OVER);
+                graphics.setComposite(alpha);
+
+
+                if (tall) {
+                    // Flatten second layers.
+                    movePart = skin.getSubimage(0, 32, 56, 16);
+                    graphics.drawImage(movePart, 0, 16, null);
+                }
+
+                graphics.dispose();
+
+                // Crop
+                BufferedImage croppedSkin = skin.getSubimage(0, 0, 64, 32);
+                textures.put(texture, croppedSkin);
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
