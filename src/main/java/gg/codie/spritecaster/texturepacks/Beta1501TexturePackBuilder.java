@@ -4,6 +4,7 @@ import gg.codie.spritecaster.SpriteAtlas;
 import gg.codie.spritecaster.SpriteAtlasBuilder;
 import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
+import gg.codie.spritecaster.utils.BufferedImageUtils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -22,7 +23,7 @@ public class Beta1501TexturePackBuilder extends Beta166TexturePackBuilder {
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_TOP), 1, 1)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.STONE), 1, 2)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.DIRT), 1, 3)
-                .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_SIDE), 1, 4)
+                .registerSprite(getGrassSideWithTintedOverlay(), 1, 4)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.WOODEN_PLANKS), 1, 5)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.STONE_SLAB_SIDE), 1, 6)
                 .registerSprite(resourcePack.getTexture(ResourcePackTexture.Block.STONE_SLAB_TOP), 1, 7)
@@ -173,6 +174,24 @@ public class Beta1501TexturePackBuilder extends Beta166TexturePackBuilder {
                 .registerSprite(addGreyBackgroud(resourcePack.getTexture(ResourcePackTexture.Block.BREAKING_8)), 16, 9)
                 .registerSprite(addGreyBackgroud(resourcePack.getTexture(ResourcePackTexture.Block.BREAKING_9)), 16, 10)
                 .build();
+    }
+
+    protected BufferedImage tintGrassGreen(BufferedImage master) {
+        Color green = Color.decode("#97FF5B");
+        if (resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR) != null) {
+            green = new Color(resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR).getRGB(0, 0));
+        }
+        return BufferedImageUtils.tint(master, green);
+    }
+
+    protected BufferedImage getGrassSideWithTintedOverlay() {
+        BufferedImage tintedOverlay = tintGrassGreen(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_SIDE_OVERLAY));
+        BufferedImage grassSide = resourcePack.getTexture(ResourcePackTexture.Block.GRASS_SIDE);
+        BufferedImage tintedGrassSide = new BufferedImage(grassSide.getWidth(), grassSide.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = tintedGrassSide.createGraphics();
+        g2.drawImage(grassSide, 0, 0, null);
+        g2.drawImage(tintedOverlay, 0, 0, null);
+        return tintedGrassSide;
     }
 
     protected BufferedImage addGreyBackgroud(BufferedImage block) {

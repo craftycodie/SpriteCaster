@@ -179,24 +179,6 @@ public class Alpha11201TexturePackBuilder extends Beta1501TexturePackBuilder {
                 .build();
     }
 
-    protected BufferedImage getGrassSideWithTintedOverlay() {
-        BufferedImage tintedOverlay = tintGrassGreen(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_SIDE_OVERLAY));
-        BufferedImage grassSide = resourcePack.getTexture(ResourcePackTexture.Block.GRASS_SIDE);
-        BufferedImage tintedGrassSide = new BufferedImage(grassSide.getWidth(), grassSide.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2 = tintedGrassSide.createGraphics();
-        g2.drawImage(grassSide, 0, 0, null);
-        g2.drawImage(tintedOverlay, 0, 0, null);
-        return tintedGrassSide;
-    }
-
-    protected BufferedImage tintGrassGreen(BufferedImage master) {
-        Color green = Color.decode("#97FF5B");
-        if (resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR) != null) {
-            green = new Color(resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR).getRGB(0, 0));
-        }
-        return BufferedImageUtils.tint(master, green);
-    }
-
     protected BufferedImage tintLeavesGreen(BufferedImage master) {
         Color green = Color.decode("#97FF5B");
         if (resourcePack.getTexture(ResourcePackTexture.FOLIAGE_COLOR) != null) {
