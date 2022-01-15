@@ -4,7 +4,9 @@ import gg.codie.spritecaster.SpriteAtlas;
 import gg.codie.spritecaster.SpriteAtlasBuilder;
 import gg.codie.spritecaster.resourcepacks.ResourcePackStack;
 import gg.codie.spritecaster.resources.textures.ResourcePackTexture;
+import gg.codie.spritecaster.utils.BufferedImageUtils;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
@@ -518,7 +520,7 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
 
         addTexture(TexturePackTexture.WATER, waterStill.getSubimage(0, 0, waterStill.getWidth(), waterStill.getWidth()));
         addTexture(TexturePackTexture.ROCK, resourcePack.getTexture(ResourcePackTexture.Block.STONE));
-        addTexture(TexturePackTexture.GRASS, resourcePack.getTexture(ResourcePackTexture.Block.GRASS_TOP));
+        addTexture(TexturePackTexture.GRASS, tintGrassGreen(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_TOP)));
         addTexture(TexturePackTexture.DIRT, resourcePack.getTexture(ResourcePackTexture.Block.DIRT));
 
         addFile(TexturePackFile.WATER_FLOWING_MCMETA, resourcePack.getFile("assets/minecraft/textures/block/water_flow.png.mcmeta"));
@@ -530,6 +532,14 @@ public class Beta173TexturePackBuilder extends AbstractTexturePackBuilder {
         addFile(TexturePackFile.FIRE_1, resourcePack.getFile("assets/minecraft/textures/block/fire_1.png.mcmeta"));
         addFile(TexturePackFile.GEAR_CLOCKWISE_MCMETA, resourcePack.getFile("assets/minecraft/spritecaster/block/gear_clockwise.png.mcmeta"));
         addFile(TexturePackFile.GEAR_COUNTER_CLOCKWISE_MCMETA, resourcePack.getFile("assets/minecraft/spritecaster/block/gear_counter_clockwise.png.mcmeta"));
+    }
+
+    protected BufferedImage tintGrassGreen(BufferedImage master) {
+        Color green = Color.decode("#97FF5B");
+        if (resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR) != null) {
+            green = new Color(resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR).getRGB(0, 0));
+        }
+        return BufferedImageUtils.tint(master, green);
     }
 
     @Override

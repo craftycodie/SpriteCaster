@@ -176,14 +176,6 @@ public class Beta1501TexturePackBuilder extends Beta166TexturePackBuilder {
                 .build();
     }
 
-    protected BufferedImage tintGrassGreen(BufferedImage master) {
-        Color green = Color.decode("#97FF5B");
-        if (resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR) != null) {
-            green = new Color(resourcePack.getTexture(ResourcePackTexture.GRASS_COLOR).getRGB(0, 0));
-        }
-        return BufferedImageUtils.tint(master, green);
-    }
-
     protected BufferedImage getGrassSideWithTintedOverlay() {
         BufferedImage tintedOverlay = tintGrassGreen(resourcePack.getTexture(ResourcePackTexture.Block.GRASS_SIDE_OVERLAY));
         BufferedImage grassSide = resourcePack.getTexture(ResourcePackTexture.Block.GRASS_SIDE);
