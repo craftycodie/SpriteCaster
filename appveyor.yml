@@ -1,5 +1,6 @@
 version: '{build}'
-image: Visual Studio 2019
+image: ubuntu
+stack: jdk 8
 
 install:
   - ps: .\build_scripts\UpdateBuildVersion.ps1
